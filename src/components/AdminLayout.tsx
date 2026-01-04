@@ -42,8 +42,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="min-h-screen bg-background flex">
             {/* Sidebar */}
             <aside className="w-64 border-r border-border bg-card hidden md:flex flex-col">
-                <div className="h-16 flex items-center px-6 border-b border-border">
-                    <span className="text-lg font-bold text-foreground">SessionOS Admin</span>
+                <div className="flex h-16 items-center px-6 border-b border-border/40">
+                    <LayoutDashboard className="h-6 w-6 mr-3 text-primary" />
+                    <span className="text-lg font-bold text-foreground">Sync Meet Admin</span>
                 </div>
 
                 <nav className="flex-1 px-4 space-y-1 overflow-y-auto mt-6">

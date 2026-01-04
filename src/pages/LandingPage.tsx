@@ -40,17 +40,8 @@ export default function LandingPage() {
 
     return (
         <div className="min-h-screen bg-[#051426] flex flex-col font-sans text-white selection:bg-blue-500/30">
-            {/* Header */}
-            <header className="container mx-auto px-6 py-8 flex justify-between items-center relative z-10">
-                <div className="w-28 md:w-32">
-                    <img
-                        src="/logo.png"
-                        alt="ATVEZA"
-                        className="w-full h-auto opacity-90"
-                    />
-                </div>
-                {/* Optional: Add 'Contact' or 'About' link if needed */}
-            </header>
+            {/* Header (Removed as per request) */}
+            <div className="py-8"></div>
 
             {/* Main Hero Content */}
             <main className="flex-1 container mx-auto px-6 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 py-12 relative z-10">

@@ -21,7 +21,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             <header className="sticky top-0 z-30 w-full border-b border-border bg-background/80 backdrop-blur">
                 <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                     <Link to="/portal" className="text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity">
-                        SessionOS
+                        Sync Meet
                     </Link>
 
                     <div className="flex items-center gap-4">

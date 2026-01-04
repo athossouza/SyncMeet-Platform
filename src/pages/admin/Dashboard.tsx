@@ -8,8 +8,8 @@ export default function AdminDashboard() {
     return (
         <div className="space-y-8">
             <div>
-                <h2 className="text-3xl font-bold tracking-tight">Admin Dashboard</h2>
-                <p className="text-muted-foreground mt-2">Welcome back. Here's an overview of SessionOS.</p>
+                <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+                <p className="text-muted-foreground mt-2">Welcome back. Here's an overview of Sync Meet.</p>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
