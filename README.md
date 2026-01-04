@@ -5,6 +5,26 @@
 ![SyncMeet Dashboard](https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop) 
 *(Screenshots tailored for showcase)*
 
+## 🎯 Who is this for?
+
+**SyncMeet** is the ultimate tool for **Mentors, Coaches, and Consultants** who want to elevate their client experience. If you deliver high-value sessions via Google Meet and use YouTube to host recordings, this platform is for you.
+
+## 💡 The Problem vs. The Solution
+
+### ❌ Without SyncMeet ( The "Old Way" )
+- **Manual Work**: You finish a session, download the recording, upload to YouTube, set visibility to "Unlisted".
+- **Lost Links**: You email the link to the client. Months later, they ask: *"Can you resend the link for our session in January?"*
+- **Zero Context**: The client watches the video on YouTube, surrounded by distractions, ads, and unrelated video suggestions.
+- **No Summary**: If the client wants to recall a specific topic, they have to watch the whole hour again.
+
+### ✅ With SyncMeet ( The "Premium Way" )
+- **Automated Hub**: Sessions from your Google Calendar appear automatically in the portal.
+- **Centralized Access**: Clients have a dedicated login to access ALL their past sessions, organized by date.
+- **Distraction-Free**: Videos play in a custom, branded player without YouTube branding or ads.
+- **AI Intelligence**: An **AI Agent** listens to the session notes and automatically generates a concise, punchy topic title (e.g., *"Strategic Planning for Q1 Launch"* instead of *"Meeting with John"*).
+
+---
+
 ## ✨ Key Features
 
 - **🎯 Distraction-Free Video Player**: Custom-built video player that removes all YouTube distractions (ads, related videos, titles), focusing solely on the content.
@@ -38,7 +58,7 @@
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/Start-Seu/SyncMeet.git
+    git clone https://github.com/athossouza/SyncMeet-Platform.git
     ```
 2.  Install dependencies:
     ```bash
