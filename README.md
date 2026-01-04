@@ -2,9 +2,6 @@
 
 **SyncMeet** is a modern, AI-powered portal for managing mentorship sessions, designed to provide a premium, distraction-free experience for mentees.
 
-![SyncMeet Dashboard](https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop) 
-*(Screenshots tailored for showcase)*
-
 ## 🎯 Who is this for?
 
 **SyncMeet** is the ultimate tool for **Mentors, Coaches, and Consultants** who want to elevate their client experience. If you deliver high-value sessions via Google Meet and use YouTube to host recordings, this platform is for you.
