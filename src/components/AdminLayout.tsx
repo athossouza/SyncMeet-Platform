@@ -18,7 +18,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     const handleSync = async () => {
         setIsSyncing(true)
         try {
-            const res = await fetch('http://localhost:3000/api/sync', { method: 'POST' })
+            const res = await fetch('/api/sync', { method: 'POST' })
             if (res.ok) {
                 alert('Sincronização concluída com sucesso!')
             } else {

@@ -30,6 +30,7 @@ export interface Session {
     }[]
     meet_link?: string
     video_embed_url?: string
+    youtube_video_id?: string
     duration_seconds?: number
     doc_embed_url?: string
     summary_text?: string

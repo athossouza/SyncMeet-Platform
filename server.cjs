@@ -18,6 +18,15 @@ app.post('/api/sync', async (req, res) => {
     }
 });
 
+// Serve static files from 'dist'
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// SPA Fallback: Clean URLs return index.html
+app.use((req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 app.listen(port, () => {
     console.log(`🚀 Sync Server running at http://localhost:${port}`);
 });

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthProvider, useAuth } from '@/context/AuthContext'
-import Login from '@/pages/Login'
+import LandingPage from '@/pages/LandingPage'
 import AdminLayout from '@/components/AdminLayout'
 import AdminDashboard from '@/pages/admin/Dashboard'
 import AdminOrganizations from '@/pages/admin/Organizations'
@@ -26,7 +26,7 @@ function ProtectedRoute({ children, adminOnly = false }: { children: React.React
   }
 
   if (!user) {
-    return <Navigate to="/login" replace />
+    return <Navigate to="/" replace />
   }
 
   if (adminOnly && profile?.role !== 'admin') {
@@ -42,7 +42,7 @@ function RootRedirect() {
 
   if (loading) return null
 
-  if (!user) return <Navigate to="/login" replace />
+  if (!user) return <LandingPage />
 
   if (profile?.role === 'admin') return <Navigate to="/admin" replace />
 
@@ -55,7 +55,7 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<LandingPage />} />
 
             <Route path="/" element={<RootRedirect />} />
 

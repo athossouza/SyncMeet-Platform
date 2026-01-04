@@ -21,9 +21,10 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
 // Use Google Default Credentials (ADC)
 const auth = new google.auth.GoogleAuth({
+    keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS,
     scopes: [
         'https://www.googleapis.com/auth/calendar.readonly',
-        'https://www.googleapis.com/auth/drive.readonly' // Access to metadata and content
+        'https://www.googleapis.com/auth/drive.readonly'
     ],
     projectId: 'projetosyncmeet',
 })
@@ -49,7 +50,7 @@ async function syncEvents() {
 
         if (orgError) {
             console.error('❌ Error fetching organizations:', orgError)
-            return
+            throw new Error(`Error fetching organizations: ${orgError.message}`)
         }
 
         // Filter out the user's own organization if needed, or keeping it is fine 
@@ -286,13 +287,14 @@ async function syncEvents() {
         console.log(`\n🎉 Sync complete. ${syncedCount} new sessions created.`)
 
     } catch (error) {
-        console.error('❌ Error during sync:', error.message)
-        console.error('👉 Hint: Make sure you have run "gcloud auth application-default login"')
+        console.error('❌ Error during sync execution:', error)
+        throw error // Re-throw so the API knows it failed
     }
 }
 
+// Allow running directly
 if (require.main === module) {
-    syncEvents()
+    syncEvents().catch(console.error)
 }
 
 module.exports = { syncEvents }
