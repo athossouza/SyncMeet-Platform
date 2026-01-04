@@ -54,15 +54,14 @@ export default function LandingPage() {
 
                     <h1 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
                         <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">
-                            Inteligência Operacional
+                            Sua Evolução,
                         </span>
                         <br />
-                        <span className="text-blue-500">em Suporte B2B</span>
+                        <span className="text-blue-500">Centralizada e Automatizada</span>
                     </h1>
 
                     <p className="text-lg text-neutral-400 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                        Acesse seus dashboards, cronogramas de mentorias e
-                        ativos digitais em um ambiente seguro e centralizado.
+                        Chega de informações dispersas. Documentos, gravações e planos de ação sincronizados em uma única plataforma inteligente.
                     </p>
                 </div>
 
@@ -145,36 +144,60 @@ export default function LandingPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* Card 1 */}
-                        <div className="p-8 rounded-2xl bg-[#051426] border border-white/10 hover:border-blue-500/30 transition-colors group">
-                            <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /><line x1="3.27 16.05" x2="2.72" y2="12" /></svg>
+                        <div className="group relative p-6 rounded-2xl overflow-hidden transition-all duration-300 border border-white/10 bg-[#0A2647]/50 backdrop-blur-sm hover:shadow-[0_2px_12px_rgba(44,116,179,0.1)] hover:-translate-y-1 will-change-transform">
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[length:4px_4px]" />
                             </div>
-                            <h3 className="text-xl font-semibold text-white mb-3">Centralização de Ativos</h3>
-                            <p className="text-neutral-400 leading-relaxed">
-                                Chega de links perdidos no WhatsApp. Acesse gravações, documentos estratégicos e planos de ação em um único cofre digital seguro.
-                            </p>
+
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /><line x1="3.27 16.05" x2="2.72" y2="12" /></svg>
+                                </div>
+                                <h3 className="text-xl font-semibold text-white mb-3">Centralização de Ativos</h3>
+                                <p className="text-neutral-400 leading-relaxed">
+                                    Chega de links perdidos no WhatsApp. Acesse gravações, documentos estratégicos e planos de ação em um único cofre digital seguro.
+                                </p>
+                            </div>
+
+                            <div className="absolute inset-0 -z-10 rounded-2xl p-px bg-gradient-to-br from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
 
                         {/* Card 2 */}
-                        <div className="p-8 rounded-2xl bg-[#051426] border border-white/10 hover:border-blue-500/30 transition-colors group">
-                            <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg>
+                        <div className="group relative p-6 rounded-2xl overflow-hidden transition-all duration-300 border border-white/10 bg-[#0A2647]/50 backdrop-blur-sm hover:shadow-[0_2px_12px_rgba(44,116,179,0.1)] hover:-translate-y-1 will-change-transform">
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[length:4px_4px]" />
                             </div>
-                            <h3 className="text-xl font-semibold text-white mb-3">Memória Estratégica</h3>
-                            <p className="text-neutral-400 leading-relaxed">
-                                Histórico completo de cada decisão tomada. Revise sessões passadas com resumos inteligentes e não perca o fio da meada.
-                            </p>
+
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg>
+                                </div>
+                                <h3 className="text-xl font-semibold text-white mb-3">Memória Estratégica</h3>
+                                <p className="text-neutral-400 leading-relaxed">
+                                    Histórico completo de cada decisão tomada. Revise sessões passadas com resumos inteligentes e não perca o fio da meada.
+                                </p>
+                            </div>
+
+                            <div className="absolute inset-0 -z-10 rounded-2xl p-px bg-gradient-to-br from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
 
                         {/* Card 3 */}
-                        <div className="p-8 rounded-2xl bg-[#051426] border border-white/10 hover:border-blue-500/30 transition-colors group">
-                            <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /><path d="M8 14h.01" /><path d="M12 14h.01" /><path d="M16 14h.01" /><path d="M8 18h.01" /><path d="M12 18h.01" /><path d="M16 18h.01" /></svg>
+                        <div className="group relative p-6 rounded-2xl overflow-hidden transition-all duration-300 border border-white/10 bg-[#0A2647]/50 backdrop-blur-sm hover:shadow-[0_2px_12px_rgba(44,116,179,0.1)] hover:-translate-y-1 will-change-transform">
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[length:4px_4px]" />
                             </div>
-                            <h3 className="text-xl font-semibold text-white mb-3">Ritmo e Execução</h3>
-                            <p className="text-neutral-400 leading-relaxed">
-                                Visualize o cronograma de próximas sessões e acompanhe a evolução do projeto passo a passo, mantendo o time alinhado.
-                            </p>
+
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /><path d="M8 14h.01" /><path d="M12 14h.01" /><path d="M16 14h.01" /><path d="M8 18h.01" /><path d="M12 18h.01" /><path d="M16 18h.01" /></svg>
+                                </div>
+                                <h3 className="text-xl font-semibold text-white mb-3">Ritmo e Execução</h3>
+                                <p className="text-neutral-400 leading-relaxed">
+                                    Visualize o cronograma de próximas sessões e acompanhe a evolução do projeto passo a passo, mantendo o time alinhado.
+                                </p>
+                            </div>
+
+                            <div className="absolute inset-0 -z-10 rounded-2xl p-px bg-gradient-to-br from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
                     </div>
                 </div>
