@@ -334,7 +334,7 @@ export default function SessionDetail() {
                                 </div>
                             ) : session.summary_html ? (
                                 <div className="w-full bg-slate-100/50 flex flex-col items-center py-8">
-                                    <div className="w-full max-w-[850px] bg-[#F0F7FF] shadow-2xl rounded-xl border border-blue-100/80 p-8 md:p-16 prose prose-slate prose-lg focus:outline-none prose-headings:text-slate-800 prose-a:text-blue-600 hover:prose-a:text-blue-500 transition-all font-sans">
+                                    <div className="w-full max-w-[850px] bg-[#F0F7FF] shadow-2xl rounded-xl border border-blue-100/80 p-8 md:p-16 prose prose-slate prose-lg focus:outline-none !text-slate-900 prose-headings:!text-slate-900 prose-p:!text-slate-800 prose-li:!text-slate-800 prose-strong:!text-slate-900 prose-a:text-blue-600 hover:prose-a:text-blue-500 transition-all font-sans">
                                         <div dangerouslySetInnerHTML={{
                                             __html: activeTab === 'notes' ? contentParts.notes! : contentParts.transcript!
                                         }} />
