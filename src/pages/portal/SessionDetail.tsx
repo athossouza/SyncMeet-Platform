@@ -324,7 +324,7 @@ export default function SessionDetail() {
                         <div className="flex-1 bg-white relative animate-in fade-in slide-in-from-top-2 duration-300">
                             {isEditing ? (
                                 <div className="w-full bg-slate-100/50 flex flex-col items-center py-8">
-                                    <div className="w-full max-w-[850px] bg-[#E9EDF1] shadow-2xl rounded-xl border border-[#D8E0E7] p-8">
+                                    <div className="w-full max-w-[850px] bg-[#EFF6FF] shadow-xl rounded-xl border border-[#DBEAFE] p-8">
                                         <SessionEditor
                                             content={session.summary_html || ''} // TODO: Handle splitting transcript? Edit Full HTML? 
                                             // Ideally we edit the active tab... but transcript is usually separate.
@@ -341,7 +341,7 @@ export default function SessionDetail() {
                                 </div>
                             ) : session.summary_html ? (
                                 <div className="w-full bg-slate-100/50 flex flex-col items-center py-8">
-                                    <div className="w-full max-w-[850px] bg-[#E9EDF1] shadow-2xl rounded-xl border border-[#D8E0E7] p-8 md:p-16 prose prose-slate prose-lg focus:outline-none !text-slate-900 prose-headings:!text-slate-900 prose-p:!text-slate-800 prose-li:!text-slate-800 prose-strong:!text-slate-900 prose-a:text-blue-600 hover:prose-a:text-blue-500 transition-all font-sans">
+                                    <div className="w-full max-w-[850px] bg-[#EFF6FF] shadow-xl rounded-xl border border-[#DBEAFE] p-8 md:p-16 prose prose-slate prose-lg focus:outline-none !text-slate-900 prose-headings:!text-slate-900 prose-p:!text-slate-800 prose-li:!text-slate-800 prose-strong:!text-slate-900 prose-a:text-blue-600 hover:prose-a:text-blue-500 transition-all font-sans [&_p]:min-h-[1.5em] [&_p:empty]:h-[1.5em]">
                                         <div dangerouslySetInnerHTML={{
                                             __html: activeTab === 'notes' ? contentParts.notes! : contentParts.transcript!
                                         }} />
