@@ -1,6 +1,7 @@
 const path = require('path')
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
 const { google } = require('googleapis')
+const fs = require('fs')
 const { createClient } = require('@supabase/supabase-js')
 
 // --- Configuration ---
@@ -19,28 +20,69 @@ if (!CALENDAR_ID || !SUPABASE_URL || !SUPABASE_KEY) {
 // --- Initialization ---
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
-// Use Google Default Credentials (ADC)
-const auth = new google.auth.GoogleAuth({
-    keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-    scopes: [
-        'https://www.googleapis.com/auth/calendar.readonly',
-        'https://www.googleapis.com/auth/drive.readonly'
-    ],
-    projectId: 'projetosyncmeet',
-})
+// --- Constants ---
+const SERVICE_ACCOUNT_PATH = process.env.GOOGLE_APPLICATION_CREDENTIALS || '/app/service-account.json'
+const TOKEN_PATH = path.join(__dirname, '../token.json')
+const CREDENTIALS_PATH = path.join(__dirname, '../client_secret.json')
 
-const calendar = google.calendar({ version: 'v3', auth })
-const drive = google.drive({ version: 'v3', auth })
-const youtube = google.youtube({ version: 'v3', auth })
+// --- Authentication Logic ---
+async function getAuth() {
+    // 1. Try Service Account (Preferred for Servers)
+    if (fs.existsSync(SERVICE_ACCOUNT_PATH)) {
+        console.log('🔑 Using Service Account credentials...')
+        return new google.auth.GoogleAuth({
+            keyFile: SERVICE_ACCOUNT_PATH,
+            scopes: [
+                'https://www.googleapis.com/auth/calendar.readonly',
+                'https://www.googleapis.com/auth/drive.readonly'
+            ],
+            projectId: 'projetosyncmeet',
+        })
+    }
+
+    // 2. Try User OAuth Token (Fallback for Local/Dev or missing Service Account key)
+    if (fs.existsSync(TOKEN_PATH) && fs.existsSync(CREDENTIALS_PATH)) {
+        console.log('👤 Using OAuth User Token...')
+        const content = fs.readFileSync(CREDENTIALS_PATH)
+        const keys = JSON.parse(content)
+        const { client_secret, client_id, redirect_uris } = keys.installed || keys.web
+        const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0])
+
+        const tokenContent = fs.readFileSync(TOKEN_PATH)
+        oAuth2Client.setCredentials(JSON.parse(tokenContent))
+        return oAuth2Client
+    }
+
+    throw new Error('No valid Google credentials found (Service Account or OAuth Token).')
+}
+
+// Global Auth Holder (Initialized in syncEvents)
+let auth = null
+let calendar = null
+let drive = null
+let youtube = null
+
+// --- Initialization Wrapper ---
+async function initGoogle() {
+    if (auth) return
+    auth = await getAuth()
+    const authClient = auth.getClient ? await auth.getClient() : auth // OAuth2Client vs GoogleAuth
+
+    calendar = google.calendar({ version: 'v3', auth: authClient })
+    drive = google.drive({ version: 'v3', auth: authClient })
+    youtube = google.youtube({ version: 'v3', auth: authClient })
+    console.log('✅ Google APIs Initialized')
+}
 
 async function syncEvents() {
     try {
-        console.log('🔄 Authenticating with Google (ADC)...')
+        await initGoogle()
+        console.log('🔄 Authenticating with Google...')
 
         // Attempt to get client credentials
-        const authClient = await auth.getClient()
-        const projectId = await auth.getProjectId()
-        console.log(`✅ Authenticated. Project ID: ${projectId}`)
+        // const authClient = await auth.getClient() 
+        // const projectId = await auth.getProjectId()
+        // console.log(`✅ Authenticated. Project ID: ${projectId}`)
 
         // --- 1. Fetch Organizations for Matching ---
         console.log('🏢 Fetching organizations...')
@@ -60,10 +102,7 @@ async function syncEvents() {
         console.log(`ℹ️  Tracking ${clientOrgs.length} client domains: ${clientOrgs.map(o => o.domain).join(', ')}`)
 
         // --- 2. Fetch Calendar Events ---
-        // Calculate time range (e.g., last 30 days to next 30 days)
-        const now = new Date()
-        const timeMin = new Date(now)
-        timeMin.setDate(now.getDate() - 30) // Look back 30 days
+        const timeMin = new Date('2025-03-19T00:00:00Z') // Look back to project start
 
         console.log(`📅 Fetching events from ${CALENDAR_ID}...`)
 

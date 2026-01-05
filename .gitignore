@@ -40,3 +40,5 @@ supabase/.branches
 # OS
 .DS_Store
 Thumbs.db
+token.json
+u242475129_VhCW8.sql

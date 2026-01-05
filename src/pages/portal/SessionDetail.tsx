@@ -1,13 +1,14 @@
 import { useParams, Link } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState, useMemo } from 'react'
 import { supabase } from '@/lib/supabase'
-import { Session } from '@/types'
+import { Session, Profile } from '@/types'
 import { Button } from '@/components/ui/button'
-import { Loader2, ArrowLeft, Download, CheckCircle2, Clock, Calendar, HelpCircle, ChevronDown, ChevronUp } from 'lucide-react'
+import { Loader2, ArrowLeft, Download, CheckCircle2, Clock, Calendar, HelpCircle, ChevronDown, ChevronUp, Pencil } from 'lucide-react'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import CustomVideoPlayer from '@/components/CustomVideoPlayer'
+import SessionEditor from '@/components/SessionEditor'
 
 // Helper to extract ID from URL if youtube_video_id is missing
 const extractYoutubeId = (url?: string) => {
@@ -19,9 +20,12 @@ const extractYoutubeId = (url?: string) => {
 
 export default function SessionDetail() {
     const { id } = useParams()
+    const queryClient = useQueryClient()
     const [activeTab, setActiveTab] = useState<'notes' | 'transcription'>('notes')
     const [isNotesExpanded, setIsNotesExpanded] = useState(false)
+    const [isEditing, setIsEditing] = useState(false)
 
+    // Fetch Session
     const { data: session, isLoading } = useQuery({
         queryKey: ['session', id],
         queryFn: async () => {
@@ -37,13 +41,48 @@ export default function SessionDetail() {
         enabled: !!id,
     })
 
+    // Fetch Current User Profile to check Admin
+    const { data: userProfile } = useQuery({
+        queryKey: ['hasAdminAccess'],
+        queryFn: async () => {
+            const { data: { user } } = await supabase.auth.getUser()
+            if (!user) return null
+
+            // Check profiles table (assuming it exists and matches types)
+            const { data: profile } = await supabase
+                .from('profiles')
+                .select('*')
+                .eq('id', user.id)
+                .single()
+
+            return profile as Profile
+        }
+    })
+
+    const isAdmin = userProfile?.role === 'admin' || userProfile?.email === 'athos@atveza.com' // Fallback for specific user
+
+    const handleSaveNotes = async (newHtml: string) => {
+        try {
+            const { error } = await supabase
+                .from('sessions')
+                .update({ summary_html: newHtml })
+                .eq('id', id!)
+
+            if (error) throw error
+
+            // Invalidate query to refresh UI
+            queryClient.invalidateQueries({ queryKey: ['session', id] })
+            setIsEditing(false)
+        } catch (error) {
+            console.error('Failed to save notes:', error)
+            alert('Erro ao salvar as notas.')
+        }
+    }
+
     const contentParts = useMemo(() => {
         if (!session?.summary_html) return { notes: null, transcript: null }
 
         // Find the "Transcrição" Header block (usually <p class="title">...Transcrição...</p>)
-        // We handle both raw "Transcrição" and HTML entities "Transcri&ccedil;&atilde;o"
-        // The regex looks for: Transcri + (ç or &ccedil;) + (ã or &atilde;) + o
-        // We use (?:(?!<\/p>)[\s\S])* to ensure we don't greedily match across multiple <p> tags
         const splitRegex = /<p class="title"[^>]*>(?:(?!<\/p>)[\s\S])*Transcri(?:ç|&ccedil;)(?:ã|&atilde;)o[\s\S]*?<\/p>/i
         const match = session.summary_html.match(splitRegex)
 
@@ -214,7 +253,7 @@ export default function SessionDetail() {
                 </div>
 
                 {/* Bottom Row: Doc/Resource Area - COLLAPSIBLE */}
-                <div className={`bg-card rounded-lg border border-white/10 shadow-sm flex flex-col overflow-hidden transition-all duration-300 ${isNotesExpanded ? 'min-h-[800px]' : 'h-auto'}`}>
+                <div className={`bg-card rounded-lg border border-white/10 shadow-sm flex flex-col overflow-hidden transition-all duration-300 h-auto`}>
                     <div
                         className="p-4 border-b border-white/10 bg-card font-medium text-sm flex justify-between items-center text-white cursor-pointer hover:bg-white/5 transition-colors"
                         onClick={() => setIsNotesExpanded(!isNotesExpanded)}
@@ -230,8 +269,23 @@ export default function SessionDetail() {
                         </div>
 
                         <div className="flex items-center gap-4">
+                            {/* Edit Button (Admin Only) */}
+                            {isAdmin && isNotesExpanded && (
+                                <Button
+                                    size="sm"
+                                    variant="ghost"
+                                    className="h-8 w-8 p-0 text-slate-400 hover:text-white"
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        setIsEditing(true)
+                                    }}
+                                >
+                                    <Pencil className="w-4 h-4" />
+                                </Button>
+                            )}
+
                             {/* Tab Switcher (Only if Transcript exists and is expanded) */}
-                            {isNotesExpanded && contentParts.transcript && (
+                            {isNotesExpanded && contentParts.transcript && !isEditing && (
                                 <div className="flex bg-slate-900 rounded-lg p-1 border border-white/10" onClick={(e) => e.stopPropagation()}>
                                     <button
                                         onClick={() => setActiveTab('notes')}
@@ -261,9 +315,26 @@ export default function SessionDetail() {
                     {/* Content Area */}
                     {isNotesExpanded && (
                         <div className="flex-1 bg-white relative animate-in fade-in slide-in-from-top-2 duration-300">
-                            {session.summary_html ? (
-                                <div className="w-full h-full absolute inset-0 overflow-y-auto bg-slate-50">
-                                    <div className="max-w-[800px] mx-auto bg-white min-h-full shadow-sm p-8 md:p-12 prose prose-slate prose-sm md:prose-base focus:outline-none">
+                            {isEditing ? (
+                                <div className="w-full bg-slate-100/50 flex flex-col items-center py-8">
+                                    <div className="w-full max-w-[850px] bg-[#F0F7FF] shadow-2xl rounded-xl border border-blue-100/80 p-8">
+                                        <SessionEditor
+                                            content={session.summary_html || ''} // TODO: Handle splitting transcript? Edit Full HTML? 
+                                            // Ideally we edit the active tab... but transcript is usually separate.
+                                            // Simplification: We edit the WHOLE summary_html field, so we must be careful.
+                                            // The user says "Notas e Resumo".
+                                            // If I edit `session.summary_html`, it includes transcript if it was there?
+                                            // `summary_html` usually IS the whole thing.
+                                            // Let's pass the FULL `session.summary_html` to the editor.
+                                            // But wait, the view splits it using Regex.
+                                            onSave={handleSaveNotes}
+                                            onCancel={() => setIsEditing(false)}
+                                        />
+                                    </div>
+                                </div>
+                            ) : session.summary_html ? (
+                                <div className="w-full bg-slate-100/50 flex flex-col items-center py-8">
+                                    <div className="w-full max-w-[850px] bg-[#F0F7FF] shadow-2xl rounded-xl border border-blue-100/80 p-8 md:p-16 prose prose-slate prose-lg focus:outline-none prose-headings:text-slate-800 prose-a:text-blue-600 hover:prose-a:text-blue-500 transition-all font-sans">
                                         <div dangerouslySetInnerHTML={{
                                             __html: activeTab === 'notes' ? contentParts.notes! : contentParts.transcript!
                                         }} />
@@ -272,7 +343,7 @@ export default function SessionDetail() {
                             ) : session.doc_embed_url ? (
                                 <iframe
                                     src={session.doc_embed_url}
-                                    className="w-full h-full absolute inset-0"
+                                    className="w-full h-[800px]"
                                     title="Session Document"
                                 />
                             ) : (
