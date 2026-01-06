@@ -20,7 +20,7 @@ services:
     labels:
       - "traefik.enable=true"
       # Router for HTTP (redirect to HTTPS usually handled globally, but keeping simple)
-      - "traefik.http.routers.syncmeet.rule=Host(`app.mentoria.cx`)"
+      - "traefik.http.routers.syncmeet.rule=Host(`mentoria.atveza.com`)"
       - "traefik.http.routers.syncmeet.entrypoints=web,websecure"
       - "traefik.http.routers.syncmeet.tls=true"
       - "traefik.http.routers.syncmeet.tls.certresolver=mytlschallenge"

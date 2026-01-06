@@ -1,0 +1,914 @@
+{
+  "organizations": [
+    {
+      "id": "d1a3b5c7-e9f1-4a2b-8c3d-1e2f3a4b5c6d",
+      "name": "ATVEZA Technology",
+      "domain": "atveza.com",
+      "created_at": "2026-01-03T02:45:37.082Z",
+      "youtube_playlist_id": null
+    },
+    {
+      "id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "name": "HERCULES",
+      "domain": "herculesmotores.com.br",
+      "created_at": "2026-01-03T23:30:01.799Z",
+      "youtube_playlist_id": null
+    },
+    {
+      "id": "90cd778f-9b7f-49eb-86be-e31ffab91ea0",
+      "name": "MENTORIA CX (teste)",
+      "domain": "mentoria.cx",
+      "created_at": "2026-01-03T23:38:16.661Z",
+      "youtube_playlist_id": "PLQ2KboyPqvv3nVM8EFd06lt0vyPyGgv4b"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "ab5ecf3b-9bd7-4129-88c0-1125e615ac1f",
+      "organization_id": "d1a3b5c7-e9f1-4a2b-8c3d-1e2f3a4b5c6d",
+      "email": "athos@atveza.com",
+      "role": "admin",
+      "avatar_url": null,
+      "created_at": "2026-01-03T02:32:42.543Z"
+    },
+    {
+      "id": "7092c79e-fd29-43bb-a178-e6bc421a809e",
+      "organization_id": "90cd778f-9b7f-49eb-86be-e31ffab91ea0",
+      "email": "karoline@mentoria.cx",
+      "role": "client",
+      "avatar_url": null,
+      "created_at": "2026-01-04T19:17:17.862Z"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "a513720e-bb92-4710-aa1e-f36644c97f89",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6p2kcc9p6so3ad1g611k8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8kpjedhj88qj8h1n8gs4ah9k8osjidi36oo48ci66cr32di674og_20251216T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES",
+      "date": "2025-12-16T11:00:00.000Z",
+      "video_embed_url": null,
+      "doc_embed_url": null,
+      "summary_text": "",
+      "created_at": "2026-01-03T23:43:01.110Z",
+      "end_date": "2025-12-16T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": "https://meet.google.com/jey-gjet-ohh",
+      "duration_seconds": null,
+      "summary_html": null,
+      "youtube_video_id": null
+    },
+    {
+      "id": "cf79686f-eb5e-4066-9903-a6f96a59650b",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6p2kcc9p6so3ad1g611k8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8kpjedhj88qj8h1n8gs4ah9k8osjidi36oo48ci66cr32di674og_20260127T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES",
+      "date": "2026-01-27T11:00:00.000Z",
+      "video_embed_url": null,
+      "doc_embed_url": null,
+      "summary_text": "",
+      "created_at": "2026-01-03T23:43:03.328Z",
+      "end_date": "2026-01-27T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": "https://meet.google.com/jey-gjet-ohh",
+      "duration_seconds": null,
+      "summary_html": null,
+      "youtube_video_id": null
+    },
+    {
+      "id": "a79f55e7-d68f-4dbe-b1b9-3e7f2ec0d994",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6p2kcc9p6so3ad1g611k8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8kpjedhj88qj8h1n8gs4ah9k8osjidi36oo48ci66cr32di674og_20260224T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES",
+      "date": "2026-02-24T11:00:00.000Z",
+      "video_embed_url": null,
+      "doc_embed_url": null,
+      "summary_text": "",
+      "created_at": "2026-01-03T23:43:04.356Z",
+      "end_date": "2026-02-24T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": "https://meet.google.com/jey-gjet-ohh",
+      "duration_seconds": null,
+      "summary_html": null,
+      "youtube_video_id": null
+    },
+    {
+      "id": "eb6dc3b6-7c89-428f-96b6-9d2098386ca2",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6p2kcc9p6so3ad1g611k8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8kpjedhj88qj8h1n8gs4ah9k8osjidi36oo48ci66cr32di674og_20251230T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES",
+      "date": "2025-12-30T11:00:00.000Z",
+      "video_embed_url": null,
+      "doc_embed_url": null,
+      "summary_text": "",
+      "created_at": "2026-01-03T23:43:01.741Z",
+      "end_date": "2025-12-30T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": "https://meet.google.com/jey-gjet-ohh",
+      "duration_seconds": null,
+      "summary_html": null,
+      "youtube_video_id": null
+    },
+    {
+      "id": "c9ef1631-de4f-41de-bec3-ed3426e778d3",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6p2kcc9p6so3ad1g611k8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8kpjedhj88qj8h1n8gs4ah9k8osjidi36oo48ci66cr32di674og_20260113T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES",
+      "date": "2026-01-13T11:00:00.000Z",
+      "video_embed_url": null,
+      "doc_embed_url": null,
+      "summary_text": "",
+      "created_at": "2026-01-03T23:43:02.832Z",
+      "end_date": "2026-01-13T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": "https://meet.google.com/jey-gjet-ohh",
+      "duration_seconds": null,
+      "summary_html": null,
+      "youtube_video_id": null
+    },
+    {
+      "id": "11ef9ca0-c91e-4001-a098-5f737b61894d",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6kqk4d2264skcd22751k8ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g70p30cq284o3egi18cr38c1k8h0j2d9p70r3ed1p6gs3ge22852g_20250512T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES MOTORES",
+      "date": "2025-05-12T11:00:00.000Z",
+      "video_embed_url": null,
+      "doc_embed_url": null,
+      "summary_text": " \n ﻿ \n<https://zoom.com> \nOlá! \n\nAthos Alves De Souza convidou você para uma reunião marcada do(a) Zoom. \nEntrar na reunião do Zoom \n<https://us06web.zoom.us/j/87655743923?pwd=4Ymj1A7Sbeohi4pjCfgFVplQNzsfb3.1&from=addon> \nURL da reunião: \nhttps://us06web.zoom.us/j/87655743923?pwd=4Ymj1A7Sbeohi4pjCfgFVplQNzsfb3.1&from=addon \nID da reunião: 876 5574 3923 \nSenha de acesso: 011018 \n",
+      "created_at": "2026-01-04T21:34:17.979Z",
+      "end_date": "2025-05-12T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": null,
+      "youtube_video_id": null
+    },
+    {
+      "id": "59626ef7-ad60-4aff-8de4-0d738581ae57",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6p2kcc9p6so3ad1g611k8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8kpjedhj88qj8h1n8gs4ah9k8osjidi36oo48ci66cr32di674og_20260310T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES",
+      "date": "2026-03-10T11:00:00.000Z",
+      "video_embed_url": null,
+      "doc_embed_url": null,
+      "summary_text": "",
+      "created_at": "2026-01-03T23:43:04.802Z",
+      "end_date": "2026-03-10T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": "https://meet.google.com/jey-gjet-ohh",
+      "duration_seconds": null,
+      "summary_html": null,
+      "youtube_video_id": null
+    },
+    {
+      "id": "9d3fbef1-2ffa-436d-9825-96362abdadbd",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6kqk4d2264skcd22751k8ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g70p30cq284o3egi18cr38c1k8h0j2d9p70r3ed1p6gs3ge22852g_20250331T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES MOTORES",
+      "date": "2025-03-31T11:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/dVIDJZNGZEw",
+      "doc_embed_url": null,
+      "summary_text": "Reunião sobre melhorias no atendimento ao cliente e estratégias para pesquisa de satisfação pós-venda.",
+      "created_at": "2026-01-04T21:34:15.713Z",
+      "end_date": "2025-03-31T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Mapa utilizado na sessão</h3>\n    <p><a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\" title=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <h3>Resumo</h3>\n    <h4>Resposta Pós-Venda Do Formulário</h4>\n    <p>A equipe discute problemas com o sistema Zendesk e a criação de um formulário de pesquisa de satisfação pós-venda. Ian apresenta o formulário, que inclui perguntas sobre recomendação do suporte técnico, satisfação geral e esforço necessário para resolver problemas. Athos sugere enviar a pesquisa por e-mail e WhatsApp, enquanto Jean propõe testar primeiro o WhatsApp para avaliar a taxa de resposta. A equipe debate sobre a taxa de retorno esperada e a importância de coletar feedback para futuras melhorias.</p>\n    <h4>Desafios No Atendimento Ao Cliente</h4>\n    <p>A equipe discute os desafios no atendimento ao cliente, destacando a tendência dos representantes de assumirem problemas dos clientes em vez de direcioná-los ao pós-venda. Jean e Ian compartilham experiências sobre a dificuldade de transição quando novos membros da equipe assumem responsabilidades de atendimento, enfatizando a importância de construir confiança com os clientes. Kauane, nova na equipe, expressa sua disposição em superar essas barreiras, enquanto Athos oferece dicas para melhorar o posicionamento no atendimento ao cliente.</p>\n    <h4>Acesso Ao Suporte Técnico</h4>\n    <p>A reunião discute como os clientes da Hércules Motores podem entrar em contato com a assistência técnica. Jean explica que os clientes podem obter informações através do site da empresa, do representante ou do manual que acompanha o motor. Athos verifica o site e encontra um formulário de contato e um número de telefone para a central de atendimento. Kauane confirma que o formulário online tem sido eficaz para receber chamados de assistência técnica.</p>\n    <h4>Melhoria Da Conveniência Do Cliente</h4>\n    <p>Athos e Jean discutem a importância da conveniência para os clientes, usando exemplos como drive-thru e estacionamentos fáceis. Eles concordam que melhorar a conveniência pode ajudar a atrair mais clientes e estão abertos a sugestões para implementar essas ideias. Jean menciona que o conceito de conveniência é mais comum em países como Estados Unidos e Canadá, e que o objetivo da discussão é provocar ideias para avançar além do tradicional.</p>\n    <h4>Aprimorando a Suporte Ao Cliente</h4>\n    <p>Athos discutiu a importância de tornar o serviço pós-venda mais conveniente para os clientes, sugerindo a implementação de um kit de boas-vindas ou um dispositivo como uma caneta com um encaixezinho para celulares. Ele enfatizou a necessidade de uma comunicação mais eficiente e rápida, sugerindo que os clientes deveriam entrar em contato diretamente com a assistência técnica em vez de depender do representante. Athos também propôs a ideia de um selo ou código QR no próprio produto para direcionar os clientes diretamente para o canal de suporte. Jean concordou com essas sugestões, sugerindo que elas poderiam melhorar a experiência do cliente e a eficiência do serviço.</p>\n    <h4>Melhorando Suporte Ao Cliente Com QR</h4>\n    <p>Jean e Athos discutem uma estratégia para melhorar o suporte ao cliente, propondo a adição de um adesivo com QR code nos motores para facilitar o acesso à assistência técnica. Eles concordam em testar essa abordagem inicialmente e Jean se compromete a discutir a ideia com o departamento de marketing. Athos sugere que seja feito um mapeamento da jornada do cliente para assistência técnica, incluindo os processos internos de atendimento.</p>\n    <h4>Mapeamento Para Melhorar a Eficiência</h4>\n    <p>Na reunião, Athos enfatizou a importância de mapear o processo de atendimento para melhorar a eficiência e a consistência. Ele sugeriu usar ferramentas como o Miro para criar fluxogramas e mapear a jornada do cliente e do agente. Athos também destacou que esse mapeamento facilitaria a treinamento de novos membros da equipe e forneceria autonomia para eles. Ele observou que o mapeamento também ajudaria a identificar gargalos e áreas para melhoria, e poderia ser usado para testar novas ideias e processos. Ian concordou com a importância do mapeamento, reconhecendo que seria útil para a equipe e para a gestão de chamadas.</p>\n    <h4>Rebranding E Personalização De Produtos</h4>\n    <p>A equipe discute o envio de uma pesquisa por e-mail e WhatsApp, com Ian planejando um teste inicial para 200-500 destinatários antes de enviar para o restante. Athos sugere verificar os limites de envio do Meta e explorar outras opções como SMS ou ferramentas de marketing. Jean menciona o rebranding da Hércules e a possibilidade de criar etiquetas com QR code para suporte técnico nos produtos, visando lançar na feira em São Paulo em maio.</p>\n    <h3>Tarefas de acompanhamento</h3>\n    <ul>\n        <li>Ian: Criar um mapeamento da jornada do cliente e do agente usando a ferramenta Miro.</li>\n        <li>Ian: Enviar a pesquisa de satisfação para 200 clientes via e-mail como teste inicial.</li>\n        <li>Ian: Pesquisar sobre o limite de envios em massa no Meta Business Suite antes de enviar a pesquisa via WhatsApp.</li>\n        <li>Ian: Investigar ferramentas alternativas para envio de SMS em massa.</li>\n        <li>Jean: Discutir com o Maicon do marketing sobre a criação de uma etiqueta com QR code para direcionar clientes ao canal de atendimento.</li>\n        <li>Jean: Explorar a possibilidade de incluir a nova etiqueta com QR code nos motores que serão exibidos na feira em São Paulo.</li>\n        <li>Equipe de marketing: Criar um template de e-mail no RD Station para envio da pesquisa de satisfação.</li>\n        <li>Equipe: Analisar os resultados da pesquisa de satisfação após o recebimento das respostas.</li>\n    </ul>\n</div>",
+      "youtube_video_id": "dVIDJZNGZEw"
+    },
+    {
+      "id": "00794cb7-5f54-45e5-99ad-67cd06d77c1f",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6p2kcc9p6so3ad1g611k8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8kpjedhj88qj8h1n8gs4ah9k8osjidi36oo48ci66cr32di674og_20260210T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES",
+      "date": "2026-02-10T11:00:00.000Z",
+      "video_embed_url": null,
+      "doc_embed_url": null,
+      "summary_text": "",
+      "created_at": "2026-01-03T23:43:03.853Z",
+      "end_date": "2026-02-10T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": "https://meet.google.com/jey-gjet-ohh",
+      "duration_seconds": null,
+      "summary_html": null,
+      "youtube_video_id": null
+    },
+    {
+      "id": "dc9cda05-f4ed-45f9-93ae-f60c159827c2",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6co3idpg8osj2di66opk8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6op48g9n60s34d2270rjgdhk6p0kcd1j6d246d1h64sk4hhj60og",
+      "title": "Hercules Assist Insight",
+      "date": "2025-12-05T11:00:00.000Z",
+      "video_embed_url": null,
+      "doc_embed_url": null,
+      "summary_text": " \n\n \n\n________________________________________________________________________________\n\nMicrosoft Teams Precisa de ajuda? \n<https://aka.ms/JoinTeamsMeeting?omkt=pt-BR> \n\nIngressar na reunião agora \n<https://teams.microsoft.com/l/meetup-join/19%3ameeting_YTUzYTJkMmEtNDJjNi00YmVlLWIxNzEtNjE2MTEwNzg0YmUw%40thread.v2/0?context=%7b%22Tid%22%3a%2272d7bfb0-7ede-4a62-8540-973de283b5db%22%2c%22Oid%22%3a%228d5774de-71a8-4c93-9795-46713d132c48%22%7d> \n\nID da Reunião: 235 429 742 610 82 \n\nSenha: pc2r7Gk7 \n------------------------------\n\nPara organizadores: Opções de reunião \n<https://teams.microsoft.com/meetingOptions/?organizerId=8d5774de-71a8-4c93-9795-46713d132c48&tenantId=72d7bfb0-7ede-4a62-8540-973de283b5db&threadId=19_meeting_YTUzYTJkMmEtNDJjNi00YmVlLWIxNzEtNjE2MTEwNzg0YmUw@thread.v2&messageId=0&language=pt-BR> \n\n________________________________________________________________________________\n\n \nAVISO LEGAL: O conteúdo deste e-mail é confidencial e pode conter \ninformações particulares ou informações sujeitas a direitos autorais ou \nainda constituir sigilo comercial ou informação privilegiada. Portanto, \neste e-mail é destinado exclusivamente ao(s) destinatário(s) \nespecificado(s) apenas na mensagem. É estritamente proibido usar, imprimir, \ncopiar, armazenar, retransmitir, divulgar e/ou compartilhar qualquer parte \ndesta mensagem com terceiros, sem o consentimento por escrito do remetente. \nSe você recebeu esta mensagem por engano, por favor avise imediatamente o \nremetente, respondendo o e-mail e em seguida apague-o. Agradecemos sua \ncooperação e compreensão.\nADVERTÊNCIA: Para fins de representação legal deverão ser observados, \nobrigatoriamente, o Estatuto Social da Mueller Participações S/A e os \nrespectivos Contratos Sociais de suas unidades empresariais. Portanto, é \nindispensável o reconhecimento de poderes através de atos constitutivos, \natas de eleições, alterações contratuais e/ou procurações devidamente \nregistradas em domínios públicos, sob pena de nulidade e demais medidas \nlegais cabíveis.\n\nLEGAL NOTICE: The content of this e-mail is confidential and may contain \nprivate information or information subject to copyright or constitute \ncommercial secrecy or privileged information. Therefore, this email is \nintended exclusively for the recipient(s) specified in the message only. It \nis strictly prohibited to use, print, copy, store, retransmit, disclose \nand/or share any part of this message with third parties without the \nwritten consent of the sender. If you have received this message in error, \nplease notify the sender immediately by replying to the email and then \ndelete it. We appreciate your cooperation and understanding.\nWARNING: For legal representation purposes, the Articles of Incorporation \nof Mueller Participações S/A and the respective Articles of Incorporation \nof its business units must be strictly adhered to. Therefore, the \nacknowledgment of powers through constituent acts, election minutes, \ncontractual amendments, and/or duly registered powers of attorney in public \ndomains is essential, under penalty of nullity and other applicable legal \nmeasures. ",
+      "created_at": "2026-01-03T23:43:00.499Z",
+      "end_date": "2025-12-05T12:30:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": null,
+      "youtube_video_id": null
+    },
+    {
+      "id": "8523b80b-4066-446e-a6e0-27aa1e71e06b",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": null,
+      "title": "Sessão 13 de agosto de 2025",
+      "date": "2025-08-13T00:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/90H78zqq4HM",
+      "doc_embed_url": null,
+      "summary_text": "Reunião abordou configuração de e-mails, mudança de razão social, integração com Zendesk e análise de dados de defeitos.",
+      "created_at": "2026-01-04T21:40:55.281Z",
+      "end_date": null,
+      "attendees": [],
+      "meet_link": null,
+      "duration_seconds": 3600,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Mapa utilizado na sessão:</h3>\n    <p><a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\" title=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <h3>Notas da reunião:</h3>\n    <ul>\n        <li><strong>Configuração de E-mails:</strong> Kauane e Athos Alves De Souza discutiram a junção dos e-mails de condutores e motores para o Zendesk, visando facilitar o atendimento e a organização interna. Jean também participou, destacando a importância de manter a clareza para os clientes.\n            <ul>\n                <li><strong>Discussão inicial:</strong> Kauane mencionou a questão dos e-mails na última reunião e a necessidade de juntar os e-mails para facilitar o atendimento no Zendesk. Athos concordou com a necessidade de mudança.</li>\n                <li><strong>Configuração no Zendesk:</strong> Athos explicou que a configuração é simples e envolve cadastrar o novo e-mail para que os tickets sejam automaticamente classificados.</li>\n                <li><strong>Importância da clareza:</strong> Jean destacou a importância de manter a clareza para os clientes e sugeriu que o site da Hércules condutores divulgue o novo e-mail.</li>\n            </ul>\n        </li>\n        <li><strong>Mudança de Razão Social:</strong> Jean explicou a mudança de razão social da Thor para Hércules, destacando a importância de manter a consistência na comunicação.\n            <ul>\n                <li><strong>Explicação da mudança:</strong> Jean explicou que a Thor não tinha direitos sobre o nome, ao contrário da Hércules, que é uma marca registrada.</li>\n                <li><strong>Impacto na comunicação:</strong> A mudança visa evitar confusões entre os clientes, que agora receberão comunicações unificadas da Hércules.</li>\n            </ul>\n        </li>\n        <li><strong>Proposta de Integração com Zendesk:</strong> Jean e Athos discutiram a proposta de integração do sistema até web com o Zendesk.\n            <ul>\n                <li><strong>Proposta inicial:</strong> Jean mencionou a proposta de integração, que inclui a criação de tickets automáticos e notificações para os clientes.</li>\n                <li><strong>Orçamento e validação:</strong> Jean explicou que a proposta inicial de 40 mil reais parecia alta e que seria necessário validar com a direção.</li>\n                <li><strong>Automação e notificações:</strong> Athos detalhou que a integração permitirá a automação de notificações para os clientes.</li>\n            </ul>\n        </li>\n        <li><strong>Desenvolvimento de API:</strong> Athos mencionou a necessidade de desenvolver uma API para acessar os dados de bobinagem.\n            <ul>\n                <li><strong>Necessidade de API:</strong> Athos não encontrou uma API existente e que seria necessário desenvolver uma nova.</li>\n                <li><strong>Consolidação de necessidades:</strong> Athos sugeriu consolidar todas as necessidades de desenvolvimento em um único projeto.</li>\n            </ul>\n        </li>\n        <li><strong>Análise de Dados de Defeitos:</strong> Jean sugeriu a criação de um sistema para analisar os dados de defeitos dos produtos.\n            <ul>\n                <li><strong>Sugestão de sistema:</strong> Jean sugeriu identificar tendências e problemas específicos por cliente.</li>\n                <li><strong>Desenho do fluxo técnico:</strong> Athos propôs desenhar um fluxo técnico para facilitar a implementação.</li>\n            </ul>\n        </li>\n        <li><strong>Treinamento de Atendimento ao Cliente:</strong> Athos sugeriu incluir treinamento de atendimento ao cliente para novos postos autorizados.</li>\n        <li><strong>Micro Convenções:</strong> Jean mencionou a ideia de realizar micro convenções para estreitar o relacionamento com os postos autorizados.</li>\n    </ul>\n    <h3>Tarefas de acompanhamento:</h3>\n    <ul>\n        <li><strong>Unificação e Configuração de E-mails no Zendesk:</strong> Validar e implementar a configuração do novo e-mail padrão (AT@herculescondutores). (Kauane, Jean)</li>\n        <li><strong>Orçamento e Negociação de Projeto com Ateu Web:</strong> Consolidar as demandas em um único projeto e solicitar proposta formal ao Marcelo do Ateu Web. (Jean)</li>\n        <li><strong>Desenho Técnico do Fluxo Zendesk-Ateu Web:</strong> Elaborar um desenho técnico detalhado do fluxo de dados entre Zendesk e Ateu Web. (Ian, Athos Alves De Souza)</li>\n        <li><strong>Análise de Dados de Defeitos e Tendências de Clientes:</strong> Utilizar a base do “tabelão” do Ateu Web para gerar insights sobre índice de defeitos. (Athos Alves De Souza)</li>\n        <li><strong>Treinamento de Atendimento para Postos Autorizados:</strong> Incluir treinamento específico de atendimento ao cliente no processo de credenciamento. (Jean)</li>\n    </ul>\n</div>",
+      "youtube_video_id": "90H78zqq4HM"
+    },
+    {
+      "id": "fa5fa905-4cb3-412a-8154-2ebf0d95c80a",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": null,
+      "title": "Sessão 26 de agosto de 2025",
+      "date": "2025-08-26T00:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/cZAbgs8qq4E",
+      "doc_embed_url": null,
+      "summary_text": "Reunião sobre automação e integração de IA no atendimento, com foco em melhorias no Zendesk e gestão de parceiros.",
+      "created_at": "2026-01-04T21:40:55.723Z",
+      "end_date": null,
+      "attendees": [],
+      "meet_link": null,
+      "duration_seconds": 3600,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Mapa utilizado na sessão</h3>\n    <p><a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\" title=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <h3>Notas da Reunião</h3>\n    <ul>\n        <li><strong>Automação e Integração de IA no Atendimento:</strong> Athos Alves De Souza, Jean Michael Fredel e Ian discutiram a implementação de automação e inteligência artificial para leitura de imagens e preenchimento automático de campos no Zendesk, visando reduzir burocracia e agilizar o atendimento ao cliente e parceiros.\n            <ul>\n                <li><strong>Leitura Automática de Imagens:</strong> Athos Alves De Souza explicou que o Office pode ser integrado com diferentes modelos de IA, como Google e OpenAI, para ler imagens de notas fiscais e produtos, preenchendo automaticamente os campos necessários no sistema de atendimento.</li>\n                <li><strong>Formulário de Pré-Ordem:</strong> Ian já criou um formulário de pré-ordem, e Athos sugeriu conectar o Office para interceptar a abertura e realizar preenchimento automático, enviando dados principais e imagens relevantes para o Zendesk.</li>\n                <li><strong>Treinamento de IA:</strong> Athos Alves De Souza mencionou que já está treinando a IA para interpretar dados de imagens e preencher campos no Zendesk, facilitando o registro e acompanhamento dos tickets.</li>\n                <li><strong>Ações Paralelas ao Desenvolvimento:</strong> O grupo concordou em iniciar ações que não dependem do desenvolvimento do AT Web, como a automação do preenchimento de dados e integração de IA, para já obter avanços até o final do ano.</li>\n            </ul>\n        </li>\n        <li><strong>Consulta e Automação de Folha de Instrução:</strong> Jean Michael Fredel, Athos Alves De Souza e Ian detalharam o processo de consulta da folha de instrução via número de série, discutindo alternativas para automatizar o acesso ao arquivo FI, seja pelo AT Web ou diretamente pelo SAP, visando eliminar processos manuais.\n            <ul>\n                <li><strong>Processo Atual de Consulta:</strong> Ian explicou que atualmente a consulta da folha de instrução pelo número de série só pode ser feita no AT Web, pois é o único sistema que vincula corretamente a versão do projeto ao número de série.</li>\n                <li><strong>Alternativas de Consulta:</strong> Jean Michael Fredel sugeriu investigar se o SAP possui uma API que permita consultar e obter o arquivo FI diretamente, sem depender do AT Web, e comprometeu-se a perguntar ao time de TI sobre essa possibilidade.</li>\n                <li><strong>Cadastro e Vinculação de Versões:</strong> Jean Michael Fredel detalhou que a engenharia faz o cadastro de novas versões de projetos no SAP, que depois são transferidas para o AT Web, garantindo que cada número de série esteja vinculado à versão correta do produto.</li>\n                <li><strong>Automação do Envio de Dados:</strong> Athos Alves De Souza propôs que, caso a API do SAP esteja disponível, o processo de envio de dados de instrução ao assistente técnico pode ser automatizado, eliminando a necessidade de intervenção manual.</li>\n            </ul>\n        </li>\n        <li><strong>Customização do Formulário Zendesk com Seleção de Posto:</strong> Ian, Athos Alves De Souza e Jean Michael Fredel discutiram a inclusão de uma funcionalidade no formulário do Zendesk para que o cliente selecione o posto autorizado mais próximo via CEP, replicando a experiência do site e integrando dados do AT Web.\n            <ul>\n                <li><strong>Experiência de Seleção de Posto:</strong> O grupo decidiu implementar no formulário do Zendesk a opção de o cliente informar o CEP e receber uma lista dos postos autorizados mais próximos, similar ao que já existe no site.</li>\n                <li><strong>Origem dos Dados:</strong> Ian confirmou que os dados de postos vêm do AT Web, e Athos Alves De Souza orientou solicitar a API necessária ao time responsável para viabilizar a integração.</li>\n                <li><strong>Orçamento para Customização:</strong> Athos Alves De Souza sugeriu que, após obter a especificação da API, seja solicitado um orçamento à ZX para customizar o formulário do Zendesk, incluindo a experiência de seleção de posto.</li>\n                <li><strong>Futuras Customizações Dinâmicas:</strong> Jean Michael Fredel propôs que, futuramente, a lista de postos seja dinâmica, mostrando apenas os que são aptos a trabalhar com o produto informado pelo cliente, conforme a homologação interna.</li>\n            </ul>\n        </li>\n        <li><strong>Gestão de Parceiros e Captação de Assistentes Técnicos:</strong> Jean Michael Fredel e Athos Alves De Souza abordaram estratégias para validar solicitações de dados de instrução, captar novos parceiros e criar uma rede de assistentes técnicos não oficiais, utilizando dados coletados para futuras contratações pontuais.\n            <ul>\n                <li><strong>Validação de Solicitantes:</strong> Jean Michael Fredel explicou que apenas assistentes técnicos podem solicitar dados de instrução, e que o sistema deve validar se o solicitante é parceiro, utilizando informações já presentes no Zendesk.</li>\n                <li><strong>Captação de Novos Parceiros:</strong> Jean Michael Fredel sugeriu que, ao receber solicitações de não parceiros, sejam coletados dados para futuras aproximações e possíveis ofertas de parceria ou contratação pontual, ampliando a rede de profissionais disponíveis.</li>\n            </ul>\n        </li>\n        <li><strong>Planejamento de Orçamento e Próximos Passos:</strong> Jean Michael Fredel, Athos Alves De Souza e Ian alinharam o planejamento para consolidar demandas, definir prioridades e solicitar orçamento para customizações, visando entregar avanços substanciais até o final do ano e organizar o pacote de desenvolvimento para o AT Web.\n            <ul>\n                <li><strong>Consolidação de Demandas:</strong> Jean Michael Fredel destacou a importância de reunir todas as demandas em um único pacote para facilitar a negociação de orçamento, evitando solicitações fragmentadas e priorizando entregas relevantes para o ano corrente.</li>\n                <li><strong>Definição de Prioridades:</strong> O grupo acordou que, caso não seja possível entregar todas as funcionalidades até o final do ano, serão definidas prioridades para o orçamento, com o restante das demandas sendo planejado para o início do próximo ano.</li>\n                <li><strong>Próximos Passos e Reunião:</strong> Athos Alves De Souza sugeriu que, na próxima reunião, sejam definidos os itens finais do pacote de desenvolvimento para o AT Web, marcando posteriormente uma reunião de apresentação e validação com o responsável pelo orçamento.</li>\n            </ul>\n        </li>\n    </ul>\n    <h3>Tarefas de Follow-up</h3>\n    <ul>\n        <li><strong>Consulta de API do SAP:</strong> Verifique com o time de TI se existe uma API no SAP que permita consultar e obter o arquivo de instrução pelo número de série. (Jean Michael Fredel)</li>\n        <li><strong>Solicitação de API para Consulta de Posto:</strong> Solicite ao time do AT Web a API necessária para obter o posto autorizado mais próximo a partir do CEP informado. (Ian)</li>\n        <li><strong>Envio de Exemplo de NF e Etiqueta:</strong> Envie um exemplo de nota fiscal e imagem do produto, além dos campos a serem preenchidos, para criação de protótipo de leitura. (Jean Michael Fredel)</li>\n        <li><strong>Customização do Formulário Zendesk:</strong> Solicite orçamento à ZX para customizar o formulário do Zendesk, incluindo a experiência de seleção do posto autorizado. (Jean Michael Fredel)</li>\n        <li><strong>Definição do Pacote de Demandas para AT Web:</strong> Defina, junto ao time, o pacote de demandas a ser solicitado ao AT Web para desenvolvimento, antes da próxima reunião. (Jean Michael Fredel, Ian, Athos Alves De Souza)</li>\n    </ul>\n</div>",
+      "youtube_video_id": "cZAbgs8qq4E"
+    },
+    {
+      "id": "6f578f0d-9a10-4a68-a3c8-29ebc55796c4",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": null,
+      "title": "Sessão 5 de setembro de 2025",
+      "date": "2025-09-05T00:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/AnumJgx1t60",
+      "doc_embed_url": null,
+      "summary_text": "Reunião sobre automação com IA, definição de fluxos de projeto e planejamento para apresentação na VIP Week.",
+      "created_at": "2026-01-04T21:40:56.204Z",
+      "end_date": null,
+      "attendees": [],
+      "meet_link": null,
+      "duration_seconds": 3600,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Mapa da Sessão</h3>\n    <p>Mapa que usamos na sessão: <a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <h3>Notas da Reunião</h3>\n    <ul>\n        <li><strong>Demonstração e Testes do Sistema de Automação com IA:</strong> Athos Alves De Souza apresentou para Jean, Ian e Kauane os testes realizados com o protótipo de automação utilizando IA para leitura de nota fiscal e imagem de motor, detalhando o funcionamento, limitações e possibilidades de expansão do sistema.\n            <ul>\n                <li><strong>Funcionamento do Protótipo:</strong> O sistema recebe arquivos de nota fiscal e imagem do motor, extrai os dados relevantes, como número de série, e preenche automaticamente os campos no sistema de tickets.</li>\n                <li><strong>Leitura de Dados e Treinamento da IA:</strong> A IA foi treinada para identificar o número de série na imagem do motor e extrair dados da nota fiscal. É possível expandir o treinamento para ler QR Code caso o número de série esteja ilegível.</li>\n                <li><strong>Validação e Precisão dos Dados:</strong> Jean destacou a importância de a IA ser precisa na leitura dos dados, pois informações incompletas ou erradas podem comprometer processos de auditoria e rastreabilidade.</li>\n                <li><strong>Automação de Processos e Integração:</strong> O sistema pode ser integrado via API ao SAP para validar CNPJ, histórico de compras e outras informações.</li>\n                <li><strong>Configurações e Flexibilidade:</strong> O sistema pode ser configurado para priorizar dados preenchidos pelo cliente ou pela IA, criando diferentes fluxos de automação conforme as necessidades do time.</li>\n            </ul>\n        </li>\n        <li><strong>Definição de Fluxos e Fases do Projeto:</strong> O grupo discutiu a estruturação dos fluxos de atendimento, separando as etapas de pré-ordem e automações futuras.\n            <ul>\n                <li><strong>Fluxo de Pré-Ordem e Ordem de Serviço:</strong> O fluxo inicial envolve o cliente enviando fotos e nota fiscal, a IA processando os dados e a integração com a API do SAP.</li>\n                <li><strong>Envio de Dados de Bobinagem:</strong> Haverá um fluxo específico para solicitações de dados de bobinagem, utilizando as informações extraídas.</li>\n                <li><strong>Fases de Implementação:</strong> O grupo concordou em implementar o sistema em fases, começando pelo fluxo básico de pré-ordem.</li>\n                <li><strong>Automação de Feedback e Pesquisas:</strong> Athos sugeriu utilizar automações para envio de pesquisas de satisfação após a criação de tickets.</li>\n            </ul>\n        </li>\n        <li><strong>Integrações Técnicas e Customizações:</strong> Athos e Ian discutiram as necessidades técnicas para integrar APIs de busca de postos autorizados.\n            <ul>\n                <li><strong>API de Busca de Postos:</strong> Ian compartilhou a API utilizada para localizar postos autorizados por CEP ou cidade.</li>\n                <li><strong>Avaliação de Serviços e Customização:</strong> Athos irá analisar a documentação da API e decidir sobre a solução.</li>\n            </ul>\n        </li>\n        <li><strong>Planejamento de Apresentação e Orçamento:</strong> O grupo alinhou a necessidade de preparar uma apresentação para a VIP Week.\n            <ul>\n                <li><strong>Preparação para VIP Week:</strong> Athos e Jean organizarão a apresentação das soluções desenvolvidas.</li>\n                <li><strong>Levantamento de Informações e Proposta:</strong> Athos ficará responsável por compartilhar documentos e elaborar uma proposta detalhada.</li>\n                <li><strong>Discussão de Custos e Licenciamento:</strong> Jean e Athos discutirão o orçamento para o próximo ano.</li>\n            </ul>\n        </li>\n    </ul>\n    <h3>Tarefas de Follow-up</h3>\n    <ul>\n        <li><strong>Levantamento e Compartilhamento de Documento para Apresentação:</strong> Fazer o levantamento e compartilhar o documento do mapa. (Athos Alves De Souza)</li>\n        <li><strong>Avaliação de Integração de API de Seleção de Postos:</strong> Avaliar a documentação da API enviada. (Athos Alves De Souza)</li>\n        <li><strong>Definição de Agenda para Apresentação na VP Week:</strong> Ajustar a data da apresentação. (Athos Alves De Souza, Jean)</li>\n        <li><strong>Elaboração de Proposta de Soluções e Custos:</strong> Empacotar as soluções discutidas e elaborar uma proposta detalhada. (Athos Alves De Souza)</li>\n        <li><strong>Alinhamento de Orçamento para Licença da Plataforma:</strong> Elaborar uma estimativa de orçamento para contratação da licença. (Jean)</li>\n    </ul>\n</div>",
+      "youtube_video_id": "AnumJgx1t60"
+    },
+    {
+      "id": "7aa438ab-08bc-497c-93db-095db71de653",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": null,
+      "title": "Sessão 07 de outubro de 2025",
+      "date": "2025-10-07T00:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/tA7w42A2OZE",
+      "doc_embed_url": null,
+      "summary_text": "Reunião abordou estratégias de atendimento internacional, automação no Zendesk e planejamento de apresentação para executivos.",
+      "created_at": "2026-01-04T21:40:57.451Z",
+      "end_date": null,
+      "attendees": [],
+      "meet_link": null,
+      "duration_seconds": 3600,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Mapa da Sessão</h3>\n    <p>Mapa que usamos na sessão: <a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <h3>Notas da Reunião</h3>\n    <ul>\n        <li><strong>Internacionalização do Atendimento via Zendesk:</strong>\n            <ul>\n                <li><strong>Detecção Automática de Idioma:</strong> O Zendesk pode identificar o idioma do usuário pelo navegador ou sistema operacional.</li>\n                <li><strong>Limitações no WhatsApp:</strong> No canal WhatsApp, é necessário criar um menu inicial para o cliente escolher o idioma desejado.</li>\n                <li><strong>Exploração de Recursos Avançados:</strong> Sugestão de explorar funcionalidades da versão mais recente do Zendesk.</li>\n                <li><strong>Alternativas de Integração:</strong> Integração de bots externos via API para maior controle sobre o idioma.</li>\n                <li><strong>Próximos Passos:</strong> Explorar opções atuais do Zendesk antes de considerar upgrades.</li>\n            </ul>\n        </li>\n        <li><strong>Automação e Gatilhos no Atendimento:</strong>\n            <ul>\n                <li><strong>Controle de Status de Tickets:</strong> Criado um campo específico para indicar o status da remessa.</li>\n                <li><strong>Gatilhos de Alerta:</strong> Gatilhos automáticos configurados para alertar a equipe sobre tickets sem avanço.</li>\n                <li><strong>Benefícios das Automações:</strong> Redução de tarefas manuais e melhoria na experiência do cliente.</li>\n                <li><strong>Classificação Automática de Solicitações:</strong> Gatilho que identifica automaticamente solicitações relacionadas a dados de bobinagem.</li>\n            </ul>\n        </li>\n        <li><strong>Unificação e Melhoria dos Canais de Atendimento:</strong>\n            <ul>\n                <li><strong>Unificação de E-mails:</strong> Consolidado o canal de e-mail da unidade de condutores.</li>\n                <li><strong>Visibilidade dos Contatos:</strong> Melhorias para tornar os contatos de assistência mais visíveis no site.</li>\n                <li><strong>Automação de Mensagens Iniciais:</strong> Inclusão dos contatos de assistência nas mensagens automáticas enviadas ao cliente.</li>\n                <li><strong>Triagem de E-mails:</strong> Possibilidade futura de automatizar a triagem utilizando IA.</li>\n            </ul>\n        </li>\n        <li><strong>Mapeamento e Otimização da Jornada de Atendimento:</strong>\n            <ul>\n                <li><strong>Mapeamento do Fluxo:</strong> Criado um mapa detalhado do fluxo de atendimento.</li>\n                <li><strong>Identificação de Padrões:</strong> Análise de chamados resolvidos para identificar padrões de solicitações.</li>\n                <li><strong>Automação de Tarefas Repetitivas:</strong> Protótipos desenvolvidos para automatizar preenchimentos de campos nos tickets.</li>\n                <li><strong>Integração e Merge de Usuários:</strong> Discussão sobre integração de ferramentas para fundir usuários duplicados.</li>\n            </ul>\n        </li>\n        <li><strong>Planejamento de Apresentação e Próximos Passos:</strong>\n            <ul>\n                <li><strong>Estrutura da Apresentação:</strong> Apresentação deve mostrar uma linha do tempo das melhorias.</li>\n                <li><strong>Demonstração Prática:</strong> Sugestões para incluir demonstrações ao vivo ou vídeos curtos.</li>\n                <li><strong>Valorização para Renovação:</strong> Evidenciar os ganhos para justificar a renovação do projeto.</li>\n            </ul>\n        </li>\n    </ul>\n    <h3>Follow-up Tasks</h3>\n    <ul>\n        <li>Exploração de Recursos do Novo Bot Zendesk: Explorar opções e limitações do novo bot do Zendesk. (Jean, Athos Alves De Souza)</li>\n        <li>Cobrança de Implementação da API de Bobinagem: Cobrar o setor de TI sobre o andamento da API. (Jean)</li>\n        <li>Acompanhamento de Etiquetas com QR Code: Cobrar o Maicon do marketing sobre o prazo para novas etiquetas. (Jean)</li>\n        <li>Preparação de Apresentação para Dráuzio: Preparar a apresentação prática das melhorias. (Jean, Athos Alves De Souza, Ian Rocha, Kauane)</li>\n        <li>Demonstração do Painel de OS: Agendar reunião para demonstrar o painel de OS. (Athos Alves De Souza, Jean)</li>\n    </ul>\n</div>",
+      "youtube_video_id": "tA7w42A2OZE"
+    },
+    {
+      "id": "d0beb5ec-a252-4aaf-a5d8-bd508c64cf9c",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": null,
+      "title": "Sessão (extra) 26 de setembro de 2025",
+      "date": "2025-09-26T00:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/BZyY0FDJC3Y",
+      "doc_embed_url": null,
+      "summary_text": "Reunião abordou melhorias na automação de leitura de números de série, planejamento de apresentação de resultados e desenvolvimento de dashboard analítico.",
+      "created_at": "2026-01-04T21:40:57.036Z",
+      "end_date": null,
+      "attendees": [],
+      "meet_link": null,
+      "duration_seconds": 3600,
+      "summary_html": "<h3>Mapa utilizado na sessão</h3><p><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p><p></p><h3>Notas da Reunião</h3><p></p><ul><li><p><strong>Aprimoramento da Automação de Leitura de Número de Série:</strong></p></li><li><p></p><ul><li><p><strong>Prioridade de Leitura:</strong> Ian explicou que a automação deve priorizar a leitura do QR Code quando disponível, utilizando o número de série apenas quando o QR Code não estiver legível. Athos concordou em revisar a lógica para garantir esse comportamento.</p></li><li><p></p></li><li><p><strong>Tratamento de Múltiplos Números:</strong> Foi identificado um cenário em que clientes enviam imagens com mais de um número de série. Athos sugeriu implementar uma lógica para separar e processar múltiplos números, usando vírgulas como delimitadores.</p></li><li><p></p></li><li><p><strong>Extração de Texto Escrito:</strong> Athos propôs instruir a IA a considerar números de série digitados pelo cliente no corpo do texto, além dos presentes em imagens. Ian reforçou a importância de conferir ambos para evitar erros de digitação.</p></li><li><p></p></li><li><p><strong>Estrutura de Agentes de IA:</strong> Athos detalhou que o processo utiliza múltiplos agentes de IA, cada um responsável por uma etapa, garantindo flexibilidade e precisão.</p></li><li><p></p></li><li><p><strong>Ajustes e Prompt Engineering:</strong> Ambos concordaram que ajustes nas instruções para a IA são fundamentais para cobrir todos os cenários reais, com melhorias contínuas conforme novos casos de uso forem identificados.</p></li></ul></li><li><p></p></li><li><p><strong>Documentação e Preparação para Apresentação de Resultados:</strong></p><ul><li><p></p></li><li><p><strong>Levantamento de Tópicos:</strong> Athos compartilhou um documento Word com tópicos de melhorias e resultados, solicitando que todos revisem e complementem.</p></li><li><p></p></li><li><p><strong>Medição de Ganhos de Tempo:</strong> Sugerido que cada automação ou melhoria seja acompanhada de uma estimativa de tempo economizado.</p></li><li><p></p></li><li><p><strong>Planejamento da Apresentação:</strong> A apresentação está prevista para antes do final do ano, mostrando a evolução dos processos desde março.</p></li><li><p></p></li><li><p><strong>Prazos e Responsabilidades:</strong> A consolidação dos tópicos deve ser concluída até a próxima sessão, com responsabilidades atribuídas a Ian, Kauane e Athos.</p></li></ul></li><li><p></p></li><li><p><strong>Desenvolvimento e Integração de Dashboard Analítico:</strong></p><ul><li><p></p></li><li><p><strong>Protótipo de Dashboard:</strong> Athos apresentou um protótipo de dashboard para análise de ordens de serviço, com métricas relevantes.</p></li><li><p></p></li><li><p><strong>Geração de Insights por IA:</strong> O dashboard utiliza IA para gerar resumos executivos e alertas automáticos.</p></li><li><p></p></li><li><p><strong>Filtros e Personalização:</strong> Ian sugeriu a inclusão de filtros por produto e cliente, e Athos se comprometeu a adaptar o dashboard.</p></li><li><p></p></li><li><p><strong>Integração com Banco de Dados:</strong> Discutida a possibilidade de conectar o dashboard diretamente ao banco do At Web.</p></li></ul></li><li><p></p></li><li><p><strong>Status das Integrações com Sistemas Externos:</strong></p><ul><li><p></p></li><li><p><strong>Integração com API SAP:</strong> Ian informou que Jean está em contato para ativar a integração com a API do SAP.</p></li><li><p></p></li><li><p><strong>Fluxo com At Web:</strong> A integração está parada, sendo necessário alinhar o processo de atualização de status manualmente.</p></li><li><p></p></li><li><p><strong>Automação de Localização:</strong> Discutiram a incorporação de informações de localização de postos autorizados.</p></li></ul></li><li><p></p></li><li><p><strong>Planejamento de Eventos e Participação em Feiras:</strong></p><ul><li><p></p></li><li><p><strong>Agendamento de Apresentação:</strong> A apresentação dos resultados deve ocorrer no início de novembro.</p></li><li><p></p></li><li><p><strong>Participação na Mercopar:</strong> Ian detalhou a presença da equipe na feira Mercopar.</p></li><li><p></p></li><li><p><strong>Visitas à Colômbia:</strong> Kauane informou sobre visitas a clientes na Colômbia.</p></li></ul></li></ul><h3>Tarefas de Follow-up</h3><ul><li><p></p></li><li><p><strong>Ajuste na Lógica de Leitura de Número de Série e QR Code:</strong> Revisar e modificar a lógica da IA. (Athos Alves De Souza)</p></li><li><p></p></li><li><p><strong>Tratamento de Múltiplos Números de Série:</strong> Implementar instrução para reconhecer e tratar múltiplos números. (Athos Alves De Souza)</p></li><li><p></p></li><li><p><strong>Leitura de Número de Série Escrito pelo Cliente:</strong> Adicionar instrução para identificar número de série escrito. (Athos Alves De Souza)</p></li><li><p></p></li><li><p><strong>Listagem de Tópicos de Melhorias e Planejamentos:</strong> Atualizar documento compartilhado. (Ian, Kauane)</p></li><li><p></p></li><li><p><strong>Sugestão de Filtros e Informações para Dashboard:</strong> Enviar sugestões para Athos. (Ian)</p></li><li><p></p></li><li><p><strong>Envio de Relatório de OS dos Últimos 5 Anos:</strong> Enviar relatório em Excel para Athos. (Ian)</p></li><li><p></p></li><li><p><strong>Planejamento de Data para Apresentação:</strong> Definir data para apresentação. (Athos Alves De Souza, Kauane)</p></li><li><p></p></li><li><p><strong>Testes de Incorporação de Localização no Formulário:</strong> Testar funcionalidade de incorporação de localização. (Athos Alves De Souza)</p></li></ul><p></p>",
+      "youtube_video_id": "BZyY0FDJC3Y"
+    },
+    {
+      "id": "b74584e0-d47a-42fb-b974-d00565fe8fb1",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": null,
+      "title": "Sessão 23 de setembro de 2025",
+      "date": "2025-09-23T00:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/L8P15MiS9Ac",
+      "doc_embed_url": null,
+      "summary_text": "Reunião abordou automação no atendimento, gestão de postos autorizados e validação de dados, definindo próximos passos e tarefas de follow-up.",
+      "created_at": "2026-01-04T21:40:56.607Z",
+      "end_date": null,
+      "attendees": [],
+      "meet_link": null,
+      "duration_seconds": 3600,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Mapa utilizado na sessão:</h3>\n    <p><a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\" title=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <h3>Notas da Reunião:</h3>\n    <ul>\n        <li><strong>Ajustes e Automação no Fluxo de Atendimento e Ordens de Serviço:</strong> Athos Alves De Souza, Jean, Ian e Kauane discutiram a automação do fluxo de atendimento ao cliente, abordando:\n            <ul>\n                <li><strong>Configuração de Gatilhos e Palavras-Chave:</strong> Revisão da lista de palavras-chave e gatilhos no sistema.</li>\n                <li><strong>Automação de Processos com Bot e IA:</strong> O bot já pode receber anexos e processar informações automaticamente.</li>\n                <li><strong>Integração Zendesk e até web:</strong> A integração está em fase de testes, com automação para criação de ordens de serviço.</li>\n                <li><strong>Fluxos de Atendimento e Decisão de OS:</strong> Mapeamento de fluxos de atendimento e uso de macros para automatização.</li>\n                <li><strong>Testes, Ajustes e Próximos Passos:</strong> Testes do fluxo de preenchimento automático e alinhamento com o time do até web.</li>\n            </ul>\n        </li>\n        <li><strong>Seleção e Gestão de Postos Autorizados:</strong> Discussão sobre como permitir que o cliente escolha o posto autorizado:\n            <ul>\n                <li><strong>Listagem e Escolha de Postos:</strong> Implementação de listagem dos postos autorizados.</li>\n                <li><strong>Integração de Mapas e Campos Dinâmicos:</strong> Uso de iframes e integração de mapas no formulário.</li>\n                <li><strong>Gestão de Mudanças de Posto:</strong> Permissão para alteração do posto escolhido pelo cliente.</li>\n            </ul>\n        </li>\n        <li><strong>Validação de Dados e Tratamento de Exceções:</strong> Análise sobre a validação automática dos dados enviados:\n            <ul>\n                <li><strong>Validação Automática de Documentos:</strong> O bot valida anexos enviados pelos clientes.</li>\n                <li><strong>Tratamento de Falta de Postos Próximos:</strong> Transferência automática para um agente humano se não houver postos próximos.</li>\n                <li><strong>Gestão de Casos Especiais e Auditoria:</strong> Criação de mecanismos de auditoria para documentos incompatíveis.</li>\n            </ul>\n        </li>\n        <li><strong>Evolução do Projeto e Estratégia de Implementação:</strong> Alinhamento da estratégia de evolução do projeto:\n            <ul>\n                <li><strong>Implementação Gradual e Iterativa:</strong> Início com automações que tragam benefícios imediatos.</li>\n            </ul>\n        </li>\n    </ul>\n    <h3>Foco em Usabilidade e Adaptação:</h3>\n    <p>O grupo destacou a importância de manter o sistema simples e acessível.</p>\n    <h3>Tarefas de Follow-up:</h3>\n    <ul>\n        <li><strong>Testes do Preenchimento Automático no Zendesk:</strong> Realizar testes esta semana. (Ian)</li>\n        <li><strong>Desenvolvimento de Macro para Criação de Ordem de Serviço:</strong> Criar uma macro no Zendesk. (Athos Alves De Souza)</li>\n        <li><strong>Validação da Integração com At Web:</strong> Verificar a compatibilidade da API. (Athos Alves De Souza)</li>\n        <li><strong>Configuração do Status de Pré-Ordem no At Web:</strong> Contatar o pessoal do At Web. (Ian)</li>\n    </ul>\n</div>",
+      "youtube_video_id": "L8P15MiS9Ac"
+    },
+    {
+      "id": "3a30584d-609e-4386-b257-5f27aeaa2f3b",
+      "organization_id": "90cd778f-9b7f-49eb-86be-e31ffab91ea0",
+      "google_event_id": "17r07ic838t3nuqceahe53lja4",
+      "title": "Mentoria ATVEZA (teste)",
+      "date": "2026-01-03T23:45:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/PKPOqJrT3Gc",
+      "doc_embed_url": "https://docs.google.com/document/d/1GL1cs8WHNh9PROQ9JPtyshZVPapLUyleJfkBdq9ya64/preview",
+      "summary_text": "",
+      "created_at": "2026-01-03T23:43:02.256Z",
+      "end_date": "2026-01-04T00:30:00.000Z",
+      "attendees": [
+        {
+          "email": "karoline@mentoria.cx",
+          "responseStatus": "needsAction"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        }
+      ],
+      "meet_link": "https://meet.google.com/ims-tech-dcr",
+      "duration_seconds": 32,
+      "summary_html": "<p><strong>📝 Anotações</strong></p><p>3 de jan. de 2026</p><h2><strong>Mentoria ATVEZA (teste)</strong></h2><p></p><p></p><p>Convidados <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"mailto:karoline@mentoria.cx\"><u>Karoline Muller</u></a>&nbsp;<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"mailto:athos@atveza.com\"><u>Athos Alves De Souza</u></a></p><p>Anexos <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"https://www.google.com/url?q=https://www.google.com/calendar/event?eid%3DMTdyMDdpYzgzOHQzbnVxY2VhaGU1M2xqYTQgYXRob3NAYXR2ZXphLmNvbQ&amp;sa=D&amp;source=editors&amp;ust=1767557574109760&amp;usg=AOvVaw2KyQ8iZULtfRRhIMX8-cq3\"><u>Mentoria ATVEZA (teste)</u></a>&nbsp;</p><p>Registros da reunião <u>Transcrição</u>&nbsp;<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"https://www.google.com/url?q=https://drive.google.com/file/d/1crH-ucZ3FYu4Fwe3LC2vKBsfNrSM_n0e/view?usp%3Ddrive_web&amp;sa=D&amp;source=editors&amp;ust=1767557574110169&amp;usg=AOvVaw14jgl99zLINEnUDQw4KIIx\"><u>Gravação</u></a>&nbsp;</p><p></p><h3><strong>Resumo</strong></h3><p>Karoline Muller perguntou a Athos Alves De Souza sobre a gravação da chamada, e Athos Alves De Souza confirmou que, além da transcrição, a gravação também estava ativa. Os participantes Athos Alves De Souza e Karoline Muller tiveram uma breve conversa casual sobre a previsão do tempo antes de Athos Alves De Souza decidir encerrar a chamada.</p><p></p><h3><strong>Detalhes</strong></h3><p><em>Tamanho das anotações: Padrão</em></p><ul><li><p><strong>Início da Gravação e Transcrição</strong>&nbsp;Karoline Muller questionou a Athos Alves De Souza sobre a gravação, notando inicialmente que a chamada estava sendo transcrita, mas não necessariamente gravada. Athos Alves De Souza confirmou que a chamada estava fazendo anotações e, posteriormente, informou que a gravação também estava ativa (<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"#h.9rnntsemy54v\"><u>00:00:00</u></a>).</p></li><li><p><strong>Conversa Casual sobre o Tempo</strong>&nbsp;Athos Alves De Souza perguntou a Karoline Muller como estava o dia e sobre a previsão do tempo. Karoline Muller expressou a opinião de que provavelmente choveria hoje, mas achava que não choveria no dia seguinte (<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"#h.9rnntsemy54v\"><u>00:00:00</u></a>).</p></li><li><p><strong>Encerramento da Chamada</strong>&nbsp;Athos Alves De Souza decidiu desligar a chamada, e Karoline Muller se despediu (<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"#h.9rnntsemy54v\"><u>00:00:00</u></a>).</p></li></ul><p></p><h3><strong>Próximas etapas sugeridas</strong></h3><p><em>Não foram encontradas próximas etapas sugeridas para esta reunião.</em></p><p></p><p><em>Revise as anotações do Gemini para checar se estão corretas.</em><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"https://www.google.com/url?q=https://support.google.com/meet/answer/14754931&amp;sa=D&amp;source=editors&amp;ust=1767557574114390&amp;usg=AOvVaw1gpisHcNOBvZxpMPBcur7a\"><em>&nbsp;</em></a><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"https://www.google.com/url?q=https://support.google.com/meet/answer/14754931&amp;sa=D&amp;source=editors&amp;ust=1767557574114586&amp;usg=AOvVaw2_shxM7UFubCw0I9rMi3jR\"><em><u>Confira dicas e saiba como o Gemini faz anotações</u></em></a></p><p><em>Envie feedback sobre o uso do Gemini para criar notas</em><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"https://www.google.com/url?q=https://google.qualtrics.com/jfe/form/SV_9vK3UZEaIQKKE7A?confid%3DlZ5pWll9dW599Iy9zjvLDxIWOAIIigIgABgFCA%26detailid%3Dstandard&amp;sa=D&amp;source=editors&amp;ust=1767557574114888&amp;usg=AOvVaw1NCa8ufHaMqvPbsZSEPExy\"><em>&nbsp;</em></a><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"https://www.google.com/url?q=https://google.qualtrics.com/jfe/form/SV_9vK3UZEaIQKKE7A?confid%3DlZ5pWll9dW599Iy9zjvLDxIWOAIIigIgABgFCA%26detailid%3Dstandard&amp;sa=D&amp;source=editors&amp;ust=1767557574115041&amp;usg=AOvVaw2eRtJGl4i5mPamFUjQt2cX\"><em><u>breve pesquisa.</u></em></a></p><p><strong>📖 Transcrição</strong></p><p>3 de jan. de 2026</p><h2><strong>Mentoria ATVEZA (teste) - Transcrição</strong></h2><h3><strong>00:00:00</strong></h3><p>&nbsp;<br><strong>Athos Alves De Souza:</strong>&nbsp;está fazendo anotações nesta chamada. Esta chamada está sendo Viu só?<br><strong>Karoline Muller:</strong>&nbsp;Aham. Como é que<br><strong>Athos Alves De Souza:</strong>&nbsp;Como é que tá o dia hoje?<br><strong>Karoline Muller:</strong>&nbsp;tá?<br><strong>Athos Alves De Souza:</strong>&nbsp;Espera um pouquinho. Acho que já tá gravando, né?<br><strong>Karoline Muller:</strong>&nbsp;Não sei. Disse que tava sendo transcrita, não gravando.<br><strong>Athos Alves De Souza:</strong>&nbsp;M.<br><strong>Karoline Muller:</strong>&nbsp;Agora agora<br><strong>Athos Alves De Souza:</strong>&nbsp;Agora tá gravando também.<br><strong>Karoline Muller:</strong>&nbsp;sim.<br><strong>Athos Alves De Souza:</strong>&nbsp;Será que vai chover hoje?<br><strong>Karoline Muller:</strong>&nbsp;Quê?<br>&nbsp;<br>&nbsp;</p><h3><strong>A transcrição foi encerrada após 00:01:26</strong></h3><p></p><p><em>Esta transcrição editável foi gerada por computador e pode conter erros. As pessoas também podem alterar o texto depois que ele for criado.</em></p>",
+      "youtube_video_id": "PKPOqJrT3Gc"
+    },
+    {
+      "id": "324763d7-983b-4a55-a564-4758955cac0b",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g8kpj0cpk84o38d1m8d0k8ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g88rk4chn60r42di674pk2h1k8osjae1o8crj0c9o6so34dpj6cog_20250610T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES MOTORES",
+      "date": "2025-06-10T11:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/B-UbZDr7a6I",
+      "doc_embed_url": null,
+      "summary_text": "Reunião abordou próximos passos para melhorias na assistência técnica e estratégias de marketing.",
+      "created_at": "2026-01-04T21:34:20.638Z",
+      "end_date": "2025-06-10T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": "<p>Mapa que usamos na sessão: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p><p></p><p><em>O conteúdo gerado por IA pode ser impreciso ou enganoso. Verifique sempre a precisão.</em></p><p></p><h3><strong>Next steps</strong></h3><p></p><ul><li><p>Jean: Realizar reunião com o marketing para finalizar e aprovar a nova página de assistência técnica no site.</p></li><li><p>Jean: Definir prazo para lançamento da nova página de assistência técnica no site.</p></li><li><p>Jean: Verificar o esboço da etiqueta com QR Code e aprovar o design final.</p></li><li><p>Jean: Planejar a implementação gradual das novas etiquetas com QR Code nos produtos.</p></li><li><p>Ian: Preparar uma nova pesquisa de satisfação não anônima para identificar melhor os clientes e suas necessidades específicas.</p></li><li><p>Equipe de TI: Desenvolver uma automação para fornecer dados de rebobinagem de motores aos clientes que solicitarem.</p></li><li><p>Equipe de Atendimento: Implementar a coleta obrigatória de e-mail e número de WhatsApp dos clientes durante o primeiro contato.</p></li><li><p>Equipe de TI: Integrar as informações do cliente coletadas no primeiro contato com o sistema de ordens de serviço.</p></li><li><p>Equipe de Marketing: Planejar o envio automático de pesquisas de satisfação por e-mail após a conclusão dos chamados de assistência técnica.</p></li><li><p>Athos: Criar um protótipo de automação para buscar e enviar dados de bobinagem do Ate Web para o Zendesk.</p></li><li><p>Athos: Investigar a possibilidade de integração direta entre SAP e Zendesk para sincronização de dados.</p></li><li><p>Jean: Avaliar a viabilidade de implementar uma campanha de incentivo para os 10 maiores vendedores de produtos Hércules.</p></li><li><p>Ian: Analisar os dados do NPS e criar um mapa de calor por região.</p></li><li><p>Equipe de Marketing: Considerar a implementação de mini-convenções em locais estratégicos para atualizar os ATETs sobre a linha de produtos Hércules.</p></li><li><p>Athos: Desenvolver um pacote de automações para melhorar a eficiência do atendimento ao cliente.</p></li><li><p>Jean: Investigar com o fornecedor do Ate Web as opções de upgrade da plataforma para permitir envio automático de dados (web hooks).</p></li></ul><p></p>",
+      "youtube_video_id": "B-UbZDr7a6I"
+    },
+    {
+      "id": "b6e8107e-456c-4696-b920-bd6cc5983139",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g8kpj0cpk84o38d1m8d0k8ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g88rk4chn60r42di674pk2h1k8osjae1o8crj0c9o6so34dpj6cog_20250527T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES MOTORES",
+      "date": "2025-05-27T11:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/IwTLAWHbc-s",
+      "doc_embed_url": null,
+      "summary_text": "Reunião discutiu próximos passos e ações para melhorar atendimento e automação com foco em APIs e satisfação do cliente.",
+      "created_at": "2026-01-04T21:34:19.269Z",
+      "end_date": "2025-05-27T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": "<h3>Mapa utilizado na sessão</h3><p></p><p><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 hover:text-blue-500 underline\" href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p><p><em>O conteúdo gerado por IA pode ser impreciso ou enganoso. Verifique sempre a precisão.</em></p><p></p><h3><strong>Next steps</strong></h3><p></p><ul><li><p>Jean: Desenvolver um sistema de bônus para os postos autorizados baseado nas avaliações dos clientes.</p></li><li><p>Jean: Revisar e atualizar o processo de atendimento para garantir que todos os casos sejam registrados no The Web.</p></li><li><p>Ian: Monitorar e identificar postos autorizados que não estão seguindo os procedimentos corretos de registro e cobrança.</p></li><li><p>Equipe de Desenvolvimento: Criar um sistema de QR code para facilitar o acesso dos clientes ao formulário de atendimento.</p></li><li><p>Jean: Selecionar uma região piloto para testar o novo modelo de atendimento antes de expandir para todo o Brasil.</p></li><li><p>Athos: Investigar a possibilidade de usar o Make para automatizar a transferência de dados entre The Web e Zendesk.</p></li><li><p>Jean: Localizar e compartilhar o link das APIs do ATWeb com a equipe de desenvolvimento.</p></li><li><p>Jean: Solicitar ao contato do Zendesk a liberação de 30 dias para testar o Copilot (IA do Zendesk).</p></li><li><p>Jean: Entrar em contato com o representante da Atéwe para obter acesso à API por 30 dias.</p></li><li><p>Athos: Analisar a documentação da API da Atéwe quando Jean obtiver acesso.</p></li><li><p>Athos: Preparar e apresentar sua nova plataforma de automação para os clientes e a equipe.</p></li><li><p>Athos e Ian: Avaliar a implementação da integração entre Atéwe e Zendesk para criar tickets automaticamente.</p></li><li><p>Equipe: Revisar e atualizar o fluxo do bot no Zendesk para melhorar a triagem inicial.</p></li><li><p>Athos: Investigar a possibilidade de obter a localização do cliente para sugerir postos autorizados próximos.</p></li><li><p>Equipe: Planejar a implementação de pesquisa de satisfação automática após o encerramento de ordens de serviço.</p></li><li><p>Equipe: Desenvolver estratégia para oferecer cupons de desconto para clientes com garantia reprovada.</p></li><li><p>Athos: Apresentar protótipo de automação usando IA para consulta de informações via WhatsApp.</p></li><li><p>Athos: Analisar o link das APIs da Atéwe fornecido por Jean e avaliar a viabilidade de uso.</p></li></ul><p></p>",
+      "youtube_video_id": "IwTLAWHbc-s"
+    },
+    {
+      "id": "8d9823a6-c1b2-498a-8887-25674bcf6de3",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g64o38c1n8gsk6chp8h0k8ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6os38cpj6p0k6c9h70q30h9k6p134ha18oqj6d9l6spk4cpo68q0",
+      "title": "Automatização de processos ",
+      "date": "2025-06-16T19:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/B-UbZDr7a6I",
+      "doc_embed_url": null,
+      "summary_text": "Reunião abordou automatização de fluxos de atendimento e integração entre Zendesk e ATweb, com diversas ações definidas para implementação.",
+      "created_at": "2026-01-04T21:34:22.194Z",
+      "end_date": "2025-06-16T19:50:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "marcelo@atweb.com.br",
+          "responseStatus": "needsAction"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Mapa utilizado na sessão</h3>\n    <p><a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\" title=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <p><i>O conteúdo gerado por IA pode ser impreciso ou enganoso. Verifique sempre a precisão.</i></p>\n    <h3>Next steps</h3>\n    <ul>\n        <li>Jean: Realizar reunião com o marketing para finalizar e aprovar a nova página de assistência técnica no site.</li>\n        <li>Jean: Definir prazo para lançamento da nova página de assistência técnica no site.</li>\n        <li>Jean: Verificar o esboço da etiqueta com QR Code e aprovar o design final.</li>\n        <li>Jean: Planejar a implementação gradual das novas etiquetas com QR Code nos produtos.</li>\n        <li>Ian: Preparar uma nova pesquisa de satisfação não anônima para identificar melhor os clientes e suas necessidades específicas.</li>\n        <li>Equipe de TI: Desenvolver uma automação para fornecer dados de rebobinagem de motores aos clientes que solicitarem.</li>\n        <li>Equipe de Atendimento: Implementar a coleta obrigatória de e-mail e número de WhatsApp dos clientes durante o primeiro contato.</li>\n        <li>Equipe de TI: Integrar as informações do cliente coletadas no primeiro contato com o sistema de ordens de serviço.</li>\n        <li>Equipe de Marketing: Planejar o envio automático de pesquisas de satisfação por e-mail após a conclusão dos chamados de assistência técnica.</li>\n        <li>Athos: Criar um protótipo de automação para buscar e enviar dados de bobinagem do Ate Web para o Zendesk.</li>\n        <li>Athos: Investigar a possibilidade de integração direta entre SAP e Zendesk para sincronização de dados.</li>\n        <li>Jean: Avaliar a viabilidade de implementar uma campanha de incentivo para os 10 maiores vendedores de produtos Hércules.</li>\n        <li>Ian: Analisar os dados do NPS e criar um mapa de calor por região.</li>\n        <li>Equipe de Marketing: Considerar a implementação de mini-convenções em locais estratégicos para atualizar os ATETs sobre a linha de produtos Hércules.</li>\n        <li>Athos: Desenvolver um pacote de automações para melhorar a eficiência do atendimento ao cliente.</li>\n        <li>Jean: Investigar com o fornecedor do Ate Web as opções de upgrade da plataforma para permitir envio automático de dados (web hooks).</li>\n    </ul>\n    <h3>Meeting Overview</h3>\n    <ul>\n        <li>Objetivo da reunião foi a automatização de fluxos de atendimento integrando Zendesk e ATweb para reduzir o trabalho manual e melhorar a eficiência.</li>\n        <li>Athos propôs a automatização da criação de tickets no Zendesk quando as ordens de serviço abrem no ATweb, considerando a eficiência dos webhooks versus polling da API.</li>\n        <li>Marcelo confirmou que a API do ATweb está disponível e possui filtros por data de abertura/encerramento e status, favorecendo a integração.</li>\n        <li>A documentação necessária para a integração deve incluir campos padrão e personalizados, conforme discutido entre Marcelo, Athos e Ian.</li>\n        <li>Documento atual exige autenticação para download, levando à proposta de tornar documentos públicos ou criar uma API específica para acesso.</li>\n        <li>Jean se juntou à reunião e endossou as direções discutidas em relação à automatização e ao acesso a documentos.</li>\n        <li>Consenso de que os documentos não são realmente privados, já que circulam em grupos de WhatsApp, facilitando a visibilidade.</li>\n        <li>Planos para usar os dados coletados para identificar potenciais parceiros foram definidos, buscando ampliar oportunidades de negócio.</li>\n        <li>O projeto de automatização foi classificado como uma customização simples, com necessidade de uma proposta clara detalhando as ações e prazos.</li>\n        <li>Marcelo ressaltou a importância de feedbacks no sistema e da documentação para formalizar a proposta de customização a ser elaborada.</li>\n    </ul>\n</div>",
+      "youtube_video_id": "B-UbZDr7a6I"
+    },
+    {
+      "id": "fcd998cd-ab34-418c-8424-b8cbc985a0f8",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6go44di264r32h1k8h0k8ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6l148hi36t0j2ea28csj2c1k6514cgpl710jccq264qj8c9h6sqg",
+      "title": "Vip Week ",
+      "date": "2025-06-11T16:30:00.000Z",
+      "video_embed_url": null,
+      "doc_embed_url": null,
+      "summary_text": " \n\n \n\n________________________________________________________________________________\n\nMicrosoft Teams Precisa de ajuda? \n<https://aka.ms/JoinTeamsMeeting?omkt=pt-BR> \n\nIngressar na reunião agora \n<https://teams.microsoft.com/l/meetup-join/19%3ameeting_NGQwOWIwMjAtNWMyYi00MGRmLWIyY2MtOTE5YTZkZjgxNTk0%40thread.v2/0?context=%7b%22Tid%22%3a%2272d7bfb0-7ede-4a62-8540-973de283b5db%22%2c%22Oid%22%3a%228d5774de-71a8-4c93-9795-46713d132c48%22%7d> \n\nID da Reunião: 259 694 325 755 \n\nSenha: EF7pk6Nt \n------------------------------\n\nPara organizadores: Opções de reunião \n<https://teams.microsoft.com/meetingOptions/?organizerId=8d5774de-71a8-4c93-9795-46713d132c48&tenantId=72d7bfb0-7ede-4a62-8540-973de283b5db&threadId=19_meeting_NGQwOWIwMjAtNWMyYi00MGRmLWIyY2MtOTE5YTZkZjgxNTk0@thread.v2&messageId=0&language=pt-BR> \n\n________________________________________________________________________________\n\n \nAVISO LEGAL: O conteúdo deste e-mail é confidencial e pode conter \ninformações particulares ou informações sujeitas a direitos autorais ou \nainda constituir sigilo comercial ou informação privilegiada. Portanto, \neste e-mail é destinado exclusivamente ao(s) destinatário(s) \nespecificado(s) apenas na mensagem. É estritamente proibido usar, imprimir, \ncopiar, armazenar, retransmitir, divulgar e/ou compartilhar qualquer parte \ndesta mensagem com terceiros, sem o consentimento por escrito do remetente. \nSe você recebeu esta mensagem por engano, por favor avise imediatamente o \nremetente, respondendo o e-mail e em seguida apague-o. Agradecemos sua \ncooperação e compreensão.\nADVERTÊNCIA: Para fins de representação legal deverão ser observados, \nobrigatoriamente, o Estatuto Social da Mueller Participações S/A e os \nrespectivos Contratos Sociais de suas unidades empresariais. Portanto, é \nindispensável o reconhecimento de poderes através de atos constitutivos, \natas de eleições, alterações contratuais e/ou procurações devidamente \nregistradas em domínios públicos, sob pena de nulidade e demais medidas \nlegais cabíveis.\n\nLEGAL NOTICE: The content of this e-mail is confidential and may contain \nprivate information or information subject to copyright or constitute \ncommercial secrecy or privileged information. Therefore, this email is \nintended exclusively for the recipient(s) specified in the message only. It \nis strictly prohibited to use, print, copy, store, retransmit, disclose \nand/or share any part of this message with third parties without the \nwritten consent of the sender. If you have received this message in error, \nplease notify the sender immediately by replying to the email and then \ndelete it. We appreciate your cooperation and understanding.\nWARNING: For legal representation purposes, the Articles of Incorporation \nof Mueller Participações S/A and the respective Articles of Incorporation \nof its business units must be strictly adhered to. Therefore, the \nacknowledgment of powers through constituent acts, election minutes, \ncontractual amendments, and/or duly registered powers of attorney in public \ndomains is essential, under penalty of nullity and other applicable legal \nmeasures. ",
+      "created_at": "2026-01-04T21:34:21.295Z",
+      "end_date": "2025-06-11T17:30:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": null,
+      "youtube_video_id": null
+    },
+    {
+      "id": "8dca665f-129f-44a1-b386-5d8ca312d13d",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g70o30ci16gq34e1p8h348ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6csj4gpi71236e1k8gsk6g9k6gsk2gho8l24cd1l8krjae1o84pg",
+      "title": "Vip Week ",
+      "date": "2025-06-17T16:30:00.000Z",
+      "video_embed_url": null,
+      "doc_embed_url": null,
+      "summary_text": " \n\n \n\n________________________________________________________________________________\n\nMicrosoft Teams Precisa de ajuda? \n<https://aka.ms/JoinTeamsMeeting?omkt=pt-BR> \n\nIngressar na reunião agora \n<https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzkzYzI5MzctNWVhMS00OTAwLTgyY2MtYWJhMDI3MmZjMTA1%40thread.v2/0?context=%7b%22Tid%22%3a%2272d7bfb0-7ede-4a62-8540-973de283b5db%22%2c%22Oid%22%3a%228d5774de-71a8-4c93-9795-46713d132c48%22%7d> \n\nID da Reunião: 254 826 761 931 7 \n\nSenha: 5Zx62HE6 \n------------------------------\n\nPara organizadores: Opções de reunião \n<https://teams.microsoft.com/meetingOptions/?organizerId=8d5774de-71a8-4c93-9795-46713d132c48&tenantId=72d7bfb0-7ede-4a62-8540-973de283b5db&threadId=19_meeting_YzkzYzI5MzctNWVhMS00OTAwLTgyY2MtYWJhMDI3MmZjMTA1@thread.v2&messageId=0&language=pt-BR> \n\n________________________________________________________________________________\n\n \nAVISO LEGAL: O conteúdo deste e-mail é confidencial e pode conter \ninformações particulares ou informações sujeitas a direitos autorais ou \nainda constituir sigilo comercial ou informação privilegiada. Portanto, \neste e-mail é destinado exclusivamente ao(s) destinatário(s) \nespecificado(s) apenas na mensagem. É estritamente proibido usar, imprimir, \ncopiar, armazenar, retransmitir, divulgar e/ou compartilhar qualquer parte \ndesta mensagem com terceiros, sem o consentimento por escrito do remetente. \nSe você recebeu esta mensagem por engano, por favor avise imediatamente o \nremetente, respondendo o e-mail e em seguida apague-o. Agradecemos sua \ncooperação e compreensão.\nADVERTÊNCIA: Para fins de representação legal deverão ser observados, \nobrigatoriamente, o Estatuto Social da Mueller Participações S/A e os \nrespectivos Contratos Sociais de suas unidades empresariais. Portanto, é \nindispensável o reconhecimento de poderes através de atos constitutivos, \natas de eleições, alterações contratuais e/ou procurações devidamente \nregistradas em domínios públicos, sob pena de nulidade e demais medidas \nlegais cabíveis.\n\nLEGAL NOTICE: The content of this e-mail is confidential and may contain \nprivate information or information subject to copyright or constitute \ncommercial secrecy or privileged information. Therefore, this email is \nintended exclusively for the recipient(s) specified in the message only. It \nis strictly prohibited to use, print, copy, store, retransmit, disclose \nand/or share any part of this message with third parties without the \nwritten consent of the sender. If you have received this message in error, \nplease notify the sender immediately by replying to the email and then \ndelete it. We appreciate your cooperation and understanding.\nWARNING: For legal representation purposes, the Articles of Incorporation \nof Mueller Participações S/A and the respective Articles of Incorporation \nof its business units must be strictly adhered to. Therefore, the \nacknowledgment of powers through constituent acts, election minutes, \ncontractual amendments, and/or duly registered powers of attorney in public \ndomains is essential, under penalty of nullity and other applicable legal \nmeasures. ",
+      "created_at": "2026-01-04T21:34:22.848Z",
+      "end_date": "2025-06-17T17:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": null,
+      "youtube_video_id": null
+    },
+    {
+      "id": "166350cf-3af6-4c68-9bbb-f74144556d42",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": null,
+      "title": "Sessão 15 de maio de 2025",
+      "date": "2025-05-15T00:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/s4XKVkSh5-o",
+      "doc_embed_url": null,
+      "summary_text": "Reunião sobre automação com Make.com e integração com Zendesk, CRM, SAP e estratégias de marketing.",
+      "created_at": "2026-01-04T21:40:50.361Z",
+      "end_date": null,
+      "attendees": [],
+      "meet_link": null,
+      "duration_seconds": 3600,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Mapa utilizado na sessão</h3>\n    <p><a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\" title=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <p><i>O conteúdo gerado por IA pode ser impreciso ou enganoso. Verifique sempre a precisão.</i></p>\n    <h3>Tópicos abordados</h3>\n    <ul>\n        <li>Athos: Agendar uma sessão extra de mentoria para demonstrar a ferramenta Make.com e suas funcionalidades.</li>\n        <li>Ian e Kauane: Explorar as possibilidades de automação usando o Make.com para envio de mensagens em massa pelo WhatsApp.</li>\n        <li>Athos: Preparar uma apresentação sobre como o Make.com pode ser integrado com o Zendesk e outras ferramentas utilizadas pela empresa.</li>\n        <li>Jean: Avaliar a possibilidade de integração entre o Make.com, o CRM, o SAP e o Zendesk para automatizar o processo de cadastro de clientes.</li>\n        <li>Ian e Kauane: Considerar a criação de um fluxo automatizado para enviar mensagens de boas-vindas aos novos clientes via WhatsApp usando o Make.com e o Zendesk.</li>\n        <li>Jean: Planejar uma futura reunião com a equipe de TI para discutir a integração do Make.com com o SAP e outras ferramentas da empresa.</li>\n        <li>Jean: Discutir com o marketing sobre a implementação do adesivo e a melhoria na pesquisa de assistência técnica no site.</li>\n        <li>Ian: Criar um campo personalizado no Zendesk para rastrear o status de retorno da nota fiscal.</li>\n        <li>Athos: Configurar uma automação no Zendesk para alertar sobre tickets aguardando retorno de nota fiscal por mais de 5 dias.</li>\n        <li>Ian e Jean: Analisar os pontos que mais consomem tempo na jornada do cliente e identificar oportunidades de automação.</li>\n        <li>Athos: Agendar uma sessão extra para discutir sobre a implementação do Make.</li>\n        <li>Athos: Atualizar o calendário de reuniões, movendo os encontros para as terças-feiras.</li>\n        <li>Equipe de marketing: Melhorar o SEO do site da Hércules para otimizar a busca por assistência técnica.</li>\n    </ul>\n</div>",
+      "youtube_video_id": "s4XKVkSh5-o"
+    },
+    {
+      "id": "d707b1eb-a0ad-4ad4-910a-de11efa04f60",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g61334c1p8kr3chhp8d348ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6kpk6ca56l238di471234cpk8p14ah1l74rjiea36orj6cq660s0",
+      "title": "Protótipo - WhatsApp + Zendesk para Gerente",
+      "date": "2025-05-28T19:00:00.000Z",
+      "video_embed_url": null,
+      "doc_embed_url": null,
+      "summary_text": "Reunião discutiu integração de IA com Zendesk e próximos passos para implementação e testes da solução.",
+      "created_at": "2026-01-04T21:34:19.921Z",
+      "end_date": "2025-05-28T19:30:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Quick recap</h3>\n    <p>A reunião abordou inicialmente a mudança repentina do clima e a necessidade de preparação para o frio. Em seguida, Athos apresentou uma solução de IA capaz de integrar-se com várias ferramentas, incluindo o Zendesk, para melhorar o atendimento ao cliente e a eficiência. Por fim, discutiu-se a implementação da automação de IA no Zendesk, com Athos solicitando informações necessárias e prometendo enviar as configurações.</p>\n\n    <h3>Integração De IA Com Zendesk</h3>\n    <p>Athos apresentou uma solução de IA que pode ser integrada com automações e outras ferramentas, incluindo o WhatsApp. A solução pode ser treinada para responder perguntas e realizar tarefas, como consultar o Zendesk para informações de contatos ou histórias de chamados. A solução também pode ser conectada a outros sistemas, como CRM, para fornecer informações mais detalhadas. Ian expressou interesse na solução, vendo seu potencial para melhorar o atendimento ao cliente e a eficiência. Athos concordou em compartilhar mais informações sobre a solução e sua integração com o Zendesk.</p>\n\n    <h3>IA Auxilia No Zendesk</h3>\n    <p>Athos demonstra uma inteligência artificial (IA) projetada para auxiliar representantes comerciais e gerentes na obtenção de informações sobre chamados no Zendesk. A IA é capaz de fornecer detalhes específicos sobre tickets, como status, prioridade e data de abertura, mas requer informações precisas para identificar usuários e períodos. Ian sugere testar a funcionalidade da IA com campos personalizados do Zendesk, e Athos menciona a possibilidade de desenvolver uma versão da IA para atendimento ao cliente no futuro.</p>\n\n    <h3>Implementação De Automação No Zendesk</h3>\n    <p>Athos discute com Ian e Kauane sobre a implementação de uma automação de IA no Zendesk, solicitando o token da API e o subdomínio do Zendesk. Kauane confirma que a versão atual do Zendesk é compatível com a automação proposta por Athos. Athos promete enviar as configurações e um número de WhatsApp para contato adicional, enquanto Ian confirma o envio das informações solicitadas.</p>\n\n    <h3>Next steps</h3>\n    <ul>\n        <li>Athos: Conectar a solução de IA ao Zendesk da empresa para testes.</li>\n        <li>Ian: Fornecer o Token da API e o subdomínio do Zendesk para Athos.</li>\n        <li>Athos: Enviar o número de WhatsApp para Ian e Kauane testarem a IA.</li>\n        <li>Ian e Kauane: Testar a IA através do número de WhatsApp fornecido por Athos.</li>\n        <li>Athos: Verificar se a IA consegue ler campos personalizados do Zendesk.</li>\n        <li>Equipe: Considerar a possibilidade de criar uma IA específica para atendimento ao cliente no futuro.</li>\n        <li>Equipe: Avaliar a implementação da solução de IA no Zendesk da empresa após os testes iniciais.</li>\n    </ul>\n</div>",
+      "youtube_video_id": null
+    },
+    {
+      "id": "c1108f2c-4f94-4597-8dc5-42d0f70ec734",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": null,
+      "title": "Sessão (extra) 08 de outubro de 2025",
+      "date": "2025-10-08T00:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/Dfud-HJGt9Y",
+      "doc_embed_url": null,
+      "summary_text": "Reunião sobre o desenvolvimento do dashboard de ordens de serviço, estratégias preditivas e planejamento de apresentação.",
+      "created_at": "2026-01-04T21:40:57.911Z",
+      "end_date": null,
+      "attendees": [],
+      "meet_link": null,
+      "duration_seconds": 3600,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Mapa que usamos na sessão</h3>\n    <p><a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\" title=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <h3>Notas da Reunião</h3>\n    <ul>\n        <li><strong>Desenvolvimento e Prototipação do Dashboard de Ordens de Serviço:</strong> Athos Alves De Souza apresentou para Jean Michael Fredel o protótipo do dashboard baseado na planilha de ordens de serviço, detalhando os principais indicadores, gráficos e funcionalidades, enquanto discutiam melhorias e próximos passos para integração com banco de dados e filtros avançados, com contribuições de Ian Rocha.\n            <ul>\n                <li><strong>Apresentação do Protótipo:</strong> Athos explicou que o protótipo foi desenvolvido a partir da planilha exportada por Jean, sem conexão direta com banco de dados, exibindo indicadores como quantidade de ordens de serviço, tempo médio de atendimento, entre outros.</li>\n                <li><strong>Funcionalidades e Insights de IA:</strong> O dashboard inclui gráficos de evolução mensal e um recurso de insights automáticos por IA, gerando resumos sobre taxas de garantia e defeitos críticos.</li>\n                <li><strong>Tratamento de Dados e Filtros:</strong> Athos esclareceu que o protótipo trata ordens de serviço com múltiplas linhas, e Jean sugeriu a inclusão de filtros para análises mais detalhadas.</li>\n                <li><strong>Próximos Passos e Integração:</strong> Jean irá fornecer uma base de dados mais completa para aprimorar o protótipo, planejando a futura integração via API.</li>\n            </ul>\n        </li>\n        <li><strong>Estratégias de Análise Preditiva e Proatividade com Clientes:</strong> Jean e Athos discutiram a importância de análises preditivas para identificar tendências de defeitos e mudanças de comportamento de clientes.\n            <ul>\n                <li><strong>Identificação de Tendências e Mudanças:</strong> Jean destacou a necessidade de identificar alterações no comportamento dos clientes.</li>\n                <li><strong>Automação de Alertas e Relatórios:</strong> Athos sugeriu a geração de alertas automáticos para facilitar a atuação preventiva.</li>\n                <li><strong>Segmentação e Filtros Avançados:</strong> Jean propôs segmentar análises por cliente e produto, identificando padrões específicos.</li>\n                <li><strong>Apoio ao Time Comercial:</strong> Discutiu-se a utilidade de fornecer um resumo consolidado do histórico do cliente ao time de vendas.</li>\n            </ul>\n        </li>\n        <li><strong>Integração de Dados e Estruturação de Big Data:</strong> Athos e Jean abordaram a necessidade de unificar dados de diferentes sistemas em um data lake.\n            <ul>\n                <li><strong>Desafios de Unificação de Dados:</strong> Athos ressaltou a dificuldade de análise integrada devido a nomes de clientes cadastrados de forma diferente.</li>\n                <li><strong>Planejamento de Big Data:</strong> Discutiu-se a criação de uma estrutura de big data, sincronizando informações de vendas e atendimento.</li>\n                <li><strong>Cruzamento de Dados Operacionais:</strong> Jean sugeriu cruzar dados de atendimento com informações de vendas.</li>\n            </ul>\n        </li>\n        <li><strong>Planejamento de Apresentação e Próximos Passos do Projeto:</strong> O grupo alinhou o planejamento da apresentação do dashboard e melhorias.\n            <ul>\n                <li><strong>Definição de Datas e Participantes:</strong> A apresentação será marcada para a primeira ou segunda semana de novembro.</li>\n                <li><strong>Preparação e Ensaios:</strong> O grupo decidiu realizar uma rodada de alinhamento e ensaio da apresentação.</li>\n                <li><strong>Demonstração de Melhorias:</strong> Athos sugeriu mostrar telas comparativas durante a apresentação.</li>\n            </ul>\n        </li>\n        <li><strong>Negociação com Suprimentos e Ajustes Finais:</strong> Athos e Jean conversaram sobre o andamento da negociação com o setor de suprimentos.\n            <ul>\n                <li><strong>Status da Negociação:</strong> Athos informou que a responsável de suprimentos aguarda apenas a formalização.</li>\n            </ul>\n        </li>\n    </ul>\n    <h3>Tarefas de Follow-up</h3>\n    <ul>\n        <li><strong>Filtros e Análises no Dashboard:</strong> Adicionar os filtros sugeridos e um gráfico de linha do tempo. (Athos Alves De Souza)</li>\n        <li><strong>Envio de Base de Dados Completa:</strong> Enviar a tabela completa do atweb para possibilitar uma análise mais aprofundada. (Jean Michael Fredel)</li>\n        <li><strong>Agendamento de Apresentação:</strong> Verificar com Érica as disponibilidades de agenda de Grauzio. (Jean Michael Fredel)</li>\n        <li><strong>Alinhamento Prévio da Apresentação:</strong> Realizar uma rodada de alinhamento e treinamento da apresentação. (Athos Alves De Souza, Jean Michael Fredel, Ian Rocha, Kauane)</li>\n    </ul>\n</div>",
+      "youtube_video_id": "Dfud-HJGt9Y"
+    },
+    {
+      "id": "695710ee-e2d9-40b3-bd60-cb8d7a1a63bf",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g89148c9l6soj0hi274rk8ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6cr4ce9l892k2ga474s42cpk6ssj8e1m84ok6d9p64qj8e9o88p0",
+      "title": "Iniciando os trabalhos - ATVEZA Method e HERCULES MOTORES",
+      "date": "2025-03-19T11:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/kxfbAt9D1ho",
+      "doc_embed_url": null,
+      "summary_text": "Reunião sobre melhorias no atendimento ao cliente e gerenciamento de tempo, com tarefas definidas para a equipe.",
+      "created_at": "2026-01-04T21:34:14.769Z",
+      "end_date": "2025-03-19T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <p>Boa tarde, pessoal,</p>\n    <p>Estou feliz por ter iniciado este projeto importante e agradeço pela atenção de hoje. Aqui vai o resumo do que conversamos e também as tarefas de acompanhamento.</p>\n    <p>Mapa que usamos na sessão: <a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <h3>Resumo</h3>\n    <h3>Melhorando O Atendimento Ao Cliente</h3>\n    <p>Jean e Athos discutem o início de um projeto de 12 meses para melhorar o atendimento ao cliente da Arcosmotores usando a plataforma Zendesk. Eles enfatizam a importância de manter o toque humano no atendimento, tornando-o mais fácil e eficiente com o uso de tecnologia. O objetivo é transformar clientes em promotores da marca, melhorando a experiência de suporte técnico e facilitando o acesso à assistência. Athos menciona que abordarão comunicação com o cliente, processos e possíveis melhorias de sistemas ao longo do projeto.</p>\n    <h3>Matriz Do Tempo De Stephen Covey</h3>\n    <p>Athos apresenta a Matriz do Tempo de Stephen Covey, explicando como priorizar tarefas importantes e urgentes versus importantes e não urgentes. Ele enfatiza a importância de dedicar tempo para melhorias contínuas e mentoria, que são importantes mas nem sempre urgentes. Jean e Ian participam da discussão, relacionando o conceito à gestão de tempo e ao objetivo de transformar o suporte da Hércules Motores em uma referência de mercado.</p>\n    <h3>Gerenciamento Do Tempo E Crescimento</h3>\n    <p>Athos discute a importância de gerenciar o tempo usando a matriz de Eisenhower, enfatizando a necessidade de equilibrar tarefas urgentes e importantes com atividades que promovem crescimento e inovação. Ele sugere que a equipe faça um planejamento semanal, reservando tempo para melhorias e desenvolvimento profissional, e compartilha um teste de índice de urgência para autoavaliação. Jean propõe a participação da equipe em seminários de atendimento ao cliente, e Athos menciona que o objetivo da mentoria é tornar o suporte da Herculos Motores uma referência de mercado, com diagnósticos periódicos para medir o progresso.</p>\n    <h3>NPS Para Serviços Técnicos</h3>\n    <p>Athos propõe a criação de uma pesquisa NPS específica para a assistência técnica da Hércules Motores, utilizando o Zendesk para coletar informações de contato dos clientes. Jean sugere incluir perguntas sobre a empresa, produtos e atendimento nos postos, enquanto Athos recomenda manter o foco na assistência técnica. Eles discutem o uso do Relay para enviar a pesquisa por WhatsApp e a importância de medir a facilidade de contato com o suporte. Athos enfatiza que esta pesquisa NPS é diferente da pesquisa de satisfação já existente no final de cada atendimento.</p>\n    <p><i>OBS: Resumo gerado por IA pode ser impreciso ou enganoso. Verifique sempre a precisão.</i></p>\n    <h3>Tarefas de acompanhamento</h3>\n    <ul>\n        <li>Ian: Extrair dados de e-mail e WhatsApp dos clientes que entraram em contato pelo Zendesk.</li>\n        <li>Ian: Criar um formulário de pesquisa com as perguntas sugeridas por Athos.</li>\n        <li>Ian: Enviar o formulário de pesquisa para Athos revisar antes de distribuí-lo.</li>\n        <li>Todos: Realizar o teste do índice de urgência enviado por Athos.</li>\n        <li>Todos: Implementar o planejamento semanal, separando tarefas importantes e urgentes das importantes e não urgentes.</li>\n        <li>Athos: Criar um grupo no Teams para comunicação contínua entre as sessões.</li>\n        <li>Athos: Lançar uma cadência de reuniões quinzenais para o ano inteiro.</li>\n        <li>Jean e Ian: Revisar e ajustar as datas das reuniões quinzenais conforme necessário.</li>\n        <li>Athos: Adicionar perguntas sobre a facilidade de entrar em contato com o suporte no formulário de pesquisa.</li>\n        <li>Todos: Analisar os resultados da pesquisa após sua conclusão.</li>\n    </ul>\n</div>",
+      "youtube_video_id": "kxfbAt9D1ho"
+    },
+    {
+      "id": "00894ab6-c156-4c85-ae5b-7d3ddad28cf2",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": null,
+      "title": "Sessão 18 de junho de 2025",
+      "date": "2025-06-18T00:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/z8B22cLh_Ks",
+      "doc_embed_url": null,
+      "summary_text": "Reunião sobre integração entre ordem de serviço e Zendesk, definindo próximos passos e responsabilidades da equipe.",
+      "created_at": "2026-01-04T21:40:53.704Z",
+      "end_date": null,
+      "attendees": [],
+      "meet_link": null,
+      "duration_seconds": 3600,
+      "summary_html": "<div style='color: #1f2937 !important;'><h3>Mapa utilizado na sessão</h3>\n<p><a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\" title=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n\n<p><i>O conteúdo gerado por IA pode ser impreciso ou enganoso. Verifique sempre a precisão.</i></p>\n\n<h3>Próximos passos</h3>\n<ul>\n<li><p>Ian: Fazer um levantamento dos campos da ordem de serviço que devem ser transportados para o Zendesk na abertura do ticket.</p></li>\n<li><p>Ian: Criar um formulário no Zendesk específico para tickets de ordem de serviço.</p></li>\n<li><p>Athos: Auxiliar Ian na criação do mapeamento entre os campos da ordem de serviço e os campos do Zendesk.</p></li>\n<li><p>Athos: Verificar com o Marcelo a possibilidade de trazer anexos (como notas fiscais e imagens de produtos) da ordem de serviço para o Zendesk.</p></li>\n<li><p>Ian e Athos: Avaliar a melhor abordagem para diferenciar visualmente os tickets de ordem de serviço dos tickets de atendimento normal no Zendesk.</p></li>\n<li><p>Athos: Preparar a documentação necessária para o Marcelo desenvolver a integração entre o Hotel Web e o Zendesk.</p></li>\n<li><p>Ian e Athos: Revisar e finalizar o mapeamento de campos antes de enviar para o Marcelo para orçamento e desenvolvimento.</p></li>\n<li><p>Ian: Preparar a lista de campos que devem ser transportados do Ateweb para o Zendesk.</p></li>\n<li><p>Athos: Conectar a automação com IA ao Zendesk para análise de tickets resolvidos.</p></li>\n<li><p>Ian e Jean: Validar os primeiros resultados da automação de análise de tickets.</p></li>\n<li><p>Ian e Jean: Finalizar a documentação dos campos a serem transportados do Ateweb para o Zendesk até o final do dia.</p></li>\n<li><p>Equipe: Preparar material para enviar ao Ateweb para orçamento da customização.</p></li>\n<li><p>Jean: Verificar a possibilidade de agendar uma Deep Week para implementação do projeto.</p></li>\n<li><p>Equipe: Desenvolver conteúdo para a Central de Ajuda do Zendesk, incluindo vídeos e documentações.</p></li>\n<li><p>Athos: Implementar a criação de ticket no Zendesk a partir da criação de uma ordem no Ateweb.</p></li>\n<li><p>Jean: Contatar o Marcelo para discutir as customizações necessárias no Ateweb.</p></li>\n<li><p>Equipe: Preparar apresentação dos avanços do projeto para a próxima visita do Athos.</p></li>\n</ul>\n</div>",
+      "youtube_video_id": "z8B22cLh_Ks"
+    },
+    {
+      "id": "c2a6f301-f986-403b-b290-c3c58771307b",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6kqk4d2264skcd22751k8ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g70p30cq284o3egi18cr38c1k8h0j2d9p70r3ed1p6gs3ge22852g_20250414T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES MOTORES",
+      "date": "2025-04-14T11:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/uGl6icDEkEY",
+      "doc_embed_url": null,
+      "summary_text": "Reunião abordou tarefas de acompanhamento para Ian, Jean e Athos, com foco em melhorias no suporte técnico e marketing.",
+      "created_at": "2026-01-04T21:34:16.556Z",
+      "end_date": "2025-04-14T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <p>Mapa que usamos na sessão: <a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\" title=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <p><i>O conteúdo gerado por IA pode ser impreciso ou enganoso. Verifique sempre a precisão.</i></p>\n    <h3>Tarefas de acompanhamento</h3>\n    <h3>Ian</h3>\n    <ul>\n        <li>Continuar desenvolvendo o mapeamento das jornadas de atendimento no Miro.</li>\n        <li>Abrir um chamado no suporte do Zendesk para desativar o envio de e-mails automáticos durante conversas de WhatsApp.</li>\n        <li>Investigar a possibilidade de integração entre o número de série do produto e as informações de garantia no Zendesk.</li>\n    </ul>\n    <h3>Jean</h3>\n    <ul>\n        <li>Discutir com o marketing a implementação de um QR code nas etiquetas dos produtos após a feira.</li>\n        <li>Verificar com o marketing a possibilidade de melhorar a visibilidade das informações de assistência técnica nas pesquisas do Google.</li>\n        <li>Explorar a possibilidade de usar IA para leitura e interpretação de notas fiscais para verificação de garantia.</li>\n    </ul>\n    <h3>Athos</h3>\n    <ul>\n        <li>Buscar e enviar exemplos de sites com boas práticas de exibição de informações de suporte técnico nas pesquisas do Google.</li>\n        <li>Preparar histórias de atendimento de grandes empresas para compartilhar na próxima sessão.</li>\n    </ul>\n</div>",
+      "youtube_video_id": "uGl6icDEkEY"
+    },
+    {
+      "id": "c221f062-2cee-4ea9-832e-122777421bd4",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": null,
+      "title": "Sessão 23 de julho de 2025",
+      "date": "2025-07-23T00:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/TbobQXm9ZyA",
+      "doc_embed_url": null,
+      "summary_text": "Reunião discutiu integração entre sistemas e definiu próximos passos para implementação de melhorias.",
+      "created_at": "2026-01-04T21:40:54.862Z",
+      "end_date": null,
+      "attendees": [],
+      "meet_link": null,
+      "duration_seconds": 3600,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Mapa utilizado na sessão</h3>\n    <p>Mapa que usamos na sessão: <a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <h3>Próximos passos</h3>\n    <ul>\n        <li><p>Ian to marcar reunião com Marcelo para apresentar o sonho/demanda de integração entre Zendesk e Hotel Web.</p></li>\n        <li><p>Ian to solicitar ao Marcelo detalhamento da proposta de customizações e prazos de execução.</p></li>\n        <li><p>Ian to confirmar com Marcelo se ele vai implementar a API para dados iguobinais como melhoria do sistema.</p></li>\n        <li><p>Ian to solicitar ao Marcelo implementação de Web Hook no Hotel Web para integração com outros sistemas.</p></li>\n        <li><p>Ian to criar desenho no Miro mostrando o processo do formulário do Zendesk com seleção de posto autorizado.</p></li>\n        <li><p>Ian to discutir com Jean a possibilidade de mudar o email da empresa para Hércules Energia em Movimento.</p></li>\n        <li><p>Ian to criar novo endereço de email para Hércules Condutores.</p></li>\n        <li><p>Athos to ajudar com o desenho detalhado dos pontos de integração quando Ian fizer o mapeamento no Miro.</p></li>\n        <li><p>Rafael to entregar solução para problema do WhatsApp até dia 31.</p></li>\n        <li><p>Ian to compilar suas anotações da reunião e discutir com Jean sobre a criação de um novo endereço de email para Hércules Energia em Movimento.</p></li>\n        <li><p>Ian to agendar reunião com Marcelo para discutir os pontos abordados.</p></li>\n        <li><p>Athos to publicar os materiais da plataforma até amanhã.</p></li>\n        <li><p>Ian to montar uma apresentação com todas as melhorias discutidas durante a mentoria.</p></li>\n        <li><p>Athos to reforçar com o Hotel Web a possibilidade de incluir o número de série no link público para downloads.</p></li>\n        <li><p>Athos to disponibilizar a gravação da reunião.</p></li>\n    </ul>\n</div>",
+      "youtube_video_id": "TbobQXm9ZyA"
+    },
+    {
+      "id": "3eee3b30-d740-4aa9-8b0d-ce6d55188380",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6kqk4d2264skcd22751k8ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g70p30cq284o3egi18cr38c1k8h0j2d9p70r3ed1p6gs3ge22852g_20250428T110000Z",
+      "title": "Mentoria ATVEZA Method de Suporte ao Cliente - HERCULES MOTORES",
+      "date": "2025-04-28T11:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/cJhROkFv618",
+      "doc_embed_url": null,
+      "summary_text": "Reunião abordou melhorias no Zendesk, tratamento de queixas, automação com IA e comunicação eficaz com clientes.",
+      "created_at": "2026-01-04T21:34:17.287Z",
+      "end_date": "2025-04-28T12:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Mapa utilizado na sessão</h3>\n    <p><a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\" title=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n\n    <h3>Atualizações da integração e do fluxo de trabalho no Zendesk</h3>\n    <p>A equipe discute atualizações recentes do sistema de serviço ao cliente, incluindo melhorias na integração Zendesk e na cartografia dos fluxos de trabalho. Ian reporta a resolução de um problema com e-mails automáticos para bilhetes do WhatsApp. Athos sugere ideias adicionais de automação, como enviar lembretes do WhatsApp juntamente com os e-mails. Analisam os progressos realizados na cartografia dos fluxos de serviços aos clientes, o que ajudará a formar o novo pessoal e a identificar áreas a melhorar. A equipe discute planos futuros para integrar mais dados sobre os clientes no Zendesk, a fim de proporcionar aos agentes um melhor contexto durante as interações.</p>\n\n    <h3>Discussões e Tratamento de Queixas de Clientes</h3>\n    <p>O debate centra-se na importância de registrar as declarações de exoneração de responsabilidade sobre os conhecimentos de embarque para responsabilizar os transportadores pelas mercadorias danificadas. Jean explica que os clientes devem validar a carga após a sua recepção e anotar quaisquer problemas, uma vez que assinar sem comentários implica aceitar as mercadorias em boas condições. A conversa passa para o processo de tratamento das queixas dos clientes e de acompanhamento dos carregamentos. Athos sugere que se defina todo o fluxo de trabalho, incluindo os encaminhamentos para outros departamentos, a fim de identificar potenciais áreas de automatização e melhoria dos processos de assistência aos clientes.</p>\n\n    <h3>Processo de gestão da repartição dos transportes</h3>\n    <p>Ian discutiu uma queixa sobre uma quebra no transporte e o processo de manuseio do mesmo, que envolve contactar o cliente, avaliar os danos e faturar peças e mão de obra. Jean esclareceu que o processo envolve várias equipas, incluindo representantes comerciais David e Jessica, que lidam com a faturação, a cobrança e as vendas. Jean também mencionou que o papel do técnico da oficina não é tomar decisões de aprovação. Athos sublinhou a necessidade de mapear o processo e automatizar o mais possível.</p>\n\n    <h3>Analisar as reclamações de melhoria dos clientes</h3>\n    <p>Ian discutiu a importância de analisar as queixas dos clientes, centrando-se na última compra do cliente, no volume do produto e no valor global. Jean destacou a necessidade de diferenciar entre questões técnicas e financeiras, salientando a importância de identificar a causa principal das queixas. Athos sugeriu a utilização do sistema para priorizar e automatizar as tarefas, centrando-se nas áreas que levam mais tempo a abordar, e utilizando aplicações externas para racionalizar os processos. Salientou igualmente a necessidade de uma tomada de decisão mais rápida e de respostas seletivas dos clientes.</p>\n\n    <h3>Automatização da IA para tarefas que consomem tempo</h3>\n    <p>Na reunião, Athos e Jean discutiram o potencial da utilização da IA para automatizar certos processos, como a credencialização ou a acreditação. Consideraram como a IA podia racionalizar tarefas que atualmente levam muito tempo, como verificar ordens de trabalho abertas. Jean sugeriu que a IA poderia potencialmente completar estas tarefas em questão de minutos, reduzindo significativamente o tempo gasto com elas. Athos concordou, observando que a IA poderia ser ensinada sobre estes procedimentos e fluxos, podendo até sugerir respostas às perguntas dos clientes. Concluíram que a elaboração do maior número possível de informações e a identificação das etapas mais morosas seriam fundamentais para melhorar o fluxo de serviços.</p>\n\n    <h3>Explorar a IA para apoio aos clientes</h3>\n    <p>Ian e Athos discutiram a possibilidade de utilizar a Zendesk AI para as suas operações. Eles manifestaram interesse em explorar as capacidades da IA, em particular a sua capacidade de compreender e responder às entradas de áudio e imagem. Athos mencionou que, embora estas funcionalidades não estejam atualmente disponíveis, espera-se que sejam implementadas em breve. Discutiram também a mudança da automação para a IA, com Athos explicando que a IA pode formular respostas baseadas no contexto, tornando-a mais humana. No entanto, Ian levantou preocupações sobre o potencial da IA seguir um conjunto de padrões de respostas, que poderiam ser vistos como robóticos. Athos assegurou-lhe que a IA pode ser configurada para fornecer variações nas respostas. Discutiram igualmente a possibilidade de utilizar a IA para ajudar os clientes, tendo Athos sugerido que poderia explorar esta questão mais aprofundadamente após a definição dos seus domínios de intervenção.</p>\n\n    <h3>Comunicação eficaz no serviço ao cliente</h3>\n    <p>Athos discute a importância de uma comunicação eficaz no serviço ao cliente, salientando o poder dos diferentes canais de comunicação. Explica que apenas 7% do poder de comunicação provém do texto, 38% do tom de voz e entonação e 55% de pistas não verbais como gestos e expressões faciais. Athos recomenda o primeiro contacto verbal com os clientes para aumentar a eficiência e criar empatia, citando grandes empresas como a Netflix e a Apple como exemplos desta abordagem. Sugere que telefonar aos clientes pode frequentemente resolver as questões mais rapidamente do que trocar mensagens, criando simultaneamente uma ligação mais forte.</p>\n\n    <h3>Criar Ligações Pessoais com os Clientes</h3>\n    <p>A equipe discute a importância das ligações pessoais com os clientes, salientando o valor das chamadas telefónicas em detrimento da comunicação baseada em texto. Jean e Athos concordam que as relações cara a cara e o primeiro contacto verbal podem melhorar a satisfação do cliente, aumentar a produtividade e criar confiança. Tencionam aplicar uma abordagem mais personalizada aos clientes estratégicos, incluindo fazer com que Ian visite os principais clientes no terreno. A equipe considera igualmente que fazer apelos de despedida aos clientes que abandonam a empresa deixará uma última impressão positiva, que poderá conduzir a futuras oportunidades de negócio.</p>\n\n    <h3>Tarefas de acompanhamento</h3>\n    <h3>Ian</h3>\n    <ul>\n        <li>Continuar a mapear os fluxos e processos de serviços aos clientes no Miro, incluindo estimativas de tempo para cada etapa.</li>\n    </ul>\n    <h3>Equipe</h3>\n    <ul>\n        <li>Aplicar uma abordagem de primeiro contato verbal (PCV) para novos questionamentos de clientes, sempre.</li>\n        <li>Identificar os 20-30 principais clientes estratégicos.</li>\n        <li>Estudar a possibilidade de implementar chamadas telefônicas para pedidos de descredenciamento de clientes, a fim de causar uma boa última impressão.</li>\n        <li>Dar continuidade às discussões sobre como melhorar a comunicação com os clientes em sessões futuras.</li>\n    </ul>\n</div>",
+      "youtube_video_id": "cJhROkFv618"
+    },
+    {
+      "id": "c18a9bf4-e0a3-49a2-b28c-f8a223976ada",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g88q3ge9g70pk6g9m8cqk8ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g68ok4cq36p24ag9m850j4dpk6h14ccq16gok4c9i88qkcc9p64pg",
+      "title": "Sessão extra - ATVEZA Method - HERCULES - Make.com",
+      "date": "2025-05-16T17:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/Ke8ZvrD4XAY",
+      "doc_embed_url": null,
+      "summary_text": "Reunião discutiu a integração do Zendesk com SAP e automações para melhorar o atendimento ao cliente.",
+      "created_at": "2026-01-04T21:34:18.616Z",
+      "end_date": "2025-05-16T18:00:00.000Z",
+      "attendees": [
+        {
+          "email": "jean.fredel@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "athos@atveza.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "ian.rocha@herculesmotores.com.br",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "kauane.miranda@herculesmotores.com.br",
+          "responseStatus": "needsAction"
+        }
+      ],
+      "meet_link": null,
+      "duration_seconds": null,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n<h3>Tópicos abordados</h3>\n<ul>\n<li><p>Ian: Implementar a importação de usuários do Zendesk, incluindo a tag do Zendesk para os contatos que possuem número de telefone.</p></li>\n<li><p>Ian: Explorar a possibilidade de usar os códigos externos do SAP para preencher o campo External ID no Zendesk.</p></li>\n<li><p>Ian: Investigar como usar a API de busca do Zendesk no Make para localizar usuários pelo número de telefone e adicionar tags.</p></li>\n<li><p>Ian: Familiarizar-se com o formato JSON e a estrutura de dados da API do Zendesk.</p></li>\n<li><p>Ian: Começar a experimentar com o Make para criar automações e integrações entre sistemas.</p></li>\n<li><p>Ian: Seguir o blog de Athos para ficar atualizado sobre dicas e novidades relacionadas a integrações e automações.</p></li>\n<li><p>Ian: Investigar a possibilidade de usar o Make para fundir usuários duplicados no Zendesk com base no número de telefone.</p></li>\n<li><p>Equipe de TI: Avaliar a viabilidade de criar um chamado no Zendesk diretamente a partir do SAP quando ocorrer um faturamento.</p></li>\n<li><p>Jean: Explorar a implementação de notificações automáticas para clientes sobre o status de entrega dos produtos, similar ao sistema do Mercado Livre.</p></li>\n<li><p>Athos: Preparar uma proposta para automatizar o envio de um kit digital de boas-vindas aos clientes após a compra, incluindo informações de contato da assistência técnica.</p></li>\n<li><p>Equipe de Logística: Investigar a integração do sistema de rastreamento de entregas com o Zendesk para fornecer atualizações em tempo real aos clientes.</p></li>\n<li><p>Jean e Ian: Desenvolver um checklist de recomendações para o recebimento de produtos a ser enviado aos clientes quando a transportadora confirmar a entrega.</p></li>\n</ul>\n</div>",
+      "youtube_video_id": "Ke8ZvrD4XAY"
+    },
+    {
+      "id": "04e5f838-5508-4215-8e22-6e76db608f65",
+      "organization_id": "7bbf39b2-4137-426f-b224-ddf38bfc2717",
+      "google_event_id": null,
+      "title": "Sessão 8 de julho de 2025",
+      "date": "2025-07-08T00:00:00.000Z",
+      "video_embed_url": "https://www.youtube.com/embed/XPdh3PGLhb0",
+      "doc_embed_url": null,
+      "summary_text": "Reunião abordou melhorias em atendimento ao cliente e análise de dados, com próximos passos definidos para implementação de soluções.",
+      "created_at": "2026-01-04T21:40:54.197Z",
+      "end_date": null,
+      "attendees": [],
+      "meet_link": null,
+      "duration_seconds": 3600,
+      "summary_html": "<div style='color: #1f2937 !important;'>\n    <h3>Mapa que usamos na sessão</h3>\n    <p><a href=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\" title=\"https://mm.tt/app/map/3655595721?t=z7rkYxxMBz\">https://mm.tt/app/map/3655595721?t=z7rkYxxMBz</a></p>\n    <h3>Recapitulação rápida</h3>\n    <p>A reunião abordou diversos tópicos relacionados à melhoria dos sistemas de atendimento ao cliente e análise de dados. Foi apresentada uma ferramenta de automação baseada em inteligência artificial para analisar chamados, gerar insights e classificar tickets, com discussões sobre como implementar e aprimorar essas funcionalidades. Além disso, a equipe planejou a criação de um novo sistema para representantes de vendas e discutiu estratégias para segmentar dados e atender às principais necessidades dos clientes.</p>\n    <h3>Próximos passos</h3>\n    <ul>\n        <li>Ian: Criar um formulário específico para ordens de serviço do AT Web, incluindo campos compartilhados e específicos.</li>\n        <li>Ian: Preparar dois exemplos de ordens de serviço do AT Web, copiando e colando os campos relevantes e a descrição do problema.</li>\n        <li>Athos: Auxiliar Ian na preparação dos exemplos e na comunicação com Marcelo sobre a integração da API.</li>\n        <li>Ian: Acompanhar o chamado aberto no Zendesk sobre o problema do link do WhatsApp nos anúncios do Meta.</li>\n        <li>Jean: Monitorar o progresso da proposta do Rafael para resolver o problema do link do WhatsApp nos anúncios.</li>\n        <li>Equipe de marketing: Aguardar resolução do problema do link do WhatsApp nos anúncios do Meta antes de fazer alterações.</li>\n        <li>Ian: Criar dois exemplos de formulários como se tivessem vindo automaticamente do AT Web e avisar o Athos quando estiver pronto.</li>\n        <li>Jean: Agendar uma reunião com 2-3 representantes comerciais para amanhã às 8h para apresentar a ferramenta de análise de dados.</li>\n        <li>Athos: Criar login de acesso à ferramenta de análise de dados para Jean e Ian.</li>\n        <li>Athos: Implementar segmentação na ferramenta para separar dados de representantes, clientes, consumidores e parceiros técnicos.</li>\n        <li>Athos: Adicionar filtros na ferramenta para analisar períodos específicos (30, 60, 90 dias) e comparar semestres.</li>\n        <li>Athos e Jean: Agendar uma reunião para elaborar a documentação a ser enviada para o Marcelo sobre a integração com o AT Web.</li>\n        <li>Athos: Revisar o mapa de ideias no Miro para identificar mais oportunidades de automatização.</li>\n    </ul>\n</div>",
+      "youtube_video_id": "XPdh3PGLhb0"
+    }
+  ]
+}

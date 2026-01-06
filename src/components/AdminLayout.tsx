@@ -9,24 +9,44 @@ import {
 } from 'lucide-react'
 import { useState } from 'react'
 import { useAuth } from '@/context/AuthContext'
+import { AnimatePresence } from 'framer-motion'
+import { AlertBanner } from '@/components/ui/alert-banner'
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     const { signOut } = useAuth()
     const location = useLocation()
     const [isSyncing, setIsSyncing] = useState(false)
+    const [alertConfig, setAlertConfig] = useState<{
+        isOpen: boolean;
+        variant: 'default' | 'success' | 'destructive' | 'warning';
+        title: string;
+        description?: string;
+    } | null>(null);
 
     const handleSync = async () => {
         setIsSyncing(true)
         try {
             const res = await fetch('/api/sync', { method: 'POST' })
             if (res.ok) {
-                alert('Sincronização concluída com sucesso!')
+                setAlertConfig({
+                    isOpen: true,
+                    variant: 'success',
+                    title: 'Sincronização Concluída',
+                    description: 'Os dados foram atualizados com sucesso.'
+                })
+                // Auto dismiss after 3s
+                setTimeout(() => setAlertConfig(null), 3000)
             } else {
                 throw new Error('Falha na sincronização')
             }
         } catch (error) {
             console.error(error)
-            alert('Erro ao sincronizar. Verifique se o servidor de sync está rodando.')
+            setAlertConfig({
+                isOpen: true,
+                variant: 'destructive',
+                title: 'Erro na Sincronização',
+                description: 'Verifique se o servidor de sync está rodando.'
+            })
         } finally {
             setIsSyncing(false)
         }
@@ -39,7 +59,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     ]
 
     return (
-        <div className="min-h-screen bg-background flex">
+        <div className="h-screen overflow-hidden bg-background flex">
             {/* Sidebar */}
             <aside className="w-64 border-r border-border bg-card hidden md:flex flex-col">
                 <div className="flex h-16 items-center px-6 border-b border-border/40">
@@ -106,7 +126,25 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </aside>
 
             {/* Main Content */}
-            <main className="flex-1 overflow-y-auto">
+            <main className="flex-1 overflow-y-auto relative">
+
+                {/* Global Alert Toast */}
+                <div className="fixed top-4 right-4 z-50 w-full max-w-sm pointer-events-none">
+                    <div className="pointer-events-auto">
+                        <AnimatePresence>
+                            {alertConfig && alertConfig.isOpen && (
+                                <AlertBanner
+                                    variant={alertConfig.variant}
+                                    title={alertConfig.title}
+                                    description={alertConfig.description}
+                                    onDismiss={() => setAlertConfig(null)}
+                                    className="shadow-xl"
+                                />
+                            )}
+                        </AnimatePresence>
+                    </div>
+                </div>
+
                 <div className="p-8 max-w-6xl mx-auto">
                     {children}
                 </div>

@@ -2,18 +2,20 @@ import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { Session } from '@/types'
-import { Loader2, CalendarDays, Video, FileText, ArrowRight } from 'lucide-react'
+import { useAuth } from '@/context/AuthContext'
+import { Loader2, CalendarDays, Video, FileText, ArrowRight, Building2 } from 'lucide-react'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale' // Import locale
 import { cn } from '@/lib/utils'
 
 export default function ClientDashboard() {
+    const { profile } = useAuth()
     const { data: sessions, isLoading, error } = useQuery({
         queryKey: ['client-sessions'],
         queryFn: async () => {
             const { data, error } = await supabase
                 .from('sessions')
-                .select('*')
+                .select('*, organizations (name)')
                 .order('date', { ascending: false })
 
             if (error) throw error
@@ -67,7 +69,7 @@ export default function ClientDashboard() {
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                             {groupedSessions[group].map((session) => {
                                 const isFuture = new Date(session.date) > new Date()
-                                const hasContent = !!session.video_embed_url || !!session.doc_embed_url
+                                const hasContent = !!session.video_embed_url || !!session.doc_embed_url || !!session.summary_html
                                 const isPastEmpty = !isFuture && !hasContent
 
                                 // --- 1. SESSÃO PASSADA SEM CONTEÚDO (Extra/Cancelada/Não gravada) ---
@@ -86,6 +88,14 @@ export default function ClientDashboard() {
                                             <p className="text-xs text-slate-500 uppercase tracking-wider mb-2">
                                                 {format(new Date(session.date), "d 'de' MMMM, yyyy • HH:mm", { locale: ptBR })}
                                             </p>
+                                            {/* Admin: Show Organization */}
+                                            {profile?.role === 'admin' && session.organizations?.name && (
+                                                <div className="mb-2">
+                                                    <span className="px-2 py-1 rounded bg-amber-500/10 text-[10px] text-amber-500 border border-amber-500/20 inline-flex items-center gap-1 font-medium">
+                                                        <Building2 className="w-3 h-3" /> {session.organizations.name}
+                                                    </span>
+                                                </div>
+                                            )}
                                             <div className="mt-auto pt-4 border-t border-white/5 text-xs text-slate-500">
                                                 Esta sessão não possui gravação ou documentos anexados.
                                             </div>
@@ -113,6 +123,14 @@ export default function ClientDashboard() {
                                                 <p className="text-xs text-blue-300 uppercase tracking-wider">
                                                     {format(new Date(session.date), "d 'de' MMMM, yyyy • HH:mm", { locale: ptBR })}
                                                 </p>
+                                                {/* Admin: Show Organization */}
+                                                {profile?.role === 'admin' && session.organizations?.name && (
+                                                    <div className="pt-2">
+                                                        <span className="px-2 py-1 rounded bg-blue-400/10 text-[10px] text-blue-300 border border-blue-400/20 inline-flex items-center gap-1 font-medium">
+                                                            <Building2 className="w-3 h-3" /> {session.organizations.name}
+                                                        </span>
+                                                    </div>
+                                                )}
                                             </div>
                                             <div className="mt-auto">
                                                 {session.meet_link ? (
@@ -164,15 +182,16 @@ export default function ClientDashboard() {
                                             <div className="flex items-center justify-between">
                                                 <div className={cn(
                                                     "w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300",
-                                                    "bg-white/10 group-hover:bg-primary/20 text-emerald-400"
+                                                    "bg-white/10 group-hover:bg-primary/20",
+                                                    !!session.video_embed_url ? "text-emerald-400" : "text-sky-400"
                                                 )}>
-                                                    <Video className="w-5 h-5" />
+                                                    {!!session.video_embed_url ? <Video className="w-5 h-5" /> : <FileText className="w-5 h-5" />}
                                                 </div>
                                                 <span className={cn(
                                                     "text-xs font-medium px-2.5 py-1 rounded-lg backdrop-blur-sm transition-colors duration-300",
                                                     "bg-white/5 text-slate-400 group-hover:bg-white/10 group-hover:text-slate-200"
                                                 )}>
-                                                    Gravada
+                                                    {!!session.video_embed_url ? "Gravada" : "Nota"}
                                                 </span>
                                             </div>
 
@@ -198,6 +217,13 @@ export default function ClientDashboard() {
                                             {/* Footer: Tags + CTA */}
                                             <div className="flex items-center justify-between pt-2 border-t border-white/5 mt-auto">
                                                 <div className="flex gap-2">
+                                                    {/* Admin: Show Organization */}
+                                                    {profile?.role === 'admin' && session.organizations?.name && (
+                                                        <span className="px-2 py-1 rounded bg-amber-500/10 text-[10px] text-amber-500 border border-amber-500/20 flex items-center gap-1 font-medium">
+                                                            <Building2 className="w-3 h-3" /> {session.organizations.name}
+                                                        </span>
+                                                    )}
+
                                                     {/* Auto-generated tags based on content */}
                                                     {session.doc_embed_url && (
                                                         <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-slate-400 border border-white/5 flex items-center gap-1">
@@ -207,7 +233,7 @@ export default function ClientDashboard() {
                                                 </div>
 
                                                 <div className="flex items-center text-xs font-medium text-blue-400 opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">
-                                                    Assistir <ArrowRight className="ml-1 w-3 h-3" />
+                                                    {!!session.video_embed_url ? "Assistir" : "Acessar"} <ArrowRight className="ml-1 w-3 h-3" />
                                                 </div>
                                             </div>
                                         </div>

@@ -15,14 +15,27 @@ conn.on('ready', () => {
         if (err) throw err;
 
         // Ensure components directory exists
-        conn.exec('mkdir -p /root/syncmeet/src/components', (err) => {
+        conn.exec('mkdir -p /root/syncmeet/src/components/ui', (err) => {
             if (err) console.error(err);
 
             const files = [
+                { local: '../src/pages/admin/Sessions.tsx', remote: '/root/syncmeet/src/pages/admin/Sessions.tsx' },
                 { local: '../src/pages/portal/SessionDetail.tsx', remote: '/root/syncmeet/src/pages/portal/SessionDetail.tsx' },
                 { local: '../src/components/SessionEditor.tsx', remote: '/root/syncmeet/src/components/SessionEditor.tsx' },
+                { local: '../src/components/ui/alert-banner.tsx', remote: '/root/syncmeet/src/components/ui/alert-banner.tsx' },
+                { local: '../src/components/ui/calendar.tsx', remote: '/root/syncmeet/src/components/ui/calendar.tsx' },
+                { local: '../src/components/ui/popover.tsx', remote: '/root/syncmeet/src/components/ui/popover.tsx' },
+                { local: '../src/components/SessionScheduler.tsx', remote: '/root/syncmeet/src/components/SessionScheduler.tsx' },
                 { local: '../package.json', remote: '/root/syncmeet/package.json' },
-                { local: '../package-lock.json', remote: '/root/syncmeet/package-lock.json' }
+                { local: '../package-lock.json', remote: '/root/syncmeet/package-lock.json' },
+                { local: '../server.cjs', remote: '/root/syncmeet/server.cjs' },
+                { local: '../scripts/sync-calendar.cjs', remote: '/root/syncmeet/scripts/sync-calendar.cjs' },
+                { local: '../scripts/setup_vps_cron.cjs', remote: '/root/syncmeet/scripts/setup_vps_cron.cjs' },
+                { local: '../scripts/generate-summary.cjs', remote: '/root/syncmeet/scripts/generate-summary.cjs' },
+                { local: '../src/components/AdminLayout.tsx', remote: '/root/syncmeet/src/components/AdminLayout.tsx' },
+                { local: '../docker-compose.yml', remote: '/root/syncmeet/docker-compose.yml' },
+                { local: '../src/pages/admin/Dashboard.tsx', remote: '/root/syncmeet/src/pages/admin/Dashboard.tsx' }, // Fixed path if it was wrong
+                { local: '../src/types/index.ts', remote: '/root/syncmeet/src/types/index.ts' }
             ];
 
             let uploaded = 0;

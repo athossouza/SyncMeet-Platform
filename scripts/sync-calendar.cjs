@@ -34,7 +34,8 @@ async function getAuth() {
             keyFile: SERVICE_ACCOUNT_PATH,
             scopes: [
                 'https://www.googleapis.com/auth/calendar.readonly',
-                'https://www.googleapis.com/auth/drive.readonly'
+                'https://www.googleapis.com/auth/drive.readonly',
+                'https://www.googleapis.com/auth/youtube'
             ],
             projectId: 'projetosyncmeet',
         })
@@ -102,20 +103,33 @@ async function syncEvents() {
         console.log(`ℹ️  Tracking ${clientOrgs.length} client domains: ${clientOrgs.map(o => o.domain).join(', ')}`)
 
         // --- 2. Fetch Calendar Events ---
-        const timeMin = new Date('2025-03-19T00:00:00Z') // Look back to project start
+        // Calculate timeMin: 3 months ago from now (Rolling Window)
+        const timeMin = new Date()
+        timeMin.setMonth(timeMin.getMonth() - 3)
+        // const timeMin = new Date('2025-03-19T00:00:00Z') // OLD: Migration Project Start
 
         console.log(`📅 Fetching events from ${CALENDAR_ID}...`)
 
-        const response = await calendar.events.list({
-            calendarId: CALENDAR_ID,
-            timeMin: timeMin.toISOString(),
-            maxResults: 50,
-            singleEvents: true,
-            orderBy: 'startTime',
-        })
+        let events = []
+        let pageToken = undefined
 
-        const events = response.data.items || []
-        console.log(`🔎 Found ${events.length} events.`)
+        do {
+            const response = await calendar.events.list({
+                calendarId: CALENDAR_ID,
+                timeMin: timeMin.toISOString(),
+                maxResults: 250, // Increased batch size for efficiency
+                singleEvents: true,
+                orderBy: 'startTime',
+                pageToken: pageToken,
+            })
+
+            const items = response.data.items || []
+            events = events.concat(items)
+            pageToken = response.data.nextPageToken
+            console.log(`  Fetched batch: ${items.length} events. Total so far: ${events.length}`)
+        } while (pageToken)
+
+        console.log(`🔎 Found TOTAL ${events.length} events.`)
 
         if (events.length === 0) {
             console.log('No upcoming events found.')
@@ -244,13 +258,14 @@ async function syncEvents() {
                 duration_seconds: durationSeconds,
                 meet_link: videoLink, // The Google Meet Join Link
                 doc_embed_url: docLink,
-                summary_html: summaryHtml,
-                summary_text: description,
+                summary_html: summaryHtml || (description ? `<p>${description.replace(/\n/g, '<br>')}</p>` : null),
+                summary_text: null, // Force null so AI Edge Function generates it
                 attendees: attendees.map(a => ({ email: a.email, responseStatus: a.responseStatus, displayName: a.displayName }))
             }
 
             // 4. Upsert Session (Check if exists by Google ID OR Date+Title)
-            let matchQuery = supabase.from('sessions').select('id, google_event_id, youtube_video_id').eq('google_event_id', event.id).maybeSingle()
+            // Fix: Select summary_html and other fields to check for existence
+            let matchQuery = supabase.from('sessions').select('id, google_event_id, youtube_video_id, summary_html, video_embed_url, doc_embed_url').eq('google_event_id', event.id).maybeSingle()
 
             // If google_event_id isn't in DB yet (legacy), try finding by date + title
             let { data: existing, error: matchError } = await matchQuery
@@ -258,7 +273,7 @@ async function syncEvents() {
             if (!existing) {
                 const { data: legacyMatch } = await supabase
                     .from('sessions')
-                    .select('id, google_event_id, youtube_video_id')
+                    .select('id, google_event_id, youtube_video_id, summary_html, video_embed_url, doc_embed_url')
                     .eq('date', startTime)
                     .eq('title', title)
                     .maybeSingle()
@@ -301,6 +316,26 @@ async function syncEvents() {
 
             if (existing) {
                 console.log('  🔄 Updating existing session...')
+
+                // --- DATA PRESERVATION LOGIC ---
+                // If we have existing rich data (from Moodle/Admin) and Sync provides null, PRESERVE existing.
+
+                if (!sessionData.summary_html && existing.summary_html) {
+                    delete sessionData.summary_html // Keep existing HTML
+                }
+
+                if (!sessionData.video_embed_url && existing.video_embed_url) {
+                    delete sessionData.video_embed_url // Keep existing Video URL
+                }
+
+                if (!sessionData.doc_embed_url && existing.doc_embed_url) {
+                    delete sessionData.doc_embed_url // Keep existing Doc URL
+                }
+
+                if (!sessionData.youtube_video_id && existing.youtube_video_id) {
+                    delete sessionData.youtube_video_id // Keep existing YouTube ID
+                }
+
                 const { error: updateError } = await supabase
                     .from('sessions')
                     .update(sessionData)
@@ -324,6 +359,11 @@ async function syncEvents() {
         }
 
         console.log(`\n🎉 Sync complete. ${syncedCount} new sessions created.`)
+
+        // Run AI Summary generation directly
+        console.log('🧠 Running AI Summary Generator...')
+        const { generateSummaries } = require('./generate-summary.cjs')
+        await generateSummaries()
 
     } catch (error) {
         console.error('❌ Error during sync execution:', error)

@@ -35,5 +35,8 @@ export interface Session {
     doc_embed_url?: string
     summary_text?: string
     summary_html?: string
+    organizations?: {
+        name: string
+    }
     created_at: string
 }

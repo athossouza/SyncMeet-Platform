@@ -13,7 +13,7 @@ async function runMigration() {
         await client.connect()
         console.log('🔌 Connected to Database.')
 
-        const sql = fs.readFileSync(path.join(__dirname, 'migration_youtube.sql'), 'utf8');
+        const sql = fs.readFileSync(path.join(__dirname, 'migration_add_summary_html.sql'), 'utf8');
 
         console.log('🚧 Running Migration...')
         await client.query(sql)

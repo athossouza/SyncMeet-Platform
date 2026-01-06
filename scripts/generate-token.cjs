@@ -9,7 +9,9 @@ const TOKEN_PATH = path.join(__dirname, '../token.json');
 
 const SCOPES = [
     'https://www.googleapis.com/auth/calendar.readonly',
-    'https://www.googleapis.com/auth/drive.readonly'
+    'https://www.googleapis.com/auth/drive.readonly',
+    'https://www.googleapis.com/auth/youtube',
+    'https://www.googleapis.com/auth/youtube.upload'
 ];
 
 async function main() {
@@ -28,8 +30,8 @@ async function main() {
 
     // Check if we already have a token
     if (fs.existsSync(TOKEN_PATH)) {
-        console.log('✅ token.json already exists.');
-        return;
+        console.log('⚠️  token.json already exists. Proceeding will OVERWRITE it.');
+        // return; // Allow overwrite
     }
 
     const authUrl = oAuth2Client.generateAuthUrl({
@@ -38,7 +40,13 @@ async function main() {
     });
 
     // Check for code argument
-    const codeArg = process.argv[2];
+    let codeArg = process.argv[2];
+
+    // Ignore flag if present as first arg
+    if (codeArg === '--url-only') {
+        codeArg = undefined;
+    }
+
     if (codeArg) {
         console.log(`Using code from argument: ${codeArg.substring(0, 10)}...`);
         try {
@@ -59,6 +67,10 @@ async function main() {
     }
 
     console.log('⚠️  Authorize this app by visiting this url:', authUrl);
+
+    if (process.argv.includes('--url-only')) {
+        return;
+    }
 
     const rl = readline.createInterface({
         input: process.stdin,
