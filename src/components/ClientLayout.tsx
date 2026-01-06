@@ -1,71 +1,157 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link as RouterLink } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
-import { Button } from '@/components/ui/button'
-import { LogOut } from 'lucide-react'
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+    AppBar,
+    Box,
+    Toolbar,
+    Typography,
+    Button,
+    IconButton,
+    Menu,
+    MenuItem,
+    Avatar,
+    Container,
+    Divider,
+    Stack
+} from '@mui/material'
+import { Logout as LogoutIcon, Dashboard as DashboardIcon } from '@mui/icons-material'
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     const { signOut, profile } = useAuth()
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+    const open = Boolean(anchorEl)
+
+    const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget)
+    }
+
+    const handleMenuClose = () => {
+        setAnchorEl(null)
+    }
+
+    const handleLogout = () => {
+        handleMenuClose()
+        signOut()
+    }
 
     return (
-        <div className="min-h-screen bg-background">
+        <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', display: 'flex', flexDirection: 'column' }}>
             {/* Header */}
-            <header className="sticky top-0 z-30 w-full border-b border-border bg-background/80 backdrop-blur">
-                <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-                    <Link to="/portal" className="text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity">
-                        Sync Meet
-                    </Link>
+            <AppBar position="sticky" elevation={0} sx={{
+                bgcolor: 'background.default',
+                borderBottom: '1px solid',
+                borderColor: 'divider',
+                backdropFilter: 'blur(8px)',
+                background: 'rgba(5, 20, 38, 0.8)' // transparent background.default
+            }}>
+                <Container maxWidth="xl">
+                    <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
 
-                    <div className="flex items-center gap-4">
-                        {profile?.role === 'admin' && (
-                            <Button variant="outline" size="sm" asChild className="hidden md:flex border-blue-500/30 text-blue-400 hover:text-blue-300 hover:bg-blue-500/10">
-                                <Link to="/admin">
+                        <Typography
+                            variant="h6"
+                            component={RouterLink}
+                            to="/portal"
+                            sx={{
+                                fontWeight: 700,
+                                color: 'text.primary',
+                                textDecoration: 'none',
+                                '&:hover': { opacity: 0.8 }
+                            }}
+                        >
+                            Sync Meet
+                        </Typography>
+
+                        <Stack direction="row" spacing={2} alignItems="center">
+                            {profile?.role === 'admin' && (
+                                <Button
+                                    component={RouterLink}
+                                    to="/admin"
+                                    variant="outlined"
+                                    size="small"
+                                    startIcon={<DashboardIcon />}
+                                    sx={{ display: { xs: 'none', md: 'inline-flex' } }}
+                                >
                                     Painel Admin
-                                </Link>
-                            </Button>
-                        )}
-
-                        <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                                    <Avatar className="h-8 w-8">
-                                        <AvatarImage src={profile?.avatar_url} alt={profile?.email} />
-                                        <AvatarFallback>{profile?.email?.charAt(0).toUpperCase()}</AvatarFallback>
-                                    </Avatar>
                                 </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent className="w-56" align="end" forceMount>
-                                <DropdownMenuLabel className="font-normal">
-                                    <div className="flex flex-col space-y-1">
-                                        <p className="text-sm font-medium leading-none">{profile?.email}</p>
-                                        <p className="text-xs leading-none text-muted-foreground">
-                                            {profile?.role}
-                                        </p>
-                                    </div>
-                                </DropdownMenuLabel>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuItem onClick={signOut} className="text-red-500 focus:text-red-500 focus:bg-red-50">
-                                    <LogOut className="mr-2 h-4 w-4" />
-                                    Sair
-                                </DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                    </div>
-                </div>
-            </header>
+                            )}
+
+                            <IconButton
+                                onClick={handleMenuOpen}
+                                size="small"
+                                sx={{ ml: 2 }}
+                                aria-controls={open ? 'account-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}
+                            >
+                                <Avatar
+                                    src={profile?.avatar_url || undefined}
+                                    alt={profile?.email || ''}
+                                    sx={{ width: 32, height: 32, bgcolor: 'primary.main' }}
+                                >
+                                    {profile?.email?.charAt(0).toUpperCase()}
+                                </Avatar>
+                            </IconButton>
+                        </Stack>
+
+                        <Menu
+                            anchorEl={anchorEl}
+                            id="account-menu"
+                            open={open}
+                            onClose={handleMenuClose}
+                            onClick={handleMenuClose}
+                            PaperProps={{
+                                elevation: 0,
+                                sx: {
+                                    overflow: 'visible',
+                                    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                                    mt: 1.5,
+                                    bgcolor: 'background.paper',
+                                    border: '1px solid',
+                                    borderColor: 'divider',
+                                    '&:before': {
+                                        content: '""',
+                                        display: 'block',
+                                        position: 'absolute',
+                                        top: 0,
+                                        right: 14,
+                                        width: 10,
+                                        height: 10,
+                                        bgcolor: 'background.paper',
+                                        transform: 'translateY(-50%) rotate(45deg)',
+                                        zIndex: 0,
+                                        borderLeft: '1px solid',
+                                        borderTop: '1px solid',
+                                        borderColor: 'divider'
+                                    },
+                                },
+                            }}
+                            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                        >
+                            <Box sx={{ px: 2, py: 1 }}>
+                                <Typography variant="subtitle2" noWrap>
+                                    {profile?.email}
+                                </Typography>
+                                <Typography variant="caption" color="text.secondary">
+                                    {profile?.role}
+                                </Typography>
+                            </Box>
+                            <Divider />
+                            <MenuItem onClick={handleLogout} sx={{ color: 'error.main' }}>
+                                <LogoutIcon fontSize="small" sx={{ mr: 1 }} />
+                                Sair
+                            </MenuItem>
+                        </Menu>
+
+                    </Toolbar>
+                </Container>
+            </AppBar>
 
             {/* Main Content */}
-            <main className="container mx-auto px-4 py-8">
+            <Container component="main" maxWidth="xl" sx={{ flex: 1, py: 4 }}>
                 {children}
-            </main>
-        </div>
+            </Container>
+        </Box>
     )
 }

@@ -1,15 +1,21 @@
 import { useState, useRef, useEffect } from 'react'
 import YouTube, { YouTubeProps } from 'react-youtube'
 import {
-    Play,
-    Pause,
-    Volume2,
-    VolumeX,
-    Maximize,
-    Minimize
-} from 'lucide-react'
-import { Slider } from '@/components/ui/slider'
-import { cn } from '@/lib/utils'
+    Slider,
+    Box,
+    IconButton,
+    Typography,
+    Stack,
+    Fade
+} from '@mui/material'
+import {
+    PlayArrow as PlayIcon,
+    Pause as PauseIcon,
+    VolumeUp as VolumeUpIcon,
+    VolumeOff as VolumeOffIcon,
+    Fullscreen as FullscreenIcon,
+    FullscreenExit as FullscreenExitIcon
+} from '@mui/icons-material'
 
 interface CustomVideoPlayerProps {
     videoId: string
@@ -33,20 +39,17 @@ export default function CustomVideoPlayer({ videoId, className }: CustomVideoPla
         height: '100%',
         width: '100%',
         playerVars: {
-            // https://developers.google.com/youtube/player_parameters
             autoplay: 0,
-            controls: 0, // Hide native controls
-            disablekb: 1, // Disable keyboard controls
-            fs: 0, // Hide fullscreen button
-            iv_load_policy: 3, // Hide annotations
+            controls: 0,
+            disablekb: 1,
+            fs: 0,
+            iv_load_policy: 3,
             modestbranding: 1,
-            rel: 0, // Show related videos from same channel only (but we hide them locally)
-            showinfo: 0, // Deprecated but good to keep
+            rel: 0,
+            showinfo: 0,
             ecver: 2
         },
     }
-
-    // --- Event Handlers ---
 
     const onReady = (event: any) => {
         setPlayer(event.target)
@@ -55,11 +58,9 @@ export default function CustomVideoPlayer({ videoId, className }: CustomVideoPla
     }
 
     const onStateChange = (event: any) => {
-        // PlayerState.PLAYING = 1, PAUSED = 2
         setIsPlaying(event.data === 1)
     }
 
-    // Toggle Play/Pause
     const togglePlay = () => {
         if (!player) return
         if (isPlaying) {
@@ -69,7 +70,6 @@ export default function CustomVideoPlayer({ videoId, className }: CustomVideoPla
         }
     }
 
-    // Sync Timer
     useEffect(() => {
         if (!player || !isPlaying) return
 
@@ -80,25 +80,22 @@ export default function CustomVideoPlayer({ videoId, className }: CustomVideoPla
         return () => clearInterval(interval)
     }, [player, isPlaying])
 
-    // Format Time
     const formatTime = (seconds: number) => {
         const mins = Math.floor(seconds / 60)
         const secs = Math.floor(seconds % 60)
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`
     }
 
-    // Seek
-    const handleSeek = (value: number[]) => {
+    const handleSeek = (_: Event, newValue: number | number[]) => {
         if (!player) return
-        const newTime = value[0]
+        const newTime = newValue as number
         setCurrentTime(newTime)
         player.seekTo(newTime, true)
     }
 
-    // Volume
-    const handleVolume = (value: number[]) => {
+    const handleVolume = (_: Event, newValue: number | number[]) => {
         if (!player) return
-        const newVol = value[0]
+        const newVol = newValue as number
         setVolume(newVol)
         player.setVolume(newVol)
         if (newVol > 0 && isMuted) {
@@ -119,7 +116,6 @@ export default function CustomVideoPlayer({ videoId, className }: CustomVideoPla
         }
     }
 
-    // Fullscreen
     const toggleFullscreen = () => {
         if (!containerRef.current) return
 
@@ -134,7 +130,6 @@ export default function CustomVideoPlayer({ videoId, className }: CustomVideoPla
         }
     }
 
-    // Auto-hide controls
     const handleMouseMove = () => {
         setShowControls(true)
         if (controlsTimeoutRef.current) {
@@ -152,104 +147,139 @@ export default function CustomVideoPlayer({ videoId, className }: CustomVideoPla
     }
 
     return (
-        <div
+        <Box
             ref={containerRef}
-            className={cn("relative group bg-black overflow-hidden select-none", className)}
+            sx={{
+                position: 'relative',
+                bgcolor: 'black',
+                overflow: 'hidden',
+                userSelect: 'none',
+                ...(!className ? { width: '100%', height: '100%' } : {})
+            }}
+            className={className}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
-            {/* The YouTube Player */}
-            {/* Pointer events none on the iframe container ensures clicks go to our overlay? 
-                Actually, we need pointer-events-auto for Youtube to register 'views' if needed 
-                BUT masking title requires blocking top interaction. 
-                Let's use a BLOCKER div for the top area, but leave center clickable? 
-                Actually, Moodle example blocks EVERYTHING and handles clicks via overlay? 
-                Let's block everything and click-to-play via the overlay. 
-            */}
-
-            <div className="absolute inset-0 pointer-events-none">
+            <Box sx={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
                 <YouTube
                     videoId={videoId}
-                    title={undefined} // Attempt to reduce title rendering
                     opts={opts}
-                    className="w-full h-full"
-                    iframeClassName="w-full h-full"
+                    style={{ width: '100%', height: '100%' }}
+                    iframeClassName="" // Clear Tailwind class
                     onReady={onReady}
                     onStateChange={onStateChange}
                 />
-            </div>
+            </Box>
 
-            {/* INTENTIONAL BLOCKER: Captures ALL clicks to prevent YouTube UI interaction (Title, Share, Profile) */}
-            {/* We will delegate clicks on this overlay to Play/Pause */}
-            <div
-                className="absolute inset-0 cursor-pointer"
+            <Box
                 onClick={togglePlay}
+                sx={{
+                    position: 'absolute',
+                    inset: 0,
+                    cursor: 'pointer'
+                }}
             />
 
-            {/* Custom Control Bar */}
-            <div
-                className={cn(
-                    "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-4 transition-opacity duration-300 flex flex-col gap-2 z-10",
-                    showControls ? "opacity-100" : "opacity-0"
-                )}
-            >
-                {/* Progress Bar */}
-                <div className="w-full cursor-pointer group/slider" onClick={(e) => e.stopPropagation()}>
-                    <Slider
-                        value={[currentTime]}
-                        max={duration}
-                        step={1}
-                        onValueChange={handleSeek}
-                        className="cursor-pointer"
-                    />
-                </div>
+            <Fade in={showControls}>
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
+                        p: 2,
+                        zIndex: 10,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 1
+                    }}
+                >
+                    {/* Progress Bar */}
+                    <Box onClick={(e) => e.stopPropagation()} sx={{ px: 1 }}>
+                        <Slider
+                            value={currentTime}
+                            max={duration}
+                            onChange={handleSeek}
+                            size="small"
+                            sx={{
+                                color: 'primary.main',
+                                height: 4,
+                                '& .MuiSlider-thumb': {
+                                    width: 12,
+                                    height: 12,
+                                    transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
+                                    '&:before': { boxShadow: '0 2px 12px 0 rgba(0,0,0,0.4)' },
+                                    '&:hover, &.Mui-focusVisible': {
+                                        boxShadow: '0px 0px 0px 8px rgb(44 116 179 / 16%)'
+                                    },
+                                    '&.Mui-active': { width: 14, height: 14 }
+                                },
+                                '& .MuiSlider-rail': { opacity: 0.28 }
+                            }}
+                        />
+                    </Box>
 
-                <div className="flex items-center justify-between" onClick={(e) => e.stopPropagation()}>
-                    <div className="flex items-center gap-4">
-                        {/* Play/Pause */}
-                        <button onClick={togglePlay} className="text-white hover:text-blue-400 transition-colors">
-                            {isPlaying ? <Pause className="w-6 h-6 fill-current" /> : <Play className="w-6 h-6 fill-current" />}
-                        </button>
+                    <Stack direction="row" justifyContent="space-between" alignItems="center" onClick={(e) => e.stopPropagation()}>
+                        <Stack direction="row" alignItems="center" spacing={2}>
+                            <IconButton onClick={togglePlay} sx={{ color: 'white' }}>
+                                {isPlaying ? <PauseIcon /> : <PlayIcon />}
+                            </IconButton>
 
-                        {/* Volume */}
-                        <div className="flex items-center gap-2 group/volume">
-                            <button onClick={toggleMute} className="text-white hover:text-blue-400 transition-colors">
-                                {isMuted || volume === 0 ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                            </button>
-                            <div className="w-0 overflow-hidden group-hover/volume:w-24 transition-all duration-300">
+                            <Stack direction="row" alignItems="center" spacing={1} sx={{ width: 140 }}>
+                                <IconButton onClick={toggleMute} sx={{ color: 'white' }}>
+                                    {isMuted || volume === 0 ? <VolumeOffIcon fontSize="small" /> : <VolumeUpIcon fontSize="small" />}
+                                </IconButton>
                                 <Slider
-                                    value={[isMuted ? 0 : volume]}
-                                    max={100}
-                                    step={1}
-                                    onValueChange={handleVolume}
-                                    className="w-20"
+                                    value={isMuted ? 0 : volume}
+                                    onChange={handleVolume}
+                                    size="small"
+                                    sx={{ color: 'white', width: 80 }}
                                 />
-                            </div>
-                        </div>
+                            </Stack>
 
-                        {/* Time */}
-                        <span className="text-sm text-slate-300 font-mono">
-                            {formatTime(currentTime)} / {formatTime(duration)}
-                        </span>
-                    </div>
+                            <Typography variant="caption" sx={{ color: 'grey.300', fontFamily: 'monospace' }}>
+                                {formatTime(currentTime)} / {formatTime(duration)}
+                            </Typography>
+                        </Stack>
 
-                    <div className="flex items-center gap-4">
-                        {/* Fullscreen */}
-                        <button onClick={toggleFullscreen} className="text-white hover:text-blue-400 transition-colors">
-                            {isFullscreen ? <Minimize className="w-5 h-5" /> : <Maximize className="w-5 h-5" />}
-                        </button>
-                    </div>
-                </div>
-            </div>
+                        <IconButton onClick={toggleFullscreen} sx={{ color: 'white' }}>
+                            {isFullscreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
+                        </IconButton>
+                    </Stack>
+                </Box>
+            </Fade>
 
-            {/* Big Play Button (Centered) - Only when paused/not started */}
+            {/* Big Play Button Overlay */}
             {!isPlaying && (
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-                    <div className="w-16 h-16 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20">
-                        <Play className="w-8 h-8 text-white fill-white ml-1" />
-                    </div>
-                </div>
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        inset: 0,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        pointerEvents: 'none',
+                        zIndex: 0
+                    }}
+                >
+                    <Box
+                        sx={{
+                            width: 64,
+                            height: 64,
+                            borderRadius: '50%',
+                            bgcolor: 'rgba(0,0,0,0.5)',
+                            backdropFilter: 'blur(4px)',
+                            border: '1px solid rgba(255,255,255,0.2)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <PlayIcon sx={{ fontSize: 40, color: 'white', ml: 0.5 }} />
+                    </Box>
+                </Box>
             )}
-        </div>
+        </Box>
     )
 }

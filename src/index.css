@@ -1,92 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  :root {
-    /* Atveza Brand Colors (Reference: #051426) */
-    --background: 213 77% 8%;
-    --foreground: 0 0% 100%;
-
-    /* Card: #0A2647 */
-    --card: 212 75% 16%;
-    --card-foreground: 0 0% 100%;
-
-    --popover: 212 75% 16%;
-    --popover-foreground: 0 0% 100%;
-
-    /* Primary: #2C74B3 */
-    --primary: 208 60% 44%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    /* Muted: #0f3057 */
-    --muted: 213 70% 20%;
-    --muted-foreground: 215 20% 65%;
-    /* #94A3B8 */
-
-    /* Accent: #144272 */
-    --accent: 211 70% 26%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    /* Border: #1e4b85 */
-    --border: 214 63% 32%;
-    --input: 214 63% 32%;
-
-    --ring: 208 60% 44%;
-    --radius: 0.75rem;
-
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
-
-  .dark {
-    /* Same as root to enforce consistency */
-    --background: 213 77% 8%;
-    --foreground: 0 0% 100%;
-    --card: 212 75% 16%;
-    --card-foreground: 0 0% 100%;
-    --popover: 212 75% 16%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 208 60% 44%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 213 70% 20%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 211 70% 26%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214 63% 32%;
-    --input: 214 63% 32%;
-    --ring: 208 60% 44%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
-    /* Explicitly set font */
-  }
+/* Basic Resets handled by MUI CssBaseline, but ensuring Inter font globally */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #051426;
+  /* Match theme background.default */
+  color: #ffffff;
 }

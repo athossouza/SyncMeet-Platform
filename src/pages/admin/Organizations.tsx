@@ -2,27 +2,30 @@ import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { supabase } from '@/lib/supabase'
 import { Organization } from '@/types'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import {
+    Box,
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    TextField,
+    Typography,
+    Paper,
     Table,
     TableBody,
     TableCell,
+    TableContainer,
     TableHead,
-    TableHeader,
     TableRow,
-} from '@/components/ui/table'
+    IconButton,
+    Stack,
+    CircularProgress
+} from '@mui/material'
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-    DialogFooter,
-} from '@/components/ui/dialog'
-import { Plus, Loader2 } from 'lucide-react'
+    Add as AddIcon
+} from '@mui/icons-material'
 
 export default function AdminOrganizations() {
     const [isOpen, setIsOpen] = useState(false)
@@ -65,82 +68,118 @@ export default function AdminOrganizations() {
         createOrg.mutate()
     }
 
-    if (isLoading) return <Loader2 className="h-8 w-8 animate-spin" />
+    if (isLoading) return (
+        <Box display="flex" justifyContent="center" alignItems="center" height="100%">
+            <CircularProgress color="primary" />
+        </Box>
+    )
 
     return (
-        <div className="space-y-6">
-            <div className="flex items-center justify-between">
-                <div>
-                    <h2 className="text-3xl font-bold tracking-tight text-white">Organizações</h2>
-                    <p className="text-muted-foreground">Gerencie as empresas clientes e seus domínios.</p>
-                </div>
-                <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                    <DialogTrigger asChild>
-                        <Button>
-                            <Plus className="mr-2 h-4 w-4" /> Nova Organização
-                        </Button>
-                    </DialogTrigger>
-                    <DialogContent>
-                        <DialogHeader>
-                            <DialogTitle>Adicionar Organização</DialogTitle>
-                            <DialogDescription>
-                                Crie uma nova organização para permitir que usuários desse domínio acessem o portal.
-                            </DialogDescription>
-                        </DialogHeader>
-                        <div className="space-y-4 py-4">
-                            <div className="space-y-2">
-                                <Label htmlFor="name">Nome da Empresa</Label>
-                                <Input id="name" value={newOrgName} onChange={(e) => setNewOrgName(e.target.value)} placeholder="Ex: Acme Corp" />
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="domain">Domínio (sem @)</Label>
-                                <Input id="domain" value={newOrgDomain} onChange={(e) => setNewOrgDomain(e.target.value)} placeholder="ex: acme.com" />
-                            </div>
-                        </div>
-                        <DialogFooter>
-                            <Button variant="outline" onClick={() => setIsOpen(false)}>Cancelar</Button>
-                            <Button onClick={handleCreate}>Criar Organização</Button>
-                        </DialogFooter>
-                    </DialogContent>
-                </Dialog>
-            </div>
+        <Box>
+            <Stack direction="row" alignItems="center" justifyContent="space-between" mb={4}>
+                <Box>
+                    <Typography variant="h4" fontWeight="bold" gutterBottom>
+                        Organizações
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary">
+                        Gerencie as empresas clientes e seus domínios.
+                    </Typography>
+                </Box>
+                <Button
+                    variant="contained"
+                    startIcon={<AddIcon />}
+                    onClick={() => setIsOpen(true)}
+                >
+                    Nova Organização
+                </Button>
+            </Stack>
 
-            <div className="rounded-md border border-white/10 overflow-hidden">
-                <Table>
-                    <TableHeader className="bg-white/5">
-                        <TableRow className="border-white/10 hover:bg-white/10">
-                            <TableHead className="text-slate-300">Nome</TableHead>
-                            <TableHead className="text-slate-300">Domínio</TableHead>
-                            <TableHead className="text-slate-300">Criado em</TableHead>
-                            <TableHead className="text-right text-slate-300">Ações</TableHead>
+            <Dialog open={isOpen} onClose={() => setIsOpen(false)} maxWidth="sm" fullWidth>
+                <form onSubmit={handleCreate}>
+                    <DialogTitle>Adicionar Organização</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText sx={{ mb: 2 }}>
+                            Crie uma nova organização para permitir que usuários desse domínio acessem o portal.
+                        </DialogContentText>
+                        <Stack spacing={3} sx={{ mt: 1 }}>
+                            <TextField
+                                autoFocus
+                                id="name"
+                                label="Nome da Empresa"
+                                type="text"
+                                fullWidth
+                                variant="outlined"
+                                value={newOrgName}
+                                onChange={(e) => setNewOrgName(e.target.value)}
+                                placeholder="Ex: Acme Corp"
+                                required
+                            />
+                            <TextField
+                                id="domain"
+                                label="Domínio (sem @)"
+                                type="text"
+                                fullWidth
+                                variant="outlined"
+                                value={newOrgDomain}
+                                onChange={(e) => setNewOrgDomain(e.target.value)}
+                                placeholder="ex: acme.com"
+                                required
+                            />
+                        </Stack>
+                    </DialogContent>
+                    <DialogActions sx={{ px: 3, pb: 2 }}>
+                        <Button onClick={() => setIsOpen(false)} color="inherit">Cancelar</Button>
+                        <Button type="submit" variant="contained" disabled={createOrg.isPending}>
+                            {createOrg.isPending ? 'Criando...' : 'Criar Organização'}
+                        </Button>
+                    </DialogActions>
+                </form>
+            </Dialog>
+
+            <TableContainer component={Paper} elevation={0} sx={{ border: '1px solid', borderColor: 'divider' }}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead sx={{ bgcolor: 'action.hover' }}>
+                        <TableRow>
+                            <TableCell>Nome</TableCell>
+                            <TableCell>Domínio</TableCell>
+                            <TableCell>Criado em</TableCell>
+                            <TableCell align="right">Ações</TableCell>
                         </TableRow>
-                    </TableHeader>
+                    </TableHead>
                     <TableBody>
-                        {isLoading ? (
+                        {orgs?.length === 0 ? (
                             <TableRow>
-                                <TableCell colSpan={4} className="text-center h-24 text-muted-foreground">Carregando...</TableCell>
-                            </TableRow>
-                        ) : orgs?.length === 0 ? (
-                            <TableRow>
-                                <TableCell colSpan={4} className="text-center h-24 text-muted-foreground">Nenhuma organização encontrada.</TableCell>
+                                <TableCell colSpan={4} align="center" sx={{ py: 3, color: 'text.secondary' }}>
+                                    Nenhuma organização encontrada.
+                                </TableCell>
                             </TableRow>
                         ) : (
                             orgs?.map((org) => (
-                                <TableRow key={org.id} className="border-white/10 hover:bg-white/5">
-                                    <TableCell className="font-medium text-slate-200">{org.name}</TableCell>
-                                    <TableCell className="text-slate-400">{org.domain}</TableCell>
-                                    <TableCell className="text-slate-400">{new Date(org.created_at).toLocaleDateString()}</TableCell>
-                                    <TableCell className="text-right">
-                                        <Button variant="ghost" size="icon" className="hover:bg-white/10 text-slate-400 hover:text-white">
-                                            <Plus className="h-4 w-4" />
-                                        </Button>
+                                <TableRow
+                                    key={org.id}
+                                    hover
+                                    sx={{
+                                        '&:last-child td, &:last-child th': { border: 0 },
+                                        transition: 'background-color 0.2s',
+                                        cursor: 'default'
+                                    }}
+                                >
+                                    <TableCell component="th" scope="row" sx={{ fontWeight: 500 }}>
+                                        {org.name}
+                                    </TableCell>
+                                    <TableCell sx={{ color: 'text.secondary' }}>{org.domain}</TableCell>
+                                    <TableCell sx={{ color: 'text.secondary' }}>{new Date(org.created_at).toLocaleDateString()}</TableCell>
+                                    <TableCell align="right">
+                                        <IconButton size="small" color="primary">
+                                            <AddIcon />
+                                        </IconButton>
                                     </TableCell>
                                 </TableRow>
                             ))
                         )}
                     </TableBody>
                 </Table>
-            </div>
-        </div>
+            </TableContainer>
+        </Box>
     )
 }

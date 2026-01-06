@@ -1,10 +1,36 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link as RouterLink } from 'react-router-dom'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState, useMemo } from 'react'
 import { supabase } from '@/lib/supabase'
 import { Session, Profile } from '@/types'
-import { Button } from '@/components/ui/button'
-import { Loader2, ArrowLeft, Download, CheckCircle2, Clock, Calendar, HelpCircle, ChevronDown, ChevronUp, Pencil } from 'lucide-react'
+import {
+    Box,
+    Button,
+    Grid,
+    Stack,
+    Typography,
+    Paper,
+    Tab,
+    Tabs,
+    IconButton,
+    Avatar,
+    Chip,
+    Divider,
+    Collapse,
+    CircularProgress
+} from '@mui/material'
+import {
+    ArrowBack as ArrowBackIcon,
+    CalendarToday as CalendarIcon,
+    AccessTime as ClockIcon,
+    Download as DownloadIcon,
+    Edit as EditIcon,
+    ExpandMore as ExpandMoreIcon,
+    ExpandLess as ExpandLessIcon,
+    CheckCircle as CheckCircleIcon,
+    Help as HelpIcon,
+    Videocam as MeetIcon
+} from '@mui/icons-material'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import CustomVideoPlayer from '@/components/CustomVideoPlayer'
@@ -22,7 +48,7 @@ export default function SessionDetail() {
     const { id } = useParams()
     const queryClient = useQueryClient()
     const [activeTab, setActiveTab] = useState<'notes' | 'transcription'>('notes')
-    const [isNotesExpanded, setIsNotesExpanded] = useState(false)
+    const [isNotesExpanded, setIsNotesExpanded] = useState(true) // Default to true for better visibility
     const [isEditing, setIsEditing] = useState(false)
 
     // Fetch Session
@@ -48,7 +74,6 @@ export default function SessionDetail() {
             const { data: { user } } = await supabase.auth.getUser()
             if (!user) return null
 
-            // Check profiles table (assuming it exists and matches types)
             const { data: profile } = await supabase
                 .from('profiles')
                 .select('*')
@@ -59,7 +84,7 @@ export default function SessionDetail() {
         }
     })
 
-    const isAdmin = userProfile?.role === 'admin' || userProfile?.email === 'athos@atveza.com' // Fallback for specific user
+    const isAdmin = userProfile?.role === 'admin' || userProfile?.email === 'athos@atveza.com'
 
     const handleSaveNotes = async (newHtml: string) => {
         try {
@@ -77,7 +102,6 @@ export default function SessionDetail() {
                 return
             }
 
-            // Invalidate query to refresh UI
             queryClient.invalidateQueries({ queryKey: ['session', id] })
             setIsEditing(false)
         } catch (error) {
@@ -89,7 +113,7 @@ export default function SessionDetail() {
     const contentParts = useMemo(() => {
         if (!session?.summary_html) return { notes: null, transcript: null }
 
-        // Find the "Transcrição" Header block (usually <p class="title">...Transcrição...</p>)
+        // Find the "Transcrição" Header block
         const splitRegex = /<p class="title"[^>]*>(?:(?!<\/p>)[\s\S])*Transcri(?:ç|&ccedil;)(?:ã|&atilde;)o[\s\S]*?<\/p>/i
         const match = session.summary_html.match(splitRegex)
 
@@ -104,12 +128,12 @@ export default function SessionDetail() {
     }, [session?.summary_html])
 
     if (isLoading) return (
-        <div className="flex justify-center items-center h-screen">
-            <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-        </div>
+        <Box display="flex" justifyContent="center" alignItems="center" height="80vh">
+            <CircularProgress />
+        </Box>
     )
 
-    if (!session) return <div>Sessão não encontrada</div>
+    if (!session) return <Typography>Sessão não encontrada</Typography>
 
     // Helper to format duration
     const formatDuration = (seconds?: number, start?: string, end?: string) => {
@@ -120,7 +144,6 @@ export default function SessionDetail() {
             if (hours > 0) return `${hours}h ${minutes}m ${secs}s`
             return `${minutes}m ${secs}s`
         }
-        // Fallback to schedule range
         if (start && end) {
             const diff = new Date(end).getTime() - new Date(start).getTime()
             const mins = Math.floor(diff / 60000)
@@ -129,266 +152,321 @@ export default function SessionDetail() {
         return '--'
     }
 
-    return (
-        <div className="space-y-6 flex flex-col pb-10">
-            <div className="flex items-center gap-4">
-                <Button variant="ghost" size="sm" asChild>
-                    <Link to="/portal">
-                        <ArrowLeft className="mr-2 h-4 w-4" />
-                        Voltar
-                    </Link>
-                </Button>
-                <div>
-                    <h1 className="text-2xl font-bold tracking-tight text-white">{session.title}</h1>
-                    <p className="text-sm text-gray-400">
-                        {format(new Date(session.date), "PPPP", { locale: ptBR })}
-                    </p>
-                </div>
-            </div>
+    const hasVideo = !!(session.youtube_video_id || session.video_embed_url)
 
-            <div className="flex-1 min-h-0 space-y-6">
+    // -- Sub-Components (Inline for easier state access) --
 
-                {/* Dynamic Layout */}
-                {(() => {
-                    const hasVideo = !!(session.youtube_video_id || session.video_embed_url)
+    const VideoSection = (
+        <Box sx={{
+            position: 'relative',
+            paddingTop: '56.25%', // 16:9 Aspect Ratio
+            bgcolor: 'black',
+            borderRadius: 2,
+            overflow: 'hidden',
+            border: '1px solid',
+            borderColor: 'divider',
+            boxShadow: 3
+        }}>
+            {hasVideo ? (
+                <Box sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+                    <CustomVideoPlayer
+                        videoId={session.youtube_video_id || extractYoutubeId(session.video_embed_url) || ''}
+                    />
+                </Box>
+            ) : (
+                <Stack
+                    justifyContent="center"
+                    alignItems="center"
+                    sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', color: 'text.disabled' }}
+                >
+                    <Typography>Nenhum vídeo disponível</Typography>
+                </Stack>
+            )}
+        </Box>
+    )
 
-                    // Components
-                    const VideoSection = (
-                        <div className="lg:col-span-2 space-y-4">
-                            <div className="bg-black aspect-video rounded-lg overflow-hidden shadow-lg relative border border-white/10 flex flex-col">
-                                {hasVideo ? (
-                                    <CustomVideoPlayer
-                                        videoId={session.youtube_video_id || extractYoutubeId(session.video_embed_url) || ''}
-                                        className="w-full h-full absolute inset-0"
-                                    />
-                                ) : (
-                                    // Fallback if needed, though we hide this section if no video in new layout
-                                    <div className="flex flex-col items-center justify-center h-full text-slate-500 gap-2">
-                                        <p>Nenhum vídeo disponível</p>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    )
+    const DetailsSection = (
+        <Paper
+            variant="outlined"
+            sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                bgcolor: 'background.paper', // Ensure distinct card background
+                borderColor: 'divider'
+            }}
+        >
+            <Box sx={{ p: 2, borderBottom: '1px solid', borderColor: 'divider' }}>
+                <Typography variant="subtitle2" fontWeight="bold" color="text.primary">
+                    Detalhes da Sessão
+                </Typography>
+            </Box>
+            <Stack spacing={3} sx={{ p: 3, flex: 1, overflowY: 'auto' }}>
 
-                    const DetailsSection = (
-                        <div className="flex flex-col h-full lg:h-0 lg:min-h-full">
-                            <div className="bg-card rounded-lg border border-white/10 shadow-sm flex flex-col overflow-hidden h-full">
-                                <div className="p-4 border-b border-white/10 bg-card/50 px-6">
-                                    <h3 className="font-semibold text-white flex items-center gap-2 text-sm">
-                                        Detalhes da Sessão
-                                    </h3>
-                                </div>
-                                <div className="p-4 px-6 flex flex-col gap-6 flex-1 overflow-hidden">
-                                    {/* Date & Time */}
-                                    <div className="grid grid-cols-2 gap-4 shrink-0">
-                                        <div className="space-y-1">
-                                            <div className="flex items-center gap-2 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                                                <Calendar className="w-3 h-3" /> Data
-                                            </div>
-                                            <div className="text-xl text-slate-100 font-bold tracking-tight">
-                                                {format(new Date(session.date), "dd/MM/yyyy", { locale: ptBR })}
-                                            </div>
-                                        </div>
-                                        <div className="space-y-1">
-                                            <div className="flex items-center gap-2 text-xs font-medium text-slate-500 uppercase tracking-wider">
-                                                <Clock className="w-3 h-3" /> Horário
-                                            </div>
-                                            <div className="text-xl text-slate-100 font-medium tracking-tight">
-                                                {format(new Date(session.date), "HH:mm", { locale: ptBR })}
-                                            </div>
-                                        </div>
-                                    </div>
+                {/* Date & Time Grid */}
+                <Grid container spacing={2}>
+                    <Grid size={{ xs: 6 }}>
+                        <Stack spacing={0.5}>
+                            <Stack direction="row" alignItems="center" spacing={1}>
+                                <CalendarIcon fontSize="small" sx={{ fontSize: 16, color: 'primary.main' }} />
+                                <Typography variant="caption" fontWeight="bold" color="text.secondary" sx={{ textTransform: 'uppercase' }}>
+                                    Data
+                                </Typography>
+                            </Stack>
+                            <Typography variant="h6" fontWeight="bold" color="text.primary">
+                                {format(new Date(session.date), "dd/MM/yyyy", { locale: ptBR })}
+                            </Typography>
+                        </Stack>
+                    </Grid>
+                    <Grid size={{ xs: 6 }}>
+                        <Stack spacing={0.5}>
+                            <Stack direction="row" alignItems="center" spacing={1}>
+                                <ClockIcon fontSize="small" sx={{ fontSize: 16, color: 'primary.main' }} />
+                                <Typography variant="caption" fontWeight="bold" color="text.secondary" sx={{ textTransform: 'uppercase' }}>
+                                    Horário
+                                </Typography>
+                            </Stack>
+                            <Typography variant="h6" fontWeight="medium" color="text.primary">
+                                {format(new Date(session.date), "HH:mm", { locale: ptBR })}
+                            </Typography>
+                        </Stack>
+                    </Grid>
+                </Grid>
 
-                                    {/* Duration */}
-                                    <div className="space-y-1 pt-4 border-t border-white/5 shrink-0">
-                                        <label className="text-xs font-medium text-slate-500 uppercase tracking-wider">Duração Real</label>
-                                        <div className="text-2xl font-bold text-emerald-400 tracking-tight">
-                                            {formatDuration(session.duration_seconds, session.date, session.end_date)}
-                                        </div>
-                                    </div>
+                <Divider />
 
-                                    {/* Attendees */}
-                                    {session.attendees && session.attendees.length > 0 && (
-                                        <div className="flex flex-col flex-1 min-h-0 pt-4 border-t border-white/5">
-                                            <div className="flex items-center justify-between mb-3 shrink-0">
-                                                <label className="text-xs font-medium text-slate-500 uppercase tracking-wider">Participantes</label>
-                                                <span className="text-[10px] font-bold text-slate-400 bg-slate-800/50 border border-white/5 px-2 py-0.5 rounded-full">{session.attendees.length}</span>
-                                            </div>
-                                            <div className="space-y-3 overflow-y-auto pr-2 custom-scrollbar flex-1 pb-2">
-                                                {session.attendees.map((attendee, index) => {
-                                                    const isAccepted = attendee.responseStatus === 'accepted'
+                {/* Duration */}
+                <Box>
+                    <Typography variant="caption" fontWeight="bold" color="text.secondary" sx={{ textTransform: 'uppercase', display: 'block', mb: 0.5 }}>
+                        Duração Real
+                    </Typography>
+                    <Typography variant="body1" fontWeight="medium" color="text.primary">
+                        {formatDuration(session.duration_seconds, session.date, session.end_date)}
+                    </Typography>
+                </Box>
 
-                                                    return (
-                                                        <div key={index} className="flex items-center gap-3 text-sm p-2 rounded-lg hover:bg-white/5 transition-colors group">
-                                                            <div className="relative shrink-0">
-                                                                <div className="w-9 h-9 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-xs font-bold border border-white/10 group-hover:border-white/20 transition-colors">
-                                                                    {(attendee.displayName || attendee.email).charAt(0).toUpperCase()}
-                                                                </div>
-                                                                {isAccepted && (
-                                                                    <div className="absolute -bottom-1 -right-1 bg-black rounded-full p-0.5 ring-2 ring-card">
-                                                                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 fill-emerald-500/20" />
-                                                                    </div>
-                                                                )}
-                                                                {!isAccepted && attendee.responseStatus === 'needsAction' && (
-                                                                    <div className="absolute -bottom-1 -right-1 bg-black rounded-full p-0.5 ring-2 ring-card">
-                                                                        <HelpCircle className="w-3.5 h-3.5 text-amber-500" />
-                                                                    </div>
-                                                                )}
-                                                            </div>
-                                                            <div className="flex flex-col min-w-0">
-                                                                <span className="truncate font-medium text-slate-200 group-hover:text-white transition-colors" title={attendee.displayName || attendee.email}>
-                                                                    {attendee.displayName || attendee.email.split('@')[0]}
-                                                                </span>
-                                                                <span className="text-[11px] text-slate-500 truncate">
-                                                                    {isAccepted ? 'Confirmado' : 'Convidado'}
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                        </div>
-                                    )}
+                <Divider />
 
-                                    {/* Meet Link Fallback if no video */}
-                                    {!hasVideo && session.meet_link && (
-                                        <div className="mt-auto pt-4 border-t border-white/5">
-                                            <Button asChild variant="outline" className="w-full border-white/10 hover:bg-white/5">
-                                                <a href={session.meet_link} target="_blank" rel="noreferrer">
-                                                    Acessar Sala do Meet
-                                                </a>
-                                            </Button>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    )
+                {/* Attendees */}
+                {session.attendees && session.attendees.length > 0 && (
+                    <Box flex={1}>
+                        <Stack direction="row" justifyContent="space-between" alignItems="center" mb={1}>
+                            <Typography variant="caption" fontWeight="bold" color="text.secondary" sx={{ textTransform: 'uppercase' }}>
+                                Participantes
+                            </Typography>
+                            <Chip label={session.attendees.length} size="small" color="default" sx={{ height: 20, fontSize: '0.65rem' }} />
+                        </Stack>
 
-                    const NotesSection = (
-                        <div className={`bg-card rounded-lg border border-white/10 shadow-sm flex flex-col overflow-hidden transition-all duration-300 h-auto ${!hasVideo ? 'lg:col-span-2' : ''}`}>
-                            <div
-                                className={`p-4 border-b border-white/10 bg-card font-medium text-sm flex justify-between items-center text-white transition-colors ${hasVideo ? 'cursor-pointer hover:bg-white/5' : ''}`}
-                                onClick={() => hasVideo && setIsNotesExpanded(!isNotesExpanded)}
+                        <Stack spacing={1.5} mt={2}>
+                            {session.attendees.map((attendee, index) => {
+                                const isAccepted = attendee.responseStatus === 'accepted'
+                                const initial = (attendee.displayName || attendee.email).charAt(0).toUpperCase()
+
+                                return (
+                                    <Stack key={index} direction="row" alignItems="center" spacing={1.5}>
+                                        <Box position="relative">
+                                            <Avatar sx={{ width: 32, height: 32, fontSize: 12, bgcolor: 'background.default', color: 'text.primary', border: '1px solid', borderColor: 'divider' }}>
+                                                {initial}
+                                            </Avatar>
+                                            {isAccepted ? (
+                                                <CheckCircleIcon sx={{ position: 'absolute', bottom: -2, right: -2, fontSize: 14, color: 'success.main', bgcolor: 'background.paper', borderRadius: '50%' }} />
+                                            ) : attendee.responseStatus === 'needsAction' && (
+                                                <HelpIcon sx={{ position: 'absolute', bottom: -2, right: -2, fontSize: 14, color: 'warning.main', bgcolor: 'background.paper', borderRadius: '50%' }} />
+                                            )}
+                                        </Box>
+                                        <Box minWidth={0}>
+                                            <Typography variant="body2" fontWeight={500} noWrap title={attendee.displayName || attendee.email} color="text.primary">
+                                                {attendee.displayName || attendee.email.split('@')[0]}
+                                            </Typography>
+                                            <Typography variant="caption" color="text.secondary">
+                                                {isAccepted ? 'Confirmado' : 'Convidado'}
+                                            </Typography>
+                                        </Box>
+                                    </Stack>
+                                )
+                            })}
+                        </Stack>
+                    </Box>
+                )}
+
+                {/* Meet Link Fallback */}
+                {!hasVideo && session.meet_link && (
+                    <Box pt={2}>
+                        <Button
+                            variant="outlined"
+                            fullWidth
+                            startIcon={<MeetIcon />}
+                            href={session.meet_link}
+                            target="_blank"
+                            sx={{ borderColor: 'primary.main', color: 'primary.main' }}
+                        >
+                            Acessar Sala do Meet
+                        </Button>
+                    </Box>
+                )}
+            </Stack>
+        </Paper>
+    )
+
+    const NotesSection = (
+        <Paper variant="outlined" sx={{ overflow: 'hidden' }}>
+            <Box
+                onClick={() => hasVideo && setIsNotesExpanded(!isNotesExpanded)}
+                sx={{
+                    p: 2,
+                    bgcolor: 'action.hover',
+                    borderBottom: isNotesExpanded ? '1px solid' : 'none',
+                    borderColor: 'divider',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    cursor: hasVideo ? 'pointer' : 'default',
+                    transition: 'background-color 0.2s',
+                    '&:hover': hasVideo ? { bgcolor: 'action.selected' } : {}
+                }}
+            >
+                <Stack direction="row" alignItems="center" spacing={1.5}>
+                    <Box sx={{ p: 0.5, bgcolor: 'primary.main', borderRadius: 0.5, color: 'primary.contrastText', display: 'flex' }}>
+                        <DownloadIcon fontSize="small" sx={{ fontSize: 16 }} />
+                    </Box>
+                    <Typography variant="subtitle2" fontWeight="bold">
+                        Notas & Resumo
+                    </Typography>
+                    {hasVideo && (
+                        <Typography variant="caption" color="text.secondary">
+                            {isNotesExpanded ? '(Clique para esconder)' : '(Clique para expandir)'}
+                        </Typography>
+                    )}
+                </Stack>
+
+                <Stack direction="row" alignItems="center" spacing={1}>
+                    {isAdmin && (isNotesExpanded || !hasVideo) && (
+                        <IconButton size="small" onClick={(e) => { e.stopPropagation(); setIsEditing(true); }}>
+                            <EditIcon fontSize="small" />
+                        </IconButton>
+                    )}
+
+                    {(isNotesExpanded || !hasVideo) && contentParts.transcript && !isEditing && (
+                        <Box onClick={(e) => e.stopPropagation()}>
+                            <Tabs
+                                value={activeTab}
+                                onChange={(_, val) => setActiveTab(val)}
+                                sx={{ minHeight: 32, '.MuiTab-root': { minHeight: 32, fontSize: '0.75rem', py: 0.5 } }}
+                                indicatorColor="primary"
                             >
-                                <div className="flex items-center gap-2">
-                                    <span className="bg-blue-500/10 text-blue-400 p-1.5 rounded">
-                                        <Download className="w-4 h-4" />
-                                    </span>
-                                    <span>Notas & Resumo</span>
-                                    {hasVideo && (
-                                        <span className="text-xs text-slate-500 ml-2">
-                                            {isNotesExpanded ? '(Clique para esconder)' : '(Clique para expandir)'}
-                                        </span>
-                                    )}
-                                </div>
+                                <Tab label="Anotações" value="notes" />
+                                <Tab label="Transcrição" value="transcription" />
+                            </Tabs>
+                        </Box>
+                    )}
 
-                                <div className="flex items-center gap-4">
-                                    {isAdmin && (isNotesExpanded || !hasVideo) && (
-                                        <Button
-                                            size="sm"
-                                            variant="ghost"
-                                            className="h-8 w-8 p-0 text-slate-400 hover:text-white"
-                                            onClick={(e) => {
-                                                e.stopPropagation()
-                                                setIsEditing(true)
-                                            }}
-                                        >
-                                            <Pencil className="w-4 h-4" />
-                                        </Button>
-                                    )}
+                    {hasVideo && (isNotesExpanded ? <ExpandLessIcon fontSize="small" /> : <ExpandMoreIcon fontSize="small" />)}
+                </Stack>
+            </Box>
 
-                                    {(isNotesExpanded || !hasVideo) && contentParts.transcript && !isEditing && (
-                                        <div className="flex bg-slate-900 rounded-lg p-1 border border-white/10" onClick={(e) => e.stopPropagation()}>
-                                            <button
-                                                onClick={() => setActiveTab('notes')}
-                                                className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${activeTab === 'notes'
-                                                    ? 'bg-blue-600 text-white shadow-sm'
-                                                    : 'text-slate-400 hover:text-white hover:bg-white/5'
-                                                    }`}
-                                            >
-                                                Anotações
-                                            </button>
-                                            <button
-                                                onClick={() => setActiveTab('transcription')}
-                                                className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${activeTab === 'transcription'
-                                                    ? 'bg-blue-600 text-white shadow-sm'
-                                                    : 'text-slate-400 hover:text-white hover:bg-white/5'
-                                                    }`}
-                                            >
-                                                Transcrição
-                                            </button>
-                                        </div>
-                                    )}
+            <Collapse in={isNotesExpanded || !hasVideo}>
+                <Box sx={{ p: 4, bgcolor: 'background.default', minHeight: 400 }}>
+                    {isEditing ? (
+                        <Box sx={{ maxWidth: 900, mx: 'auto' }}>
+                            <SessionEditor
+                                content={session.summary_html || ''}
+                                onSave={handleSaveNotes}
+                                onCancel={() => setIsEditing(false)}
+                            />
+                        </Box>
+                    ) : session.summary_html ? (
+                        <Box sx={{ maxWidth: 900, mx: 'auto' }}>
+                            {/* "Paper" Document Design for Notes */}
+                            <Paper
+                                elevation={3}
+                                sx={{
+                                    bgcolor: '#ffffff', // White paper look
+                                    color: '#1e293b', // Slate-800 for text (high contrast on white)
+                                    p: { xs: 3, md: 5 }, // Generous padding like a document
+                                    borderRadius: 1,
+                                    minHeight: '60vh',
+                                    typography: 'body1',
+                                    '& *': { color: 'inherit !important' }, // Force distinct color
+                                    '& h1, & h2, & h3, & h4, & h5, & h6': { color: '#0f172a !important', my: 2, fontWeight: 700 }, // Slate-900 headers
+                                    '& p': { mb: 2, lineHeight: 1.7 },
+                                    '& ul, & ol': { pl: 3, mb: 2 },
+                                    '& li': { mb: 0.5 },
+                                    '& strong, & b': { fontWeight: 'bold', color: '#0f172a !important' },
+                                    '& a': { color: '#2563eb !important', textDecoration: 'underline' }, // Blue-600 links
+                                    '& blockquote': { borderLeft: '4px solid #cbd5e1', pl: 2, color: '#475569 !important', fontStyle: 'italic' }
+                                }}
+                            >
+                                <Box
+                                    dangerouslySetInnerHTML={{
+                                        __html: activeTab === 'notes' ? contentParts.notes! : contentParts.transcript!
+                                    }}
+                                />
+                            </Paper>
+                        </Box>
+                    ) : session.doc_embed_url ? (
+                        <iframe
+                            src={session.doc_embed_url}
+                            width="100%"
+                            height="800px"
+                            title="Session Document"
+                            style={{ border: 'none' }}
+                        />
+                    ) : (
+                        <Stack justifyContent="center" alignItems="center" height={300} color="text.secondary">
+                            <Typography>Nenhum documento anexado a esta sessão.</Typography>
+                        </Stack>
+                    )}
+                </Box>
+            </Collapse>
+        </Paper>
+    )
 
-                                    {hasVideo && (isNotesExpanded ? <ChevronUp className="w-5 h-5 text-slate-400" /> : <ChevronDown className="w-5 h-5 text-slate-400" />)}
-                                </div>
-                            </div>
+    return (
+        <Box pb={8}>
+            <Stack direction="row" alignItems="center" spacing={2} mb={4}>
+                <Button
+                    variant="text"
+                    startIcon={<ArrowBackIcon />}
+                    component={RouterLink}
+                    to="/portal"
+                    sx={{ color: 'text.secondary', '&:hover': { color: 'text.primary', bgcolor: 'action.hover' } }}
+                >
+                    Voltar
+                </Button>
+                <Box>
+                    <Typography variant="h4" fontWeight="bold" color="text.primary">
+                        {session.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        {format(new Date(session.date), "PPPP", { locale: ptBR })}
+                    </Typography>
+                </Box>
+            </Stack>
 
-                            {/* Content Area */}
-                            {(isNotesExpanded || !hasVideo) && (
-                                <div className="flex-1 bg-white relative animate-in fade-in slide-in-from-top-2 duration-300">
-                                    {isEditing ? (
-                                        <div className="w-full bg-slate-100/50 flex flex-col items-center py-8">
-                                            <div className="w-full max-w-[850px] bg-[#EFF6FF] shadow-xl rounded-xl border border-[#DBEAFE] p-8">
-                                                <SessionEditor
-                                                    content={session.summary_html || ''}
-                                                    onSave={handleSaveNotes}
-                                                    onCancel={() => setIsEditing(false)}
-                                                />
-                                            </div>
-                                        </div>
-                                    ) : session.summary_html ? (
-                                        <div className="w-full bg-slate-100/50 flex flex-col items-center py-8">
-                                            <div className="w-full max-w-[850px] bg-[#EFF6FF] shadow-xl rounded-xl border border-[#DBEAFE] p-8 md:p-16 prose prose-slate prose-lg focus:outline-none !text-slate-900 prose-headings:!text-slate-900 prose-p:!text-slate-800 prose-li:!text-slate-800 prose-strong:!text-slate-900 prose-a:text-blue-600 hover:prose-a:text-blue-500 transition-all font-sans [&_p]:min-h-[1.5em] [&_p:empty]:h-[1.5em]">
-                                                <div dangerouslySetInnerHTML={{
-                                                    __html: activeTab === 'notes' ? contentParts.notes! : contentParts.transcript!
-                                                }} />
-                                            </div>
-                                        </div>
-                                    ) : session.doc_embed_url ? (
-                                        <iframe
-                                            src={session.doc_embed_url}
-                                            className="w-full h-[800px]"
-                                            title="Session Document"
-                                        />
-                                    ) : (
-                                        <div className="flex items-center justify-center h-full text-sm text-muted-foreground p-8 text-center bg-[#0f172a] text-slate-400">
-                                            <p>Nenhum documento anexado a esta sessão.</p>
-                                        </div>
-                                    )}
-                                </div>
-                            )}
-                        </div>
-                    )
-
-                    if (hasVideo) {
-                        return (
-                            <>
-                                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-                                    {VideoSection}
-                                    {DetailsSection}
-                                </div>
-                                {NotesSection}
-                            </>
-                        )
-                    }
-
-                    // No Video Layout
-                    return (
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-                            {/* Notes Section takes the place of Video Section (Left 2/3) */}
+            <Grid container spacing={4}>
+                {hasVideo ? (
+                    <>
+                        <Grid size={{ xs: 12, lg: 8 }}>
+                            {VideoSection}
+                        </Grid>
+                        <Grid size={{ xs: 12, lg: 4 }}>
+                            {DetailsSection}
+                        </Grid>
+                        <Grid size={{ xs: 12 }}>
                             {NotesSection}
-                            {/* Details Section (Right 1/3) with Fixed Aspect Ratio to match Video Height */}
-                            <div className="aspect-[8/9] w-full">
-                                {DetailsSection}
-                            </div>
-                        </div>
-                    )
-
-                })()}
-            </div>
-        </div>
+                        </Grid>
+                    </>
+                ) : (
+                    <>
+                        <Grid size={{ xs: 12, lg: 8 }}>
+                            {NotesSection}
+                        </Grid>
+                        <Grid size={{ xs: 12, lg: 4 }} sx={{ height: 'fit-content' }}>
+                            {DetailsSection}
+                        </Grid>
+                    </>
+                )}
+            </Grid>
+        </Box>
     )
 }

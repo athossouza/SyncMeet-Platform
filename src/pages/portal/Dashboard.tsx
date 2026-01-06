@@ -1,15 +1,37 @@
 import { useQuery } from '@tanstack/react-query'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { Session } from '@/types'
 import { useAuth } from '@/context/AuthContext'
-import { Loader2, CalendarDays, Video, FileText, ArrowRight, Building2 } from 'lucide-react'
+import {
+    Box,
+    Card,
+    CardActionArea,
+    CardContent,
+    Chip,
+    Grid,
+    Stack,
+    Typography,
+    Button,
+    Divider,
+    Paper,
+    useTheme
+} from '@mui/material'
+import {
+    CalendarToday as CalendarIcon,
+    VideoLibrary as VideoIcon,
+    Description as FileIcon,
+    ArrowForward as ArrowForwardIcon,
+    Business as BusinessIcon,
+    Videocam as MeetIcon
+} from '@mui/icons-material'
 import { format } from 'date-fns'
-import { ptBR } from 'date-fns/locale' // Import locale
-import { cn } from '@/lib/utils'
+import { ptBR } from 'date-fns/locale'
 
 export default function ClientDashboard() {
     const { profile } = useAuth()
+    const theme = useTheme()
+
     const { data: sessions, isLoading, error } = useQuery({
         queryKey: ['client-sessions'],
         queryFn: async () => {
@@ -23,20 +45,14 @@ export default function ClientDashboard() {
         },
     })
 
-    if (isLoading) return (
-        <div className="flex justify-center items-center h-64">
-            <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-        </div>
-    )
-
-    if (error) return <div className="text-destructive">Erro ao carregar sessões.</div>
+    if (isLoading) return <Box sx={{ display: 'flex', justifyContent: 'center', py: 10 }}>Loading...</Box>
+    if (error) return <Typography color="error">Erro ao carregar sessões.</Typography>
 
     // Group sessions by Month Year
     const groupedSessions: Record<string, Session[]> = {}
 
     sessions?.forEach(session => {
         const monthYear = format(new Date(session.date), 'MMMM yyyy', { locale: ptBR })
-        // Capitalize first letter
         const formattedGroup = monthYear.charAt(0).toUpperCase() + monthYear.slice(1)
 
         if (!groupedSessions[formattedGroup]) {
@@ -48,207 +64,248 @@ export default function ClientDashboard() {
     const groups = Object.keys(groupedSessions)
 
     return (
-        <div className="space-y-12">
-            <div>
-                <h1 className="text-3xl font-bold tracking-tight text-white mb-2">Minhas Sessões</h1>
-                <p className="text-neutral-400">Acesse suas mentorias gravadas e documentos de apoio.</p>
-            </div>
+        <Box>
+            <Box mb={6}>
+                <Typography variant="h4" fontWeight="bold" gutterBottom>
+                    Minhas Sessões
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                    Acesse suas mentorias gravadas e documentos de apoio.
+                </Typography>
+            </Box>
 
             {sessions?.length === 0 ? (
-                <div className="col-span-full text-center py-12 bg-card/50 rounded-xl border border-white/10 border-dashed">
-                    <p className="text-muted-foreground">Nenhuma sessão encontrada.</p>
-                </div>
+                <Paper
+                    sx={{
+                        p: 6,
+                        textAlign: 'center',
+                        bgcolor: 'background.default',
+                        border: '1px dashed',
+                        borderColor: 'divider',
+                        borderRadius: 2
+                    }}
+                >
+                    <Typography color="text.secondary">Nenhuma sessão encontrada.</Typography>
+                </Paper>
             ) : (
                 groups.map(group => (
-                    <div key={group} className="space-y-4">
-                        <div className="flex items-center gap-4">
-                            <h2 className="text-xl font-semibold text-white/90">{group}</h2>
-                            <div className="h-px flex-1 bg-white/10" />
-                        </div>
+                    <Box key={group} mb={6}>
+                        <Stack direction="row" alignItems="center" spacing={2} mb={3}>
+                            <Typography variant="h6" fontWeight="bold" color="text.primary">
+                                {group}
+                            </Typography>
+                            <Box sx={{ flex: 1, height: '1px', bgcolor: 'divider' }} />
+                        </Stack>
 
-                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                        <Grid container spacing={3}>
                             {groupedSessions[group].map((session) => {
                                 const isFuture = new Date(session.date) > new Date()
                                 const hasContent = !!session.video_embed_url || !!session.doc_embed_url || !!session.summary_html
                                 const isPastEmpty = !isFuture && !hasContent
 
-                                // --- 1. SESSÃO PASSADA SEM CONTEÚDO (Extra/Cancelada/Não gravada) ---
+                                // --- 1. SESSÃO PASSADA SEM CONTEÚDO ---
                                 if (isPastEmpty) {
                                     return (
-                                        <div key={session.id} className="relative p-5 rounded-xl border border-white/5 bg-white/5 opacity-60 hover:opacity-100 transition-opacity flex flex-col h-full group">
-                                            <div className="flex items-center justify-between mb-3">
-                                                <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 text-slate-500">
-                                                    <CalendarDays className="w-5 h-5" />
-                                                </div>
-                                                <span className="text-xs font-medium px-2 py-1 rounded bg-white/5 text-slate-500">
-                                                    Sessão Extra
-                                                </span>
-                                            </div>
-                                            <h3 className="font-semibold text-lg text-slate-300 mb-1">{session.title}</h3>
-                                            <p className="text-xs text-slate-500 uppercase tracking-wider mb-2">
-                                                {format(new Date(session.date), "d 'de' MMMM, yyyy • HH:mm", { locale: ptBR })}
-                                            </p>
-                                            {/* Admin: Show Organization */}
-                                            {profile?.role === 'admin' && session.organizations?.name && (
-                                                <div className="mb-2">
-                                                    <span className="px-2 py-1 rounded bg-amber-500/10 text-[10px] text-amber-500 border border-amber-500/20 inline-flex items-center gap-1 font-medium">
-                                                        <Building2 className="w-3 h-3" /> {session.organizations.name}
-                                                    </span>
-                                                </div>
-                                            )}
-                                            <div className="mt-auto pt-4 border-t border-white/5 text-xs text-slate-500">
-                                                Esta sessão não possui gravação ou documentos anexados.
-                                            </div>
-                                        </div>
+                                        <Grid size={{ xs: 12, md: 6, lg: 4 }} key={session.id}>
+                                            <Card sx={{
+                                                height: '100%',
+                                                opacity: 0.6,
+                                                bgcolor: 'background.paper',
+                                                transition: 'opacity 0.2s',
+                                                '&:hover': { opacity: 1 }
+                                            }}>
+                                                <CardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                                    <Stack direction="row" justifyContent="space-between" mb={2}>
+                                                        <Box sx={{ p: 1, borderRadius: 1, bgcolor: 'action.hover', color: 'text.secondary' }}>
+                                                            <CalendarIcon fontSize="small" />
+                                                        </Box>
+                                                        <Chip label="Sessão Extra" size="small" sx={{ bgcolor: 'action.selected', color: 'text.disabled', fontSize: '0.7rem' }} />
+                                                    </Stack>
+
+                                                    <Typography variant="h6" fontWeight="bold" gutterBottom color="text.secondary">
+                                                        {session.title}
+                                                    </Typography>
+                                                    <Typography variant="caption" color="text.disabled" sx={{ textTransform: 'uppercase', letterSpacing: 1, display: 'block', mb: 1 }}>
+                                                        {format(new Date(session.date), "d 'de' MMMM, yyyy • HH:mm", { locale: ptBR })}
+                                                    </Typography>
+
+                                                    {profile?.role === 'admin' && session.organizations?.name && (
+                                                        <Chip
+                                                            icon={<BusinessIcon sx={{ fontSize: '12px !important' }} />}
+                                                            label={session.organizations.name}
+                                                            size="small"
+                                                            variant="outlined"
+                                                            color="warning"
+                                                            sx={{ alignSelf: 'flex-start', mb: 2, height: 20, fontSize: '0.65rem' }}
+                                                        />
+                                                    )}
+
+                                                    <Box sx={{ mt: 'auto', pt: 2, borderTop: '1px solid', borderColor: 'divider' }}>
+                                                        <Typography variant="caption" color="text.disabled">
+                                                            Esta sessão não possui gravação.
+                                                        </Typography>
+                                                    </Box>
+                                                </CardContent>
+                                            </Card>
+                                        </Grid>
                                     )
                                 }
 
-                                // --- 2. SESSÃO FUTURA (Agendada) ---
+                                // --- 2. SESSÃO FUTURA ---
                                 if (isFuture) {
                                     return (
-                                        <div key={session.id} className={cn(
-                                            "relative p-5 rounded-xl border border-blue-500/20 bg-blue-900/10 flex flex-col h-full",
-                                            "hover:border-blue-500/40 transition-colors"
-                                        )}>
-                                            <div className="flex items-center justify-between mb-3">
-                                                <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-blue-500/10 text-blue-400">
-                                                    <CalendarDays className="w-5 h-5" />
-                                                </div>
-                                                <span className="text-xs font-medium px-2 py-1 rounded bg-blue-500/10 text-blue-400 capitalize">
-                                                    Agendada
-                                                </span>
-                                            </div>
-                                            <div className="space-y-1 mb-4">
-                                                <h3 className="font-semibold text-lg text-blue-100">{session.title}</h3>
-                                                <p className="text-xs text-blue-300 uppercase tracking-wider">
-                                                    {format(new Date(session.date), "d 'de' MMMM, yyyy • HH:mm", { locale: ptBR })}
-                                                </p>
-                                                {/* Admin: Show Organization */}
-                                                {profile?.role === 'admin' && session.organizations?.name && (
-                                                    <div className="pt-2">
-                                                        <span className="px-2 py-1 rounded bg-blue-400/10 text-[10px] text-blue-300 border border-blue-400/20 inline-flex items-center gap-1 font-medium">
-                                                            <Building2 className="w-3 h-3" /> {session.organizations.name}
-                                                        </span>
-                                                    </div>
-                                                )}
-                                            </div>
-                                            <div className="mt-auto">
-                                                {session.meet_link ? (
-                                                    <a
-                                                        href={session.meet_link}
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                        className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-colors"
-                                                    >
-                                                        <Video className="w-4 h-4" /> Entrar no Meet
-                                                    </a>
-                                                ) : (
-                                                    <div className="text-xs text-blue-400/60 text-center py-2">Link não disponível ainda</div>
-                                                )}
-                                            </div>
-                                        </div>
+                                        <Grid size={{ xs: 12, md: 6, lg: 4 }} key={session.id}>
+                                            <Card sx={{
+                                                height: '100%',
+                                                bgcolor: 'rgba(44, 116, 179, 0.05)', // Primary tint
+                                                border: '1px solid',
+                                                borderColor: 'primary.main',
+                                            }}>
+                                                <CardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                                    <Stack direction="row" justifyContent="space-between" mb={2}>
+                                                        <Box sx={{ p: 1, borderRadius: 1, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
+                                                            <CalendarIcon fontSize="small" />
+                                                        </Box>
+                                                        <Chip label="Agendada" size="small" color="primary" variant="outlined" sx={{ fontSize: '0.7rem' }} />
+                                                    </Stack>
+
+                                                    <Box mb={2}>
+                                                        <Typography variant="h6" fontWeight="bold" gutterBottom color="primary.main">
+                                                            {session.title}
+                                                        </Typography>
+                                                        <Typography variant="caption" color="primary.light" sx={{ textTransform: 'uppercase', letterSpacing: 1 }}>
+                                                            {format(new Date(session.date), "d 'de' MMMM, yyyy • HH:mm", { locale: ptBR })}
+                                                        </Typography>
+                                                    </Box>
+
+                                                    {/* Admin Organization Tag */}
+                                                    {profile?.role === 'admin' && session.organizations?.name && (
+                                                        <Box mb={2}>
+                                                            <Chip
+                                                                icon={<BusinessIcon sx={{ fontSize: '12px !important' }} />}
+                                                                label={session.organizations.name}
+                                                                size="small"
+                                                                color="primary"
+                                                                sx={{ height: 20, fontSize: '0.65rem', opacity: 0.8 }}
+                                                            />
+                                                        </Box>
+                                                    )}
+
+                                                    <Box mt="auto">
+                                                        {session.meet_link ? (
+                                                            <Button
+                                                                variant="contained"
+                                                                fullWidth
+                                                                startIcon={<MeetIcon />}
+                                                                href={session.meet_link}
+                                                                target="_blank"
+                                                            >
+                                                                Entrar no Meet
+                                                            </Button>
+                                                        ) : (
+                                                            <Typography variant="caption" color="text.secondary" align="center" display="block">
+                                                                Link não disponível ainda
+                                                            </Typography>
+                                                        )}
+                                                    </Box>
+                                                </CardContent>
+                                            </Card>
+                                        </Grid>
                                     )
                                 }
 
-                                // --- 3. SESSÃO PASSADA COM CONTEÚDO (Padrão) ---
+                                // --- 3. SESSÃO PADRÃO ---
                                 return (
-                                    <Link
-                                        to={`/portal/session/${session.id}`}
-                                        key={session.id}
-                                        className={cn(
-                                            "group relative p-5 rounded-xl overflow-hidden transition-all duration-300 cursor-pointer",
-                                            // Base styles (Dark Navy with blur)
-                                            "border border-white/10 bg-[#0A2647]/50 backdrop-blur-sm",
-                                            // Hover effects
-                                            "hover:shadow-[0_2px_12px_rgba(44,116,179,0.2)]",
-                                            "hover:-translate-y-1 will-change-transform",
-                                            "flex flex-col h-full"
-                                        )}
-                                    >
-                                        {/* Background Noise/Grid Effect (Fades in on hover) */}
-                                        <div
-                                            className={cn(
-                                                "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500",
-                                                "pointer-events-none"
-                                            )}
-                                        >
-                                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[length:4px_4px]" />
-                                        </div>
+                                    <Grid size={{ xs: 12, md: 6, lg: 4 }} key={session.id}>
+                                        <Card sx={{
+                                            height: '100%',
+                                            transition: 'transform 0.2s, box-shadow 0.2s',
+                                            '&:hover': {
+                                                transform: 'translateY(-4px)',
+                                                boxShadow: theme.shadows[8]
+                                            }
+                                        }}>
+                                            <CardActionArea component={RouterLink} to={`/portal/session/${session.id}`} sx={{ height: '100%' }}>
+                                                <CardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%', p: 3 }}>
 
-                                        {/* Card Content */}
-                                        <div className="relative flex flex-col h-full space-y-4">
+                                                    <Stack direction="row" justifyContent="space-between" mb={3}>
+                                                        <Box sx={{
+                                                            p: 1,
+                                                            borderRadius: 1,
+                                                            bgcolor: session.video_embed_url ? 'rgba(52, 211, 153, 0.1)' : 'rgba(56, 189, 248, 0.1)',
+                                                            color: session.video_embed_url ? '#34d399' : '#38bdf8'
+                                                        }}>
+                                                            {session.video_embed_url ? <VideoIcon fontSize="small" /> : <FileIcon fontSize="small" />}
+                                                        </Box>
+                                                        <Chip
+                                                            label={session.video_embed_url ? "Gravada" : "Nota"}
+                                                            size="small"
+                                                            sx={{
+                                                                bgcolor: 'rgba(255,255,255,0.05)',
+                                                                color: 'text.secondary',
+                                                                fontSize: '0.7rem'
+                                                            }}
+                                                        />
+                                                    </Stack>
 
-                                            {/* Header: Icon + Status */}
-                                            <div className="flex items-center justify-between">
-                                                <div className={cn(
-                                                    "w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300",
-                                                    "bg-white/10 group-hover:bg-primary/20",
-                                                    !!session.video_embed_url ? "text-emerald-400" : "text-sky-400"
-                                                )}>
-                                                    {!!session.video_embed_url ? <Video className="w-5 h-5" /> : <FileText className="w-5 h-5" />}
-                                                </div>
-                                                <span className={cn(
-                                                    "text-xs font-medium px-2.5 py-1 rounded-lg backdrop-blur-sm transition-colors duration-300",
-                                                    "bg-white/5 text-slate-400 group-hover:bg-white/10 group-hover:text-slate-200"
-                                                )}>
-                                                    {!!session.video_embed_url ? "Gravada" : "Nota"}
-                                                </span>
-                                            </div>
+                                                    <Box mb={2}>
+                                                        <Typography variant="h6" fontWeight="bold" gutterBottom>
+                                                            {session.title}
+                                                        </Typography>
+                                                        <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1 }}>
+                                                            {format(new Date(session.date), "d 'de' MMMM, yyyy • HH:mm", { locale: ptBR })}
+                                                        </Typography>
+                                                    </Box>
 
-                                            {/* Title & Date */}
-                                            <div className="space-y-1">
-                                                <h3 className="font-semibold text-lg text-white group-hover:text-blue-100 transition-colors">
-                                                    {session.title}
-                                                </h3>
-                                                <p className="text-xs text-slate-400 font-medium uppercase tracking-wider">
-                                                    {format(new Date(session.date), "d 'de' MMMM, yyyy • HH:mm", { locale: ptBR })}
-                                                </p>
-                                            </div>
+                                                    <Box sx={{ flex: 1, mb: 3 }}>
+                                                        {session.summary_text && (
+                                                            <Typography
+                                                                variant="body2"
+                                                                color="text.secondary"
+                                                                sx={{
+                                                                    display: '-webkit-box',
+                                                                    WebkitLineClamp: 3,
+                                                                    WebkitBoxOrient: 'vertical',
+                                                                    overflow: 'hidden'
+                                                                }}
+                                                            >
+                                                                {session.summary_text}
+                                                            </Typography>
+                                                        )}
+                                                    </Box>
 
-                                            {/* Description (Summary) - Flex grow to push CTA down */}
-                                            <div className="flex-1">
-                                                {session.summary_text && (
-                                                    <p className="text-sm text-slate-300 leading-relaxed line-clamp-3">
-                                                        {session.summary_text}
-                                                    </p>
-                                                )}
-                                            </div>
+                                                    <Divider sx={{ mb: 2 }} />
 
-                                            {/* Footer: Tags + CTA */}
-                                            <div className="flex items-center justify-between pt-2 border-t border-white/5 mt-auto">
-                                                <div className="flex gap-2">
-                                                    {/* Admin: Show Organization */}
-                                                    {profile?.role === 'admin' && session.organizations?.name && (
-                                                        <span className="px-2 py-1 rounded bg-amber-500/10 text-[10px] text-amber-500 border border-amber-500/20 flex items-center gap-1 font-medium">
-                                                            <Building2 className="w-3 h-3" /> {session.organizations.name}
-                                                        </span>
-                                                    )}
+                                                    <Stack direction="row" justifyContent="space-between" alignItems="center">
+                                                        <Stack direction="row" spacing={1}>
+                                                            {profile?.role === 'admin' && session.organizations?.name && (
+                                                                <Chip
+                                                                    icon={<BusinessIcon sx={{ fontSize: '12px !important' }} />}
+                                                                    label={session.organizations.name}
+                                                                    size="small"
+                                                                    color="warning"
+                                                                    variant="outlined"
+                                                                    sx={{ height: 20, fontSize: '0.65rem' }}
+                                                                />
+                                                            )}
+                                                            {/* Material Tag if needed */}
+                                                        </Stack>
 
-                                                    {/* Auto-generated tags based on content */}
-                                                    {session.doc_embed_url && (
-                                                        <span className="px-2 py-1 rounded bg-white/5 text-[10px] text-slate-400 border border-white/5 flex items-center gap-1">
-                                                            <FileText className="w-3 h-3" /> Material
-                                                        </span>
-                                                    )}
-                                                </div>
+                                                        <Box sx={{ display: 'flex', alignItems: 'center', color: 'primary.main', fontSize: '0.8rem', fontWeight: 600 }}>
+                                                            {!!session.video_embed_url ? "Assistir" : "Acessar"} <ArrowForwardIcon sx={{ ml: 0.5, fontSize: 16 }} />
+                                                        </Box>
+                                                    </Stack>
 
-                                                <div className="flex items-center text-xs font-medium text-blue-400 opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">
-                                                    {!!session.video_embed_url ? "Assistir" : "Acessar"} <ArrowRight className="ml-1 w-3 h-3" />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Gradient Gloss Overlay on Hover */}
-                                        <div
-                                            className="absolute inset-0 -z-10 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"
-                                        />
-                                    </Link>
+                                                </CardContent>
+                                            </CardActionArea>
+                                        </Card>
+                                    </Grid>
                                 )
                             })}
-                        </div>
-                    </div>
+                        </Grid>
+                    </Box>
                 ))
             )}
-        </div>
+        </Box>
     )
 }

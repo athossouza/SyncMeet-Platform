@@ -1,56 +1,95 @@
 import { Linkedin, Instagram, Youtube } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import { Box, Container, Grid, Typography, Link, Stack, IconButton } from '@mui/material';
 
 export function Footer() {
     return (
-        <footer className="bg-[#051426] text-neutral-400 border-t border-white/10 py-12 relative overflow-hidden">
-            {/* Marca D'água - Canto Inferior Direito - Masonic G (PNG) */}
-            <div className="absolute bottom-4 right-4 w-[110px] h-[110px] opacity-50 pointer-events-none mix-blend-overlay">
-                <img
-                    src="/masonic_g.png"
-                    alt=""
-                    className="w-full h-full object-contain invert grayscale"
-                />
-            </div>
+        <Box component="footer" sx={{
+            bgcolor: 'background.default',
+            color: 'text.secondary',
+            borderTop: '1px solid',
+            borderColor: 'divider',
+            py: 3,
+            position: 'relative',
+            overflow: 'hidden'
+        }}>
+            {/* Watermark - Bottom Right */}
+            <Box
+                component="img"
+                src="/masonic_g.png"
+                alt=""
+                sx={{
+                    position: 'absolute',
+                    bottom: 20,
+                    right: 20,
+                    width: 110,
+                    height: 110,
+                    opacity: 0.9,
+                    pointerEvents: 'none',
+                    mixBlendMode: 'overlay',
+                    filter: 'grayscale(1)'
+                }}
+            />
 
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+                <Grid container spacing={2} justifyContent="space-between" alignItems="center">
 
-                    <div className="text-center md:text-left">
-                        <div className="w-28 mx-auto md:mx-0 mb-4">
-                            <img
-                                src="/logo.png"
-                                alt="ATVEZA"
-                                className="w-full h-auto opacity-90"
-                            />
-                        </div>
-                        <p className="text-sm">Inteligência Operacional em Suporte B2B.</p>
-                        <p className="text-sm mt-1">&copy; 2025 ATVEZA Method ∴</p>
-                        <p className="text-xs mt-2 text-neutral-600">
-                            ATVEZA SERVICOS EM TECNOLOGIA LTDA <br />
-                            CNPJ: 48.761.773/0001-17
-                        </p>
+                    <Grid size={{ xs: 12, md: 8 }} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+                        <Stack direction={{ xs: 'column', md: 'row' }} alignItems="center" spacing={3}>
+                            <Box sx={{ width: 90 }}>
+                                <img
+                                    src="/logo.png"
+                                    alt="ATVEZA"
+                                    style={{ width: '100%', height: 'auto', opacity: 0.9 }}
+                                />
+                            </Box>
 
-                        <div className="mt-4">
-                            <Link to="/privacy" className="text-xs text-neutral-500 hover:text-blue-400 transition-colors underline decoration-neutral-700 underline-offset-4">
-                                Política de Privacidade
+                            <Box>
+                                <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                                    Inteligência Operacional em Suporte B2B.
+                                </Typography>
+                                <Typography variant="caption" color="text.disabled" sx={{ display: 'block', mt: 0.5 }}>
+                                    &copy; 2025 ATVEZA Method ∴ | CNPJ: 48.761.773/0001-17
+                                </Typography>
+                            </Box>
+                        </Stack>
+                    </Grid>
+
+                    <Grid size={{ xs: 12, md: 4 }}>
+                        <Stack
+                            direction="row"
+                            spacing={2}
+                            justifyContent={{ xs: 'center', md: 'flex-end' }}
+                            alignItems="center"
+                        >
+                            <Link
+                                component={RouterLink}
+                                to="/privacy"
+                                sx={{
+                                    fontSize: '0.75rem',
+                                    color: 'text.secondary',
+                                    mr: 2,
+                                    textDecoration: 'none',
+                                    '&:hover': { color: 'primary.main', textDecoration: 'underline' }
+                                }}
+                            >
+                                Privacidade
                             </Link>
-                        </div>
-                    </div>
 
-                    <div className="flex gap-6">
-                        <a href="https://www.linkedin.com/in/athossouza/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-500 transition">
-                            <Linkedin className="w-6 h-6" />
-                        </a>
-                        <a href="https://www.instagram.com/atveza/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-500 transition">
-                            <Instagram className="w-6 h-6" />
-                        </a>
-                        <a href="https://www.youtube.com/@ATVEZATechnology" target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition">
-                            <Youtube className="w-6 h-6" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+                            <IconButton size="small" href="https://www.linkedin.com/in/athossouza/" target="_blank" rel="noopener noreferrer" sx={{ color: 'text.secondary', '&:hover': { color: '#06b6d4' } }}>
+                                <Linkedin size={20} />
+                            </IconButton>
+                            <IconButton size="small" href="https://www.instagram.com/atveza/" target="_blank" rel="noopener noreferrer" sx={{ color: 'text.secondary', '&:hover': { color: '#a855f7' } }}>
+                                <Instagram size={20} />
+                            </IconButton>
+                            <IconButton size="small" href="https://www.youtube.com/@ATVEZATechnology" target="_blank" rel="noopener noreferrer" sx={{ color: 'text.secondary', '&:hover': { color: '#ef4444' } }}>
+                                <Youtube size={20} />
+                            </IconButton>
+                        </Stack>
+                    </Grid>
+
+                </Grid>
+            </Container>
+        </Box>
     );
 }

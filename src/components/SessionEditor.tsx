@@ -1,8 +1,22 @@
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
-import { Button } from './ui/button'
-import { Bold, Italic, List, ListOrdered, Heading3 } from 'lucide-react'
+import {
+    Box,
+    Button,
+    Paper,
+    Stack,
+    Divider,
+    ToggleButton,
+    ToggleButtonGroup
+} from '@mui/material'
+import {
+    FormatBold as BoldIcon,
+    FormatItalic as ItalicIcon,
+    FormatListBulleted as ListIcon,
+    FormatListNumbered as ListOrderedIcon,
+    Title as HeadingIcon
+} from '@mui/icons-material'
 
 interface SessionEditorProps {
     content: string
@@ -19,7 +33,7 @@ export default function SessionEditor({ content, onSave, onCancel, onChange, hid
             Link.configure({
                 openOnClick: false,
                 HTMLAttributes: {
-                    class: 'text-blue-600 hover:text-blue-500 underline',
+                    style: 'color: #1976d2; text-decoration: underline;', // Basic inline styles for links
                 },
             }),
         ],
@@ -31,7 +45,7 @@ export default function SessionEditor({ content, onSave, onCancel, onChange, hid
         },
         editorProps: {
             attributes: {
-                class: 'prose prose-slate prose-lg focus:outline-none max-w-none min-h-[200px] text-slate-900',
+                style: 'outline: none; min-height: 200px; padding: 16px; color: inherit;', // Basic inline styles
             },
         },
     })
@@ -39,74 +53,132 @@ export default function SessionEditor({ content, onSave, onCancel, onChange, hid
     if (!editor) return null
 
     return (
-        <div className="w-full h-full flex flex-col gap-4 border rounded-md border-input bg-white p-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+        <Paper variant="outlined" sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+            bgcolor: '#ffffff', // White document background
+            color: '#1e293b', // Slate-800 text
+            overflow: 'hidden'
+        }}>
             {/* Toolbar */}
-            <div className="flex flex-wrap items-center gap-2 p-2 border-b border-blue-100/50">
-                <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => editor.chain().focus().toggleBold().run()}
-                    className={editor.isActive('bold') ? 'bg-blue-100 text-blue-700' : 'text-slate-600'}
-                    type="button"
+            <Box sx={{
+                p: 1,
+                borderBottom: '1px solid',
+                borderColor: 'divider',
+                bgcolor: '#f8fafc', // Slate-50 for toolbar
+                color: '#475569' // Slate-600 for icons
+            }}>
+                <ToggleButtonGroup
+                    size="small"
+                    aria-label="text formatting"
+                    sx={{
+                        '& .MuiToggleButton-root': {
+                            color: '#64748b', // Slate-500
+                            border: '1px solid #e2e8f0', // Slate-200
+                            '&.Mui-selected': {
+                                bgcolor: '#e2e8f0', // Slate-200
+                                color: '#0f172a', // Slate-900
+                                '&:hover': {
+                                    bgcolor: '#cbd5e1', // Slate-300
+                                }
+                            },
+                            '&:hover': {
+                                bgcolor: '#f1f5f9', // Slate-100
+                                color: '#334155', // Slate-700
+                            }
+                        }
+                    }}
                 >
-                    <Bold className="w-4 h-4" />
-                </Button>
-                <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => editor.chain().focus().toggleItalic().run()}
-                    className={editor.isActive('italic') ? 'bg-blue-100 text-blue-700' : 'text-slate-600'}
-                    type="button"
-                >
-                    <Italic className="w-4 h-4" />
-                </Button>
-                <div className="w-px h-6 bg-slate-200 mx-1" />
-                <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-                    className={editor.isActive('heading', { level: 3 }) ? 'bg-blue-100 text-blue-700' : 'text-slate-600'}
-                    type="button"
-                >
-                    <Heading3 className="w-4 h-4" />
-                </Button>
-                <div className="w-px h-6 bg-slate-200 mx-1" />
-                <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => editor.chain().focus().toggleBulletList().run()}
-                    className={editor.isActive('bulletList') ? 'bg-blue-100 text-blue-700' : 'text-slate-600'}
-                    type="button"
-                >
-                    <List className="w-4 h-4" />
-                </Button>
-                <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => editor.chain().focus().toggleOrderedList().run()}
-                    className={editor.isActive('orderedList') ? 'bg-blue-100 text-blue-700' : 'text-slate-600'}
-                    type="button"
-                >
-                    <ListOrdered className="w-4 h-4" />
-                </Button>
-            </div>
+                    <ToggleButton
+                        value="bold"
+                        selected={editor.isActive('bold')}
+                        onClick={() => editor.chain().focus().toggleBold().run()}
+                        aria-label="bold"
+                    >
+                        <BoldIcon fontSize="small" />
+                    </ToggleButton>
+                    <ToggleButton
+                        value="italic"
+                        selected={editor.isActive('italic')}
+                        onClick={() => editor.chain().focus().toggleItalic().run()}
+                        aria-label="italic"
+                    >
+                        <ItalicIcon fontSize="small" />
+                    </ToggleButton>
+                    <ToggleButton
+                        value="heading"
+                        selected={editor.isActive('heading', { level: 3 })}
+                        onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+                        aria-label="heading"
+                    >
+                        <HeadingIcon fontSize="small" />
+                    </ToggleButton>
+                    <ToggleButton
+                        value="bulletList"
+                        selected={editor.isActive('bulletList')}
+                        onClick={() => editor.chain().focus().toggleBulletList().run()}
+                        aria-label="bullet list"
+                    >
+                        <ListIcon fontSize="small" />
+                    </ToggleButton>
+                    <ToggleButton
+                        value="orderedList"
+                        selected={editor.isActive('orderedList')}
+                        onClick={() => editor.chain().focus().toggleOrderedList().run()}
+                        aria-label="ordered list"
+                    >
+                        <ListOrderedIcon fontSize="small" />
+                    </ToggleButton>
+                </ToggleButtonGroup>
+            </Box>
 
             {/* Editor Area */}
-            <div className="flex-1 overflow-y-auto max-h-[300px]">
-                <EditorContent editor={editor} />
-            </div>
+            <Box sx={{ flex: 1, overflowY: 'auto' }}>
+                {/* 
+                   Document-like typography styles
+                 */}
+                <Box sx={{
+                    p: 3,
+                    minHeight: '300px',
+                    typography: 'body1',
+                    '& *': { color: 'inherit !important' }, // Force distinct color
+                    '& h1, & h2, & h3, & h4, & h5, & h6': { color: '#0f172a !important', my: 2, fontWeight: 700 }, // Slate-900 headers
+                    '& p': { mb: 2, lineHeight: 1.7 },
+                    '& ul, & ol': { pl: 3, mb: 2 },
+                    '& li': { mb: 0.5 },
+                    '& strong, & b': { fontWeight: 'bold', color: '#0f172a !important' },
+                    '& a': { color: '#2563eb !important', textDecoration: 'underline' }, // Blue-600 links
+                    '& blockquote': { borderLeft: '4px solid #cbd5e1', pl: 2, color: '#475569 !important', fontStyle: 'italic' },
+                    // Editor specific overrides to ensure it behaves well
+                    '& .ProseMirror': { outline: 'none', minHeight: '100%' }
+                }}>
+                    <EditorContent editor={editor} />
+                </Box>
+            </Box>
 
             {/* Actions */}
             {!hideActions && (
-                <div className="flex items-center justify-end gap-3 pt-4 border-t border-blue-100/50">
-                    <Button variant="ghost" onClick={onCancel} className="text-slate-500 hover:text-slate-700">
-                        Cancelar
-                    </Button>
-                    <Button onClick={() => onSave?.(editor.getHTML())} className="bg-blue-600 hover:bg-blue-700 text-white shadow-md">
-                        Salvar Alterações
-                    </Button>
-                </div>
+                <>
+                    <Divider />
+                    <Stack direction="row" justifyContent="flex-end" spacing={2} sx={{ p: 2, bgcolor: '#f8fafc' }}>
+                        <Button
+                            variant="text"
+                            onClick={onCancel}
+                            sx={{ color: '#64748b', '&:hover': { color: '#0f172a', bgcolor: '#e2e8f0' } }}
+                        >
+                            Cancelar
+                        </Button>
+                        <Button
+                            variant="contained"
+                            onClick={() => onSave?.(editor.getHTML())}
+                            sx={{ bgcolor: '#0f172a', '&:hover': { bgcolor: '#1e293b' } }} // Slate-900 button
+                        >
+                            Salvar Alterações
+                        </Button>
+                    </Stack>
+                </>
             )}
-        </div>
+        </Paper>
     )
 }

@@ -1,154 +1,184 @@
-import { Link, useLocation } from 'react-router-dom'
-import { cn } from '@/lib/utils'
-import {
-    LayoutDashboard,
-    Users,
-    LogOut,
-    Building2,
-    RefreshCw
-} from 'lucide-react'
 import { useState } from 'react'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
-import { AnimatePresence } from 'framer-motion'
-import { AlertBanner } from '@/components/ui/alert-banner'
+import {
+    Box,
+    Drawer,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+    Typography,
+    Button,
+    Snackbar,
+    Alert,
+    CircularProgress,
+    Stack
+} from '@mui/material'
+import {
+    Dashboard as DashboardIcon,
+    Business as BusinessIcon,
+    Group as GroupIcon, // Users icon equivalent
+    Logout as LogoutIcon,
+    Sync as SyncIcon,
+    ArrowBack as ArrowBackIcon
+} from '@mui/icons-material'
+
+const DRAWER_WIDTH = 260;
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     const { signOut } = useAuth()
     const location = useLocation()
     const [isSyncing, setIsSyncing] = useState(false)
-    const [alertConfig, setAlertConfig] = useState<{
-        isOpen: boolean;
-        variant: 'default' | 'success' | 'destructive' | 'warning';
-        title: string;
-        description?: string;
-    } | null>(null);
+    const [snackbar, setSnackbar] = useState<{
+        open: boolean;
+        severity: 'success' | 'error' | 'info' | 'warning';
+        message: string;
+    }>({ open: false, severity: 'info', message: '' });
 
     const handleSync = async () => {
         setIsSyncing(true)
         try {
             const res = await fetch('/api/sync', { method: 'POST' })
             if (res.ok) {
-                setAlertConfig({
-                    isOpen: true,
-                    variant: 'success',
-                    title: 'Sincronização Concluída',
-                    description: 'Os dados foram atualizados com sucesso.'
+                setSnackbar({
+                    open: true,
+                    severity: 'success',
+                    message: 'Sincronização Concluída: Os dados foram atualizados com sucesso.'
                 })
-                // Auto dismiss after 3s
-                setTimeout(() => setAlertConfig(null), 3000)
             } else {
                 throw new Error('Falha na sincronização')
             }
         } catch (error) {
             console.error(error)
-            setAlertConfig({
-                isOpen: true,
-                variant: 'destructive',
-                title: 'Erro na Sincronização',
-                description: 'Verifique se o servidor de sync está rodando.'
+            setSnackbar({
+                open: true,
+                severity: 'error',
+                message: 'Erro na Sincronização: Verifique se o servidor de sync está rodando.'
             })
         } finally {
             setIsSyncing(false)
         }
     }
 
+    const handleCloseSnackbar = () => {
+        setSnackbar({ ...snackbar, open: false })
+    }
+
     const navigation = [
-        { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
-        { name: 'Organizações', href: '/admin/organizations', icon: Building2 },
-        { name: 'Todas as Sessões', href: '/admin/sessions', icon: Users },
+        { name: 'Dashboard', href: '/admin', icon: <DashboardIcon /> },
+        { name: 'Organizações', href: '/admin/organizations', icon: <BusinessIcon /> },
+        { name: 'Todas as Sessões', href: '/admin/sessions', icon: <GroupIcon /> },
     ]
 
     return (
-        <div className="h-screen overflow-hidden bg-background flex">
-            {/* Sidebar */}
-            <aside className="w-64 border-r border-border bg-card hidden md:flex flex-col">
-                <div className="flex h-16 items-center px-6 border-b border-border/40">
-                    <LayoutDashboard className="h-6 w-6 mr-3 text-primary" />
-                    <span className="text-lg font-bold text-foreground">Sync Meet Admin</span>
-                </div>
+        <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: 'background.default' }}>
+            {/* Sidebar (Permanent Drawer) */}
+            <Drawer
+                variant="permanent"
+                sx={{
+                    width: DRAWER_WIDTH,
+                    flexShrink: 0,
+                    [`& .MuiDrawer-paper`]: { width: DRAWER_WIDTH, boxSizing: 'border-box', bgcolor: 'background.paper', borderRight: '1px solid', borderColor: 'divider' },
+                }}
+            >
+                <Box sx={{ height: 64, display: 'flex', alignItems: 'center', px: 3, borderBottom: '1px solid', borderColor: 'divider' }}>
+                    <DashboardIcon sx={{ color: 'primary.main', mr: 2 }} />
+                    <Typography variant="h6" fontWeight="bold" color="text.primary" noWrap>
+                        Sync Meet Admin
+                    </Typography>
+                </Box>
 
-                <nav className="flex-1 px-4 space-y-1 overflow-y-auto mt-6">
-                    {navigation.map((item) => {
-                        const isActive = location.pathname === item.href
-                        return (
-                            <Link
-                                key={item.name}
-                                to={item.href}
-                                className={cn(
-                                    isActive
-                                        ? "bg-primary/20 text-blue-400"
-                                        : "text-slate-400 hover:bg-white/5 hover:text-white",
-                                    "group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors"
-                                )}
-                            >
-                                <item.icon
-                                    className={cn(
-                                        "mr-3 h-5 w-5 flex-shrink-0 transition-colors",
-                                        isActive ? "text-blue-400" : "text-slate-400 group-hover:text-white"
-                                    )}
-                                />
-                                {item.name}
-                            </Link>
-                        )
-                    })}
-                </nav>
+                <Box sx={{ overflow: 'auto', flex: 1, py: 2 }}>
+                    <List>
+                        {navigation.map((item) => {
+                            const isActive = location.pathname === item.href
+                            return (
+                                <ListItem key={item.name} disablePadding sx={{ mb: 0.5 }}>
+                                    <ListItemButton
+                                        component={RouterLink}
+                                        to={item.href}
+                                        selected={isActive}
+                                        sx={{
+                                            mx: 1,
+                                            borderRadius: 1,
+                                            '&.Mui-selected': {
+                                                bgcolor: 'primary.main',
+                                                color: 'primary.contrastText',
+                                                '&:hover': { bgcolor: 'primary.dark' },
+                                                '& .MuiListItemIcon-root': { color: 'primary.contrastText' }
+                                            },
+                                            '&:hover': {
+                                                bgcolor: 'rgba(255,255,255,0.05)'
+                                            }
+                                        }}
+                                    >
+                                        <ListItemIcon sx={{ minWidth: 40, color: isActive ? 'inherit' : 'text.secondary' }}>
+                                            {item.icon}
+                                        </ListItemIcon>
+                                        <ListItemText primary={item.name} primaryTypographyProps={{ fontSize: '0.9rem', fontWeight: 500 }} />
+                                    </ListItemButton>
+                                </ListItem>
+                            )
+                        })}
+                    </List>
+                </Box>
 
-                <div className="p-4 border-t border-border space-y-2">
-                    <button
-                        onClick={handleSync}
-                        disabled={isSyncing}
-                        className={cn(
-                            "flex items-center w-full px-3 py-2 text-sm font-medium rounded-md transition-colors",
-                            isSyncing
-                                ? "text-blue-400 bg-blue-400/10 cursor-not-allowed"
-                                : "text-green-400 hover:bg-green-400/10 hover:text-green-300"
-                        )}
-                    >
-                        <RefreshCw className={cn("mr-3 h-5 w-5", isSyncing && "animate-spin")} />
-                        {isSyncing ? 'Sincronizando...' : 'Sincronizar Agora'}
-                    </button>
+                <Box sx={{ p: 2, borderTop: '1px solid', borderColor: 'divider' }}>
+                    <Stack spacing={1}>
+                        <Button
+                            fullWidth
+                            variant="outlined"
+                            color={isSyncing ? "primary" : "success"}
+                            startIcon={isSyncing ? <CircularProgress size={20} /> : <SyncIcon />}
+                            onClick={handleSync}
+                            disabled={isSyncing}
+                            sx={{ justifyContent: 'flex-start', textTransform: 'none' }}
+                        >
+                            {isSyncing ? 'Sincronizando...' : 'Sincronizar Agora'}
+                        </Button>
 
-                    <Link
-                        to="/portal"
-                        className="flex items-center w-full px-3 py-2 text-sm font-medium text-slate-400 rounded-md hover:bg-white/5 hover:text-white transition-colors"
-                    >
-                        <LayoutDashboard className="mr-3 h-5 w-5" />
-                        Voltar ao Portal
-                    </Link>
-                    <button
-                        onClick={signOut}
-                        className="flex items-center w-full px-3 py-2 text-sm font-medium text-red-400 rounded-md hover:bg-red-500/10 transition-colors"
-                    >
-                        <LogOut className="mr-3 h-5 w-5" />
-                        Sair
-                    </button>
-                </div>
-            </aside>
+                        <Button
+                            fullWidth
+                            component={RouterLink}
+                            to="/portal"
+                            startIcon={<ArrowBackIcon />}
+                            color="inherit"
+                            sx={{ justifyContent: 'flex-start', color: 'text.secondary', textTransform: 'none' }}
+                        >
+                            Voltar ao Portal
+                        </Button>
+
+                        <Button
+                            fullWidth
+                            startIcon={<LogoutIcon />}
+                            color="error"
+                            onClick={signOut}
+                            sx={{ justifyContent: 'flex-start', textTransform: 'none' }}
+                        >
+                            Sair
+                        </Button>
+                    </Stack>
+                </Box>
+            </Drawer>
 
             {/* Main Content */}
-            <main className="flex-1 overflow-y-auto relative">
+            <Box component="main" sx={{ flexGrow: 1, p: 3, overflow: 'auto', maxHeight: '100vh' }}>
+                {children}
+            </Box>
 
-                {/* Global Alert Toast */}
-                <div className="fixed top-4 right-4 z-50 w-full max-w-sm pointer-events-none">
-                    <div className="pointer-events-auto">
-                        <AnimatePresence>
-                            {alertConfig && alertConfig.isOpen && (
-                                <AlertBanner
-                                    variant={alertConfig.variant}
-                                    title={alertConfig.title}
-                                    description={alertConfig.description}
-                                    onDismiss={() => setAlertConfig(null)}
-                                    className="shadow-xl"
-                                />
-                            )}
-                        </AnimatePresence>
-                    </div>
-                </div>
-
-                <div className="p-8 max-w-6xl mx-auto">
-                    {children}
-                </div>
-            </main>
-        </div>
+            {/* Global Snackbar */}
+            <Snackbar
+                open={snackbar.open}
+                autoHideDuration={4000}
+                onClose={handleCloseSnackbar}
+                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            >
+                <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} variant="filled" sx={{ width: '100%' }}>
+                    {snackbar.message}
+                </Alert>
+            </Snackbar>
+        </Box>
     )
 }
