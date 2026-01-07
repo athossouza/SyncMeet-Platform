@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Basic Resets handled by MUI CssBaseline, but ensuring Inter font globally */
 body {
   font-family: 'Inter', sans-serif;
@@ -8,4 +12,10 @@ body {
   background-color: #051426;
   /* Match theme background.default */
   color: #ffffff;
+}
+
+/* Safety Reset for Links */
+a {
+  color: inherit;
+  text-decoration: none;
 }

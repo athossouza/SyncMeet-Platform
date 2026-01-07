@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
+import { useThemeToggle } from '@/context/ThemeContext'
 import {
     Box,
     Drawer,
@@ -14,7 +15,9 @@ import {
     Snackbar,
     Alert,
     CircularProgress,
-    Stack
+    Stack,
+    IconButton,
+    Tooltip
 } from '@mui/material'
 import {
     Dashboard as DashboardIcon,
@@ -22,13 +25,16 @@ import {
     Group as GroupIcon, // Users icon equivalent
     Logout as LogoutIcon,
     Sync as SyncIcon,
-    ArrowBack as ArrowBackIcon
+    ArrowBack as ArrowBackIcon,
+    DarkMode as DarkModeIcon,
+    LightMode as LightModeIcon
 } from '@mui/icons-material'
 
 const DRAWER_WIDTH = 260;
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     const { signOut } = useAuth()
+    const { toggleTheme, mode } = useThemeToggle()
     const location = useLocation()
     const [isSyncing, setIsSyncing] = useState(false)
     const [snackbar, setSnackbar] = useState<{
@@ -83,11 +89,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     [`& .MuiDrawer-paper`]: { width: DRAWER_WIDTH, boxSizing: 'border-box', bgcolor: 'background.paper', borderRight: '1px solid', borderColor: 'divider' },
                 }}
             >
-                <Box sx={{ height: 64, display: 'flex', alignItems: 'center', px: 3, borderBottom: '1px solid', borderColor: 'divider' }}>
-                    <DashboardIcon sx={{ color: 'primary.main', mr: 2 }} />
-                    <Typography variant="h6" fontWeight="bold" color="text.primary" noWrap>
-                        Sync Meet Admin
-                    </Typography>
+                <Box sx={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: 2, borderBottom: '1px solid', borderColor: 'divider' }}>
+                    <Stack direction="row" alignItems="center">
+                        <DashboardIcon sx={{ color: 'primary.main', mr: 2 }} />
+                        <Typography variant="h6" fontWeight="bold" color="text.primary" noWrap>
+                            Sync Meet
+                        </Typography>
+                    </Stack>
+                    <Tooltip title={mode === 'dark' ? 'Mudar para Light Mode' : 'Mudar para Dark Mode'}>
+                        <IconButton onClick={toggleTheme} size="small">
+                            {mode === 'dark' ? <LightModeIcon fontSize="small" /> : <DarkModeIcon fontSize="small" />}
+                        </IconButton>
+                    </Tooltip>
                 </Box>
 
                 <Box sx={{ overflow: 'auto', flex: 1, py: 2 }}>

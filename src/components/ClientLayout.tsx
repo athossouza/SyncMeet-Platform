@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
+import { useThemeToggle } from '@/context/ThemeContext'
 import {
     AppBar,
     Box,
@@ -11,14 +12,22 @@ import {
     Menu,
     MenuItem,
     Avatar,
-    Container,
     Divider,
-    Stack
+    Stack,
+    Chip,
+    Container,
+    Tooltip
 } from '@mui/material'
-import { Logout as LogoutIcon, Dashboard as DashboardIcon } from '@mui/icons-material'
+import {
+    Logout as LogoutIcon,
+    Dashboard as DashboardIcon,
+    DarkMode as DarkModeIcon,
+    LightMode as LightModeIcon
+} from '@mui/icons-material'
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     const { signOut, profile } = useAuth()
+    const { toggleTheme, mode } = useThemeToggle()
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
     const open = Boolean(anchorEl)
 
@@ -39,30 +48,39 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', display: 'flex', flexDirection: 'column' }}>
             {/* Header */}
             <AppBar position="sticky" elevation={0} sx={{
-                bgcolor: 'background.default',
+                bgcolor: 'background.paper', // Use theme paper color
+                color: 'text.primary', // Fix invalid contrast on Light Mode
                 borderBottom: '1px solid',
                 borderColor: 'divider',
                 backdropFilter: 'blur(8px)',
-                background: 'rgba(5, 20, 38, 0.8)' // transparent background.default
             }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
 
-                        <Typography
-                            variant="h6"
-                            component={RouterLink}
-                            to="/portal"
-                            sx={{
-                                fontWeight: 700,
-                                color: 'text.primary',
-                                textDecoration: 'none',
-                                '&:hover': { opacity: 0.8 }
-                            }}
-                        >
-                            Sync Meet
-                        </Typography>
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <Typography
+                                variant="h6"
+                                component={RouterLink}
+                                to="/portal"
+                                sx={{
+                                    fontWeight: 700,
+                                    color: 'text.primary',
+                                    textDecoration: 'none',
+                                    '&:hover': { opacity: 0.8 }
+                                }}
+                            >
+                                Sync Meet
+                            </Typography>
+                            <Chip label="v5.1 (Multi-Theme)" size="small" color="primary" variant="filled" sx={{ ml: 1, opacity: 1, fontWeight: 600 }} />
+                        </Box>
 
-                        <Stack direction="row" spacing={2} alignItems="center">
+                        <Stack direction="row" spacing={1} alignItems="center">
+                            <Tooltip title={mode === 'dark' ? 'Mudar para Light Mode' : 'Mudar para Dark Mode'}>
+                                <IconButton onClick={toggleTheme} color="inherit">
+                                    {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+                                </IconButton>
+                            </Tooltip>
+
                             {profile?.role === 'admin' && (
                                 <Button
                                     component={RouterLink}
@@ -130,7 +148,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                         >
                             <Box sx={{ px: 2, py: 1 }}>
-                                <Typography variant="subtitle2" noWrap>
+                                <Typography variant="subtitle2" noWrap sx={{ color: 'text.primary' }}>
                                     {profile?.email}
                                 </Typography>
                                 <Typography variant="caption" color="text.secondary">

@@ -5,7 +5,6 @@ import {
     Box,
     IconButton,
     Typography,
-    Stack,
     Fade
 } from '@mui/material'
 import {
@@ -165,7 +164,7 @@ export default function CustomVideoPlayer({ videoId, className }: CustomVideoPla
                     videoId={videoId}
                     opts={opts}
                     style={{ width: '100%', height: '100%' }}
-                    iframeClassName="" // Clear Tailwind class
+                    iframeClassName=""
                     onReady={onReady}
                     onStateChange={onStateChange}
                 />
@@ -220,13 +219,14 @@ export default function CustomVideoPlayer({ videoId, className }: CustomVideoPla
                         />
                     </Box>
 
-                    <Stack direction="row" justifyContent="space-between" alignItems="center" onClick={(e) => e.stopPropagation()}>
-                        <Stack direction="row" alignItems="center" spacing={2}>
+                    {/* Controls Row - Reusing Box flex instead of Stack for safety */}
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} onClick={(e) => e.stopPropagation()}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                             <IconButton onClick={togglePlay} sx={{ color: 'white' }}>
                                 {isPlaying ? <PauseIcon /> : <PlayIcon />}
                             </IconButton>
 
-                            <Stack direction="row" alignItems="center" spacing={1} sx={{ width: 140 }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, width: 140 }}>
                                 <IconButton onClick={toggleMute} sx={{ color: 'white' }}>
                                     {isMuted || volume === 0 ? <VolumeOffIcon fontSize="small" /> : <VolumeUpIcon fontSize="small" />}
                                 </IconButton>
@@ -236,17 +236,17 @@ export default function CustomVideoPlayer({ videoId, className }: CustomVideoPla
                                     size="small"
                                     sx={{ color: 'white', width: 80 }}
                                 />
-                            </Stack>
+                            </Box>
 
                             <Typography variant="caption" sx={{ color: 'grey.300', fontFamily: 'monospace' }}>
                                 {formatTime(currentTime)} / {formatTime(duration)}
                             </Typography>
-                        </Stack>
+                        </Box>
 
                         <IconButton onClick={toggleFullscreen} sx={{ color: 'white' }}>
                             {isFullscreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
                         </IconButton>
-                    </Stack>
+                    </Box>
                 </Box>
             </Fade>
 

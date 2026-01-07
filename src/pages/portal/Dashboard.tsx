@@ -155,25 +155,44 @@ export default function ClientDashboard() {
                                 if (isFuture) {
                                     return (
                                         <Grid size={{ xs: 12, md: 6, lg: 4 }} key={session.id}>
-                                            <Card sx={{
-                                                height: '100%',
-                                                bgcolor: 'rgba(44, 116, 179, 0.05)', // Primary tint
-                                                border: '1px solid',
-                                                borderColor: 'primary.main',
-                                            }}>
+                                            <Card
+                                                variant="outlined"
+                                                sx={{
+                                                    height: '100%',
+                                                    bgcolor: (theme) => theme.palette.mode === 'light' ? '#eff6ff' : 'rgba(44, 116, 179, 0.05)',
+                                                    borderColor: 'primary.main',
+                                                    borderWidth: 1,
+                                                }}
+                                            >
                                                 <CardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                                                     <Stack direction="row" justifyContent="space-between" mb={2}>
-                                                        <Box sx={{ p: 1, borderRadius: 1, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
+                                                        <Box sx={{
+                                                            p: 1,
+                                                            borderRadius: 2, // Gmail standard for small shapes
+                                                            bgcolor: 'primary.main',
+                                                            color: 'primary.contrastText',
+                                                            display: 'flex'
+                                                        }}>
                                                             <CalendarIcon fontSize="small" />
                                                         </Box>
-                                                        <Chip label="Agendada" size="small" color="primary" variant="outlined" sx={{ fontSize: '0.7rem' }} />
+                                                        <Chip
+                                                            label="Agendada"
+                                                            size="small"
+                                                            color="primary"
+                                                            variant={theme.palette.mode === 'light' ? 'filled' : 'outlined'}
+                                                            sx={{
+                                                                fontWeight: 600,
+                                                                bgcolor: theme.palette.mode === 'light' ? 'primary.light' : undefined,
+                                                                color: theme.palette.mode === 'light' ? 'primary.contrastText' : undefined
+                                                            }}
+                                                        />
                                                     </Stack>
 
                                                     <Box mb={2}>
-                                                        <Typography variant="h6" fontWeight="bold" gutterBottom color="primary.main">
+                                                        <Typography variant="h6" fontWeight="bold" gutterBottom color="text.primary">
                                                             {session.title}
                                                         </Typography>
-                                                        <Typography variant="caption" color="primary.light" sx={{ textTransform: 'uppercase', letterSpacing: 1 }}>
+                                                        <Typography variant="caption" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1, fontWeight: 500 }}>
                                                             {format(new Date(session.date), "d 'de' MMMM, yyyy • HH:mm", { locale: ptBR })}
                                                         </Typography>
                                                     </Box>
@@ -186,7 +205,7 @@ export default function ClientDashboard() {
                                                                 label={session.organizations.name}
                                                                 size="small"
                                                                 color="primary"
-                                                                sx={{ height: 20, fontSize: '0.65rem', opacity: 0.8 }}
+                                                                sx={{ height: 24, fontWeight: 500 }}
                                                             />
                                                         </Box>
                                                     )}
@@ -199,13 +218,28 @@ export default function ClientDashboard() {
                                                                 startIcon={<MeetIcon />}
                                                                 href={session.meet_link}
                                                                 target="_blank"
+                                                                disableElevation
+                                                                sx={{
+                                                                    py: 1.2,
+                                                                    fontWeight: 600
+                                                                }}
                                                             >
                                                                 Entrar no Meet
                                                             </Button>
                                                         ) : (
-                                                            <Typography variant="caption" color="text.secondary" align="center" display="block">
-                                                                Link não disponível ainda
-                                                            </Typography>
+                                                            <Paper
+                                                                variant="outlined"
+                                                                sx={{
+                                                                    py: 1,
+                                                                    textAlign: 'center',
+                                                                    bgcolor: 'action.hover',
+                                                                    borderStyle: 'dashed'
+                                                                }}
+                                                            >
+                                                                <Typography variant="caption" color="text.secondary">
+                                                                    Link não disponível ainda
+                                                                </Typography>
+                                                            </Paper>
                                                         )}
                                                     </Box>
                                                 </CardContent>

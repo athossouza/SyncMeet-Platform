@@ -24,6 +24,15 @@ import {
     TimerOff as TimerOffIcon // Zero time/operation icon
 } from '@mui/icons-material'
 import { Footer } from '@/components/Footer'
+import { useThemeToggle } from '@/context/ThemeContext'
+import {
+    DarkMode as DarkModeIcon,
+    LightMode as LightModeIcon
+} from '@mui/icons-material'
+import {
+    IconButton,
+    Tooltip
+} from '@mui/material'
 
 export default function LandingPage() {
     const [email, setEmail] = useState('')
@@ -31,6 +40,7 @@ export default function LandingPage() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const navigate = useNavigate()
+    const { toggleTheme, mode } = useThemeToggle()
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -61,8 +71,17 @@ export default function LandingPage() {
             bgcolor: 'background.default',
             color: 'text.primary',
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            position: 'relative'
         }}>
+            {/* Theme Toggle */}
+            <Box sx={{ position: 'absolute', top: 16, right: 16, zIndex: 10 }}>
+                <Tooltip title={mode === 'dark' ? 'Mudar para Light Mode' : 'Mudar para Dark Mode'}>
+                    <IconButton onClick={toggleTheme} color="inherit">
+                        {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+                    </IconButton>
+                </Tooltip>
+            </Box>
             {/* Main Hero Content */}
             <Container maxWidth="xl" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', py: 8 }}>
                 <Grid container spacing={8} alignItems="center">
